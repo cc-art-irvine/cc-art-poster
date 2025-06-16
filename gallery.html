@@ -54,38 +54,93 @@
             width: 100%;
             height: 100%;
             background-color: rgba(0,0,0,0.9);
+            overflow-y: auto; /* 允许垂直滚动 */
+            padding: 20px 0; /* 添加上下padding */
         }
         .modal-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            position: relative; /* 改为relative定位 */
+            margin: 0 auto; /* 水平居中 */
             max-width: 90%;
-            max-height: 90%;
+            max-height: none; /* 移除最大高度限制 */
+            min-height: calc(100vh - 40px); /* 确保有足够高度 */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
         .modal img {
-            width: 100%;
+            max-width: 100%;
+            max-height: 80vh; /* 图片最大高度为视窗的80% */
+            width: auto;
             height: auto;
             border-radius: 8px;
+            object-fit: contain; /* 确保图片完整显示 */
         }
         .close {
-            position: absolute;
+            position: fixed; /* 改为fixed定位，始终在屏幕右上角 */
             top: 15px;
             right: 35px;
             color: #f1f1f1;
             font-size: 40px;
             font-weight: bold;
             cursor: pointer;
+            z-index: 1001;
         }
         .close:hover {
             color: #fb923c;
         }
         .lazy-load {
-            opacity: 0;
+            opacity: 1; /* 改为默认显示，避免白板问题 */
             transition: opacity 0.3s;
         }
         .lazy-load.loaded {
             opacity: 1;
+        }
+        
+        /* 修复thumbnail长宽比，避免cutoff */
+        .gallery-thumbnail {
+            aspect-ratio: 4/5; /* 调整为4:5比例，更适合人像 */
+            overflow: hidden;
+        }
+        
+        .gallery-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top; /* 从顶部开始显示，避免cutoff脸部 */
+        }
+        
+        /* 防止模态框打开时背景滚动 */
+        body.modal-open {
+            overflow: hidden;
+        }
+        
+        /* 模态框信息区域样式 */
+        .modal-info {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            max-width: 600px;
+            text-align: center;
+        }
+        
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .modal-content {
+                padding: 10px;
+            }
+            
+            .modal img {
+                max-height: 70vh;
+            }
+            
+            .close {
+                font-size: 30px;
+                top: 10px;
+                right: 20px;
+            }
         }
     </style>
 </head>
@@ -165,11 +220,11 @@
                         <h3 class="text-xl font-bold text-gray-800 mb-3">🎯 学员成就统计</h3>
                         <div class="grid grid-cols-2 gap-4 text-center">
                             <div class="bg-white rounded-lg p-3">
-                                <div class="text-2xl font-bold text-orange-600" id="total-students">150+</div>
+                                <div class="text-2xl font-bold text-orange-600" id="total-students">30+</div>
                                 <div class="text-sm text-gray-600">满意学员</div>
                             </div>
                             <div class="bg-white rounded-lg p-3">
-                                <div class="text-2xl font-bold text-orange-600" id="total-artworks">500+</div>
+                                <div class="text-2xl font-bold text-orange-600" id="total-artworks">100+</div>
                                 <div class="text-sm text-gray-600">精美作品</div>
                             </div>
                             <div class="bg-white rounded-lg p-3">
@@ -275,7 +330,7 @@
         <span class="close">&times;</span>
         <div class="modal-content">
             <img id="modalImage" src="" alt="">
-            <div class="text-center mt-4">
+            <div class="modal-info">
                 <h3 id="modalTitle" class="text-white text-xl font-bold mb-2"></h3>
                 <p id="modalDescription" class="text-gray-300"></p>
             </div>
@@ -305,20 +360,20 @@
             // Landscape category examples
             {
                 id: 1,
-                src: 'resources/img/landscape/landscape_001.jpg',
-                thumbnail: 'resources/img/landscape/thumbs/landscape_001_thumb.jpg',
-                title: '春日风景写生',
-                description: '学员小明在公园里创作的美丽春景',
+                src: 'resources/img/activity/solo1.jpg',
+                thumbnail: 'resources/img/activity/solo1.jpg',
+                title: '熊猫的春天',
+                description: '学员小明在公园里创作的熊猫作品，色彩鲜艳',
                 category: 'landscape',
                 studentAge: '8岁',
                 date: '2025-03-15'
             },
             {
                 id: 2,
-                src: 'resources/img/landscape/landscape_002.jpg',
-                thumbnail: 'resources/img/landscape/thumbs/landscape_002_thumb.jpg',
+                src: 'resources/img/activity/solo2.jpg',
+                thumbnail: 'resources/img/activity/solo2.jpg',
                 title: '海边日落',
-                description: '小红同学的海边写生作品，色彩运用很棒',
+                description: '小红同学的海豚作品，色彩运用很棒',
                 category: 'landscape',
                 studentAge: '10岁',
                 date: '2025-03-20'
@@ -327,49 +382,208 @@
             // Portrait category examples
             {
                 id: 3,
-                src: 'resources/img/portrait/portrait_001.jpg',
-                thumbnail: 'resources/img/portrait/thumbs/portrait_001_thumb.jpg',
+                src: 'resources/img/activity/solo3.jpg',
+                thumbnail: 'resources/img/activity/solo3.jpg',
                 title: '自画像练习',
                 description: '学员自画像作品，表现力很强',
                 category: 'portrait',
                 studentAge: '12岁',
-                date: '2025-03-10'
+                date: '2025-06-15'
             },
             
             // Still life category examples
             {
                 id: 4,
-                src: 'resources/img/still-life/still_life_001.jpg',
-                thumbnail: 'resources/img/still-life/thumbs/still_life_001_thumb.jpg',
-                title: '水果静物',
-                description: '色彩丰富的水果静物写生',
+                src: 'resources/img/activity/solo4.jpg',
+                thumbnail: 'resources/img/activity/solo4.jpg',
+                title: '小兔子',
+                description: '色彩丰富的小兔子创作',
                 category: 'still-life',
                 studentAge: '9岁',
-                date: '2025-03-25'
+                date: '2025-06-15'
             },
             
             // Activity category examples
             {
                 id: 5,
-                src: 'resources/img/activity/activity_001.jpg',
-                thumbnail: 'resources/img/activity/thumbs/activity_001_thumb.jpg',
+                src: 'resources/img/activity/art14.jpg',
+                thumbnail: 'resources/img/activity/art14.jpg',
                 title: '户外写生活动',
-                description: '学员们在公园里认真创作的场景',
+                description: '孩子们在公园里认真创作的场景',
                 category: 'activity',
                 studentAge: '课堂活动',
-                date: '2025-03-30'
+                date: '2025-06-15'
             },
             {
                 id: 6,
-                src: 'resources/img/activity/activity_002.jpg',
-                thumbnail: 'resources/img/activity/thumbs/activity_002_thumb.jpg',
-                title: '作品展示会',
-                description: '学员们展示自己作品的快乐时刻',
+                src: 'resources/img/activity/art15.jpg',
+                thumbnail: 'resources/img/activity/art15.jpg',
+                title: '户外写生活动',
+                description: '孩子们在公园里认真创作的场景',
                 category: 'activity',
                 studentAge: '课堂活动',
-                date: '2025-04-01'
-            }
-            
+                date: '2025-06-15'
+            },
+            {
+                id: 7,
+                src: 'resources/img/activity/art16.jpg',
+                thumbnail: 'resources/img/activity/art16.jpg',
+                title: '户外写生活动',
+                description: '孩子们在公园里认真创作的场景',
+                category: 'activity',
+                studentAge: '课堂活动',
+                date: '2025-06-15'
+            },
+            {
+                id: 8,
+                src: 'resources/img/activity/art17.jpg',
+                thumbnail: 'resources/img/activity/art17.jpg',
+                title: '户外写生活动',
+                description: '孩子们在公园里认真创作的场景',
+                category: 'activity',
+                studentAge: '课堂活动',
+                date: '2025-06-15'
+            },
+            {
+                id: 9,
+                src: 'resources/img/activity/art18.jpg',
+                thumbnail: 'resources/img/activity/art18.jpg',
+                title: '户外写生活动',
+                description: '孩子们在公园里认真创作的场景',
+                category: 'activity',
+                studentAge: '课堂活动',
+                date: '2025-06-15'
+            },
+            {
+                id: 10,
+                src: 'resources/img/activity/art1.jpg',
+                thumbnail: 'resources/img/activity/art1.jpg',
+                title: '户外写生活动',
+                description: '孩子们在公园里认真创作的场景',
+                category: 'activity',
+                studentAge: '课堂活动',
+                date: '2025-06-15'
+            },
+            {
+                id: 11,
+                src: 'resources/img/activity/art2.jpg',
+                thumbnail: 'resources/img/activity/art2.jpg',
+                title: '户外写生活动',
+                description: '孩子们在公园里认真创作的场景',
+                category: 'activity',
+                studentAge: '课堂活动',
+                date: '2025-06-15'
+            },
+            {
+                id: 12,
+                src: 'resources/img/activity/art3.jpg',
+                thumbnail: 'resources/img/activity/art3.jpg',
+                title: '户外写生活动',
+                description: '孩子们在公园里认真创作的场景',
+                category: 'activity',
+                studentAge: '课堂活动',
+                date: '2025-06-15'
+            },
+            {
+                id: 13,
+                src: 'resources/img/activity/art4.jpg',
+                thumbnail: 'resources/img/activity/art4.jpg',
+                title: '户外写生活动',
+                description: '孩子们在公园里认真创作的场景',
+                category: 'activity',
+                studentAge: '课堂活动',
+                date: '2025-06-15'
+            },
+            {
+                id: 14,
+                src: 'resources/img/activity/art5.jpg',
+                thumbnail: 'resources/img/activity/art5.jpg',
+                title: '户外写生活动',
+                description: '孩子们在公园里认真创作的场景',
+                category: 'activity',
+                studentAge: '课堂活动',
+                date: '2025-06-15'
+            },
+            {
+                id: 15,
+                src: 'resources/img/activity/art6.jpg',
+                thumbnail: 'resources/img/activity/art6.jpg',
+                title: '户外写生活动',
+                description: '孩子们在公园里认真创作的场景',
+                category: 'activity',
+                studentAge: '课堂活动',
+                date: '2025-06-15'
+            },
+            {
+                id: 16,
+                src: 'resources/img/activity/art7.jpg',
+                thumbnail: 'resources/img/activity/art7.jpg',
+                title: '户外写生活动',
+                description: '孩子们在公园里认真创作的场景',
+                category: 'activity',
+                studentAge: '课堂活动',
+                date: '2025-06-15'
+            },
+            {
+                id: 17,
+                src: 'resources/img/activity/art8.jpg',
+                thumbnail: 'resources/img/activity/art8.jpg',
+                title: '户外写生活动',
+                description: '孩子们在公园里认真创作的场景',
+                category: 'activity',
+                studentAge: '课堂活动',
+                date: '2025-06-15'
+            },
+            {
+                id: 18,
+                src: 'resources/img/activity/art9.jpg',
+                thumbnail: 'resources/img/activity/art9.jpg',
+                title: '户外写生活动',
+                description: '孩子们在公园里认真创作的场景',
+                category: 'activity',
+                studentAge: '课堂活动',
+                date: '2025-06-15'
+            },
+            {
+                id: 19,
+                src: 'resources/img/activity/art10.jpg',
+                thumbnail: 'resources/img/activity/art10.jpg',
+                title: '户外写生活动',
+                description: '孩子们在公园里认真创作的场景',
+                category: 'activity',
+                studentAge: '课堂活动',
+                date: '2025-06-15'
+            },
+            {
+                id: 20,
+                src: 'resources/img/activity/art11.jpg',
+                thumbnail: 'resources/img/activity/art11.jpg',
+                title: '户外写生活动',
+                description: '孩子们在公园里认真创作的场景',
+                category: 'activity',
+                studentAge: '课堂活动',
+                date: '2025-06-15'
+            },
+            {
+                id: 21,
+                src: 'resources/img/activity/art12.jpg',
+                thumbnail: 'resources/img/activity/art12.jpg',
+                title: '户外写生活动',
+                description: '孩子们在公园里认真创作的场景',
+                category: 'activity',
+                studentAge: '课堂活动',
+                date: '2025-06-15'
+            },
+            {
+                id: 22,
+                src: 'resources/img/activity/art13.jpg',
+                thumbnail: 'resources/img/activity/art13.jpg',
+                title: '户外写生活动',
+                description: '孩子们在公园里认真创作的场景',
+                category: 'activity',
+                studentAge: '课堂活动',
+                date: '2025-06-15'
+            },
             // ADD MORE IMAGES HERE FOLLOWING THE SAME STRUCTURE
             // Each image should have: id, src, thumbnail, title, description, category, studentAge, date
         ];
@@ -407,6 +621,9 @@
                 galleryGrid.appendChild(galleryItem);
             });
 
+            // 重新设置懒加载观察器
+            setupLazyLoading();
+
             // Hide load more button if no more items
             const loadMoreBtn = document.getElementById('load-more-btn');
             if (endIndex >= filteredData.length) {
@@ -421,9 +638,9 @@
             const div = document.createElement('div');
             div.className = 'gallery-item bg-white rounded-xl shadow-lg overflow-hidden';
             div.innerHTML = `
-                <div class="aspect-square overflow-hidden">
+                <div class="gallery-thumbnail">
                     <img src="${item.thumbnail}" alt="${item.title}" 
-                         class="w-full h-full object-cover lazy-load"
+                         class="lazy-load"
                          data-full-src="${item.src}"
                          data-title="${item.title}"
                          data-description="${item.description} | 学员年龄: ${item.studentAge} | 创作日期: ${item.date}">
@@ -489,19 +706,33 @@
             const modalTitle = document.getElementById('modalTitle');
             const modalDescription = document.getElementById('modalDescription');
 
+            // 防止背景滚动
+            document.body.classList.add('modal-open');
+            
             modal.style.display = 'block';
             modalImg.src = img.dataset.fullSrc;
             modalTitle.textContent = img.dataset.title;
             modalDescription.textContent = img.dataset.description;
+            
+            // 重置模态框滚动位置
+            modal.scrollTop = 0;
         }
 
         function closeModal() {
-            document.getElementById('imageModal').style.display = 'none';
+            const modal = document.getElementById('imageModal');
+            modal.style.display = 'none';
+            
+            // 恢复背景滚动
+            document.body.classList.remove('modal-open');
         }
 
         // Lazy loading for images
         function setupLazyLoading() {
-            const images = document.querySelectorAll('.lazy-load');
+            // 只为新添加的未观察的图片设置观察器
+            const images = document.querySelectorAll('.lazy-load:not(.observed)');
+            
+            if (images.length === 0) return; // 如果没有新图片，直接返回
+            
             const imageObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -512,13 +743,23 @@
                 });
             });
 
-            images.forEach(img => imageObserver.observe(img));
+            images.forEach(img => {
+                imageObserver.observe(img);
+                img.classList.add('observed'); // 标记为已观察，避免重复观察
+                
+                // 如果图片已经在视窗内，立即加载
+                const rect = img.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    img.classList.add('loaded');
+                    imageObserver.unobserve(img);
+                }
+            });
         }
 
         // Initialize when DOM is loaded
         document.addEventListener('DOMContentLoaded', function() {
             initGallery();
-            setupLazyLoading();
+            // 初始化时不需要调用setupLazyLoading，因为renderGallery会调用
         });
 
         // Keyboard navigation
@@ -526,6 +767,11 @@
             if (e.key === 'Escape') {
                 closeModal();
             }
+        });
+        
+        // 防止在模态框中滚动时关闭模态框
+        document.getElementById('imageModal').addEventListener('wheel', function(e) {
+            e.stopPropagation();
         });
     </script>
 </body>
