@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>课程政策 - CC Art 户外丙烯写生课</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+        body { 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; 
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #fed7aa 0%, #fef3c7 50%, #fef9c3 100%);
+        }
+        .gradient-orange {
+            background: linear-gradient(90deg, #fb923c 0%, #fbbf24 100%);
+        }
+        .nav-link {
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+        }
+        .nav-link.active {
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen">
+    <!-- Navigation Bar -->
+    <nav class="gradient-orange shadow-lg sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                        <span class="text-orange-500 font-bold text-lg">🎨</span>
+                    </div>
+                    <span class="text-white font-bold text-xl">CC ART</span>
+                </div>
+                
+                <div class="hidden md:flex space-x-1">
+                    <a href="index.html" class="nav-link px-4 py-2 text-white font-medium">首页</a>
+                    <a href="pricing.html" class="nav-link px-4 py-2 text-white font-medium">课价表</a>
+                    <a href="about.html" class="nav-link px-4 py-2 text-white font-medium">关于老师</a>
+                    <a href="policy.html" class="nav-link active px-4 py-2 text-white font-medium">课程政策</a>
+                </div>
+
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-white p-2">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div id="mobile-menu" class="md:hidden hidden pb-4">
+                <a href="index.html" class="block nav-link px-4 py-2 text-white font-medium">首页</a>
+                <a href="pricing.html" class="block nav-link px-4 py-2 text-white font-medium">课价表</a>
+                <a href="about.html" class="block nav-link px-4 py-2 text-white font-medium">关于老师</a>
+                <a href="policy.html" class="block nav-link px-4 py-2 text-white font-medium">课程政策</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="min-h-screen py-12 px-6">
+        <div class="max-w-4xl mx-auto">
+            <!-- Page Header -->
+            <div class="text-center mb-12">
+                <h1 class="text-4xl font-bold text-gray-800 mb-4">课程政策</h1>
+                <p class="text-lg text-gray-600">请仔细阅读以下政策条款</p>
+                <div class="w-24 h-1 bg-gradient-to-r from-orange-400 to-amber-400 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- Policy Sections -->
+            <div class="space-y-8">
+                <!-- Registration Policy -->
+                <div class="bg-white rounded-2xl shadow-lg p-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                        <span class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3">📝</span>
+                        报名政策
+                    </h2>
+                    <div class="space-y-4 text-gray-600">
+                        <div class="border-l-4 border-blue-400 pl-6">
+                            <h4 class="font-semibold text-gray-800 mb-2">试课安排</h4>
+                            <ul class="space-y-2">
+                                <li>• 首次学员需参加$20试课，体验课程内容和教学方式</li>
+                                <li>• 试课包含所有材料费用，无额外收费</li>
+                                <li>• 试课后可决定是否购买正式课程套餐</li>
+                                <li>• 试课费用不可抵扣正式课程费用</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="border-l-4 border-blue-400 pl-6">
+                            <h4 class="font-semibold text-gray-800 mb-2">年龄要求</h4>
+                            <ul class="space-y-2">
+                                <li>• 建议年龄：3岁及以上</li>
+                                <li>• 3-5岁儿童需家长陪同</li>
+                                <li>• 成人课程欢迎零基础学员</li>
+                                <li>• 特殊需求学员请提前沟通</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="border-l-4 border-blue-400 pl-6">
+                            <h4 class="font-semibold text-gray-800 mb-2">课包规则</h4>
+                            <ul class="space-y-2">
+                                <li>• 课包购买后有效期为12个月</li>
+                                <li>• 课包不可转让给他人（同一家庭兄弟姐妹除外）</li>
+                                <li>• 课包余额不可提现</li>
+                                <li>• 过期课包恕不延期</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Booking & Cancellation -->
+                <div class="bg-white rounded-2xl shadow-lg p-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                        <span class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center mr-3">📅</span>
+                        预约与取消政策
+                    </h2>
+                    <div class="space-y-4 text-gray-600">
+                        <div class="border-l-4 border-orange-400 pl-6">
+                            <h4 class="font-semibold text-gray-800 mb-2">课程预约</h4>
+                            <ul class="space-y-2">
+                                <li>• 需至少提前24小时预约课程</li>
+                                <li>• 可通过微信、电话或网站预约</li>
+                                <li>• 预约成功后会收到确认信息</li>
+                                <li>• 建议定期预约以确保上课连续性</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="border-l-4 border-orange-400 pl-6">
+                            <h4 class="font-semibold text-gray-800 mb-2">取消课程</h4>
+                            <ul class="space-y-2">
+                                <li>• 需至少提前24小时取消课程</li>
+                                <li>• 24小时内取消将扣除一次课时</li>
+                                <li>• 无故缺席将扣除一次课时</li>
+                                <li>• 紧急情况可特殊处理（需提供证明）</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="border-l-4 border-orange-400 pl-6">
+                            <h4 class="font-semibold text-gray-800 mb-2">改期规则</h4>
+                            <ul class="space-y-2">
+                                <li>• 可免费改期一次（需提前24小时）</li>
+                                <li>• 同一课程多次改期需支付$10手续费</li>
+                                <li>• 改期课程需在原课程时间后30天内完成</li>
+                                <li>• 特殊情况下可协商处理</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Weather Policy -->
+                <div class="bg-white rounded-2xl shadow-lg p-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                        <span class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-3">🌤️</span>
+                        天气政策
+                    </h2>
+                    <div class="space-y-4 text-gray-600">
+                        <div class="border-l-4 border-green-400 pl-6">
+                            <h4 class="font-semibold text-gray-800 mb-2">恶劣天气</h4>
+                            <ul class="space-y-2">
+                                <li>• 雨天、雪天或极端天气将自动改期</li>
+                                <li>• 老师会提前2-4小时通知学员</li>
+                                <li>• 可免费改期至合适时间</li>
+                                <li>• 如学员坚持上课，将安排室内替代课程</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="border-l-4 border-green-400 pl-6">
+                            <h4 class="font-semibold text-gray-800 mb-2">微雨天气</h4>
+                            <ul class="space-y-2">
+                                <li>• 小雨天气下可选择继续上课（有遮蔽处）</li>
+                                <li>• 学员可选择改期，不收取任何费用</li>
+                                <li>• 课程会根据天气调整内容</li>
+                                <li>• 安全第一，最终决定权在老师</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Safety Policy -->
+                <div class="bg-white rounded-2xl shadow-lg p-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                        <span class="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center mr-3">🛡️</span>
+                        安全政策
+                    </h2>
+                    <div class="space-y-4 text-gray-600">
+                        <div class="border-l-4 border-red-400 pl-6">
+                            <h4 class="font-semibold text-gray-800 mb-2">学员安全</h4>
+                            <ul class="space-y-2">
+                                <li>• 户外课程选址确保安全性</li>
+                                <li>• 老师持有急救证书</li>
+                                <li>• 课程区域禁止无关人员进入</li>
+                                <li>• 建议购买个人意外保险</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="border-l-4 border-red-400 pl-6">
+                            <h4 class="font-semibold text-gray-800 mb-2">健康要求</h4>
+                            <ul class="space-y-2">
+                                <li>• 学员身体不适时请勿上课</li>
+                                <li>• 有传染性疾病时需居家休息</li>
+                                <li>• 特殊病史需提前告知老师</li>
+                                <li>• 过敏体质请提前说明</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="border-l-4 border-red-400 pl-6">
+                            <h4 class="font-semibold text-gray-800 mb-2">材料安全</h4>
+                            <ul class="space-y-2">
+                                <li>• 使用无毒环保颜料</li>
+                                <li>• 画笔等工具定期消毒</li>
+                                <li>• 禁止将材料放入口中</li>
+                                <li>• 课后需清洁双手</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Refund Policy -->
+                <div class="bg-white rounded-2xl shadow-lg p-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                        <span class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center mr-3">💰</span>
+                        退费政策
+                    </h2>
+                    <div class="space-y-4 text-gray-600">
+                        <div class="border-l-4 border-purple-400 pl-6">
+                            <h4 class="font-semibold text-gray-800 mb-2">试课退费</h4>
+                            <ul class="space-y-2">
+                                <li>• 试课费用概不退还</li>
+                                <li>• 如因老师原因无法上课，可全额退款</li>
+                                <li>• 如因天气原因，可免费改期或退款</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="border-l-4 border-purple-400 pl-6">
+                            <h4 class="font-semibold text-gray-800 mb-2">课包退费</h4>
+                            <ul class="space-y-2">
+                                <li>• 购买后30天内，未使用课时可申请退款</li>
+                                <li>• 已使用课时按单节课价格计算</li>
+                                <li>• 退款金额 = 课包总价 - 已使用课时×单节价</li>
+                                <li>• 退款将在7-14个工作日内处理</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="border-l-4 border-purple-400 pl-6">
+                            <h4 class="font-semibold text-gray-800 mb-2">特殊情况</h4>
+                            <ul class="space-y-2">
+                                <li>• 搬家或长期出差可协商处理</li>
+                                <li>• 重大疾病或意外可特殊考虑</li>
+                                <li>• 需提供相关证明文件</li>
+                                <li>• 最终解释权归CC Art所有</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Terms & Conditions -->
+                <div class="bg-white rounded-2xl shadow-lg p-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                        <span class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center mr-3">📋</span>
+                        其他条款
+                    </h2>
+                    <div class="space-y-4 text-gray-600">
+                        <div class="border-l-4 border-gray-400 pl-6">
+                            <h4 class="font-semibold text-gray-800 mb-2">照片使用权</h4>
+                            <ul class="space-y-2">
+                                <li>• 课程期间可能拍摄照片用于教学记录</li>
+                                <li>• 照片可能用于宣传推广（可选择退出）</li>
+                                <li>• 学员作品照片归学员所有</li>
+                                <li>• 如不同意拍摄请提前告知</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="border-l-4 border-gray-400 pl-6">
+                            <h4 class="font-semibold text-gray-800 mb-2">责任限制</h4>
+                            <ul class="space-y-2">
+                                <li>• CC Art承担教学期间的基本安全责任</li>
+                                <li>• 学员个人物品遗失不承担责任</li>
+                                <li>• 因学员个人原因造成的意外不承担责任</li>
+                                <li>• 建议购买个人意外保险</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="border-l-4 border-gray-400 pl-6">
+                            <h4 class="font-semibold text-gray-800 mb-2">政策更新</h4>
+                            <ul class="space-y-2">
+                                <li>• CC Art保留政策更新的权利</li>
