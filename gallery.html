@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学员作品 - CC Art 户外丙烯写生课</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+        body { 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; 
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #fed7aa 0%, #fef3c7 50%, #fef9c3 100%);
+        }
+        .gradient-orange {
+            background: linear-gradient(90deg, #fb923c 0%, #fbbf24 100%);
+        }
+        .nav-link {
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+        }
+        .nav-link.active {
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+        }
+        .gallery-item {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+        .gallery-category {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .gallery-category.active {
+            background: linear-gradient(90deg, #fb923c 0%, #fbbf24 100%);
+            color: white;
+        }
+        .gallery-category:hover {
+            background-color: #fed7aa;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+        }
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 90%;
+            max-height: 90%;
+        }
+        .modal img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover {
+            color: #fb923c;
+        }
+        .lazy-load {
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .lazy-load.loaded {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen">
+    <!-- Navigation Bar -->
+    <nav class="gradient-orange shadow-lg sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                        <span class="text-orange-500 font-bold text-lg">🎨</span>
+                    </div>
+                    <span class="text-white font-bold text-xl">CC ART</span>
+                </div>
+                
+                <div class="hidden md:flex space-x-1">
+                    <a href="index.html" class="nav-link px-4 py-2 text-white font-medium">首页</a>
+                    <a href="pricing.html" class="nav-link px-4 py-2 text-white font-medium">课价表</a>
+                    <a href="about.html" class="nav-link px-4 py-2 text-white font-medium">关于老师</a>
+                    <a href="gallery.html" class="nav-link active px-4 py-2 text-white font-medium">学员作品</a>
+                    <a href="policy.html" class="nav-link px-4 py-2 text-white font-medium">课程政策</a>
+                </div>
+
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-white p-2">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div id="mobile-menu" class="md:hidden hidden pb-4">
+                <a href="index.html" class="block nav-link px-4 py-2 text-white font-medium">首页</a>
+                <a href="pricing.html" class="block nav-link px-4 py-2 text-white font-medium">课价表</a>
+                <a href="about.html" class="block nav-link px-4 py-2 text-white font-medium">关于老师</a>
+                <a href="gallery.html" class="block nav-link px-4 py-2 text-white font-medium">学员作品</a>
+                <a href="policy.html" class="block nav-link px-4 py-2 text-white font-medium">课程政策</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="min-h-screen py-12 px-6">
+        <div class="max-w-7xl mx-auto">
+            <!-- Page Header -->
+            <div class="text-center mb-12">
+                <h1 class="text-4xl font-bold text-gray-800 mb-4">学员作品展示</h1>
+                <p class="text-lg text-gray-600 mb-6">见证每一次艺术成长的精彩瞬间</p>
+                <div class="w-24 h-1 bg-gradient-to-r from-orange-400 to-amber-400 mx-auto rounded-full"></div>
+            </div>
+
+            <!-- Highlight Description Box -->
+            <div class="bg-white rounded-3xl shadow-2xl p-8 mb-12 border-l-8 border-orange-400">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                            <span class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center mr-3">🌟</span>
+                            为什么选择CC Art?
+                        </h2>
+                        <div class="space-y-4 text-gray-600">
+                            <div class="flex items-start">
+                                <span class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mr-3 mt-1 flex-shrink-0 text-white text-sm">✓</span>
+                                <p><strong>实际效果看得见</strong> - 每节课都有明显进步，作品质量持续提升</p>
+                            </div>
+                            <div class="flex items-start">
+                                <span class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mr-3 mt-1 flex-shrink-0 text-white text-sm">✓</span>
+                                <p><strong>专业个性化指导</strong> - 根据每个孩子特点制定学习计划，因材施教</p>
+                            </div>
+                            <div class="flex items-start">
+                                <span class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mr-3 mt-1 flex-shrink-0 text-white text-sm">✓</span>
+                                <p><strong>户外自然创作</strong> - 在真实环境中学习，激发无限创意和想象力</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-orange-100 to-amber-100 rounded-2xl p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">🎯 学员成就统计</h3>
+                        <div class="grid grid-cols-2 gap-4 text-center">
+                            <div class="bg-white rounded-lg p-3">
+                                <div class="text-2xl font-bold text-orange-600" id="total-students">150+</div>
+                                <div class="text-sm text-gray-600">满意学员</div>
+                            </div>
+                            <div class="bg-white rounded-lg p-3">
+                                <div class="text-2xl font-bold text-orange-600" id="total-artworks">500+</div>
+                                <div class="text-sm text-gray-600">精美作品</div>
+                            </div>
+                            <div class="bg-white rounded-lg p-3">
+                                <div class="text-2xl font-bold text-orange-600" id="total-activities">50+</div>
+                                <div class="text-sm text-gray-600">户外活动</div>
+                            </div>
+                            <div class="bg-white rounded-lg p-3">
+                                <div class="text-2xl font-bold text-orange-600" id="satisfaction-rate">98%</div>
+                                <div class="text-sm text-gray-600">满意度</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category Filter -->
+            <div class="flex flex-wrap justify-center gap-4 mb-8">
+                <button class="gallery-category active px-6 py-3 rounded-full font-semibold border-2 border-orange-400" data-category="all">
+                    全部作品
+                </button>
+                <button class="gallery-category px-6 py-3 rounded-full font-semibold border-2 border-orange-400" data-category="landscape">
+                    风景写生
+                </button>
+                <button class="gallery-category px-6 py-3 rounded-full font-semibold border-2 border-orange-400" data-category="portrait">
+                    人物绘画
+                </button>
+                <button class="gallery-category px-6 py-3 rounded-full font-semibold border-2 border-orange-400" data-category="still-life">
+                    静物创作
+                </button>
+                <button class="gallery-category px-6 py-3 rounded-full font-semibold border-2 border-orange-400" data-category="activity">
+                    课堂活动
+                </button>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12">
+                <!-- Gallery items will be populated by JavaScript -->
+            </div>
+
+            <!-- Load More Button -->
+            <div class="text-center">
+                <button id="load-more-btn" class="bg-gradient-to-r from-orange-400 to-amber-400 text-white px-8 py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity">
+                    加载更多作品
+                </button>
+            </div>
+
+            <!-- Success Stories Section -->
+            <div class="mt-16 bg-white rounded-3xl shadow-2xl p-8">
+                <h2 class="text-2xl font-bold text-gray-800 mb-8 text-center">学员成功故事</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Story placeholders - to be filled with actual content -->
+                    <div class="bg-orange-50 rounded-xl p-6">
+                        <div class="w-16 h-16 bg-orange-200 rounded-full mx-auto mb-4 flex items-center justify-center">
+                            <span class="text-2xl">👧</span>
+                        </div>
+                        <h4 class="font-bold text-gray-800 text-center mb-2">[学员姓名] - 8岁</h4>
+                        <p class="text-sm text-gray-600 text-center italic">
+                            "[具体成功故事内容待填写，描述学员的进步和成就]"
+                        </p>
+                        <div class="text-center mt-4">
+                            <span class="bg-orange-200 text-orange-800 px-3 py-1 rounded-full text-xs font-semibold">
+                                学习6个月
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-orange-50 rounded-xl p-6">
+                        <div class="w-16 h-16 bg-orange-200 rounded-full mx-auto mb-4 flex items-center justify-center">
+                            <span class="text-2xl">👦</span>
+                        </div>
+                        <h4 class="font-bold text-gray-800 text-center mb-2">[学员姓名] - 10岁</h4>
+                        <p class="text-sm text-gray-600 text-center italic">
+                            "[具体成功故事内容待填写，描述学员的进步和成就]"
+                        </p>
+                        <div class="text-center mt-4">
+                            <span class="bg-orange-200 text-orange-800 px-3 py-1 rounded-full text-xs font-semibold">
+                                学习1年
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-orange-50 rounded-xl p-6">
+                        <div class="w-16 h-16 bg-orange-200 rounded-full mx-auto mb-4 flex items-center justify-center">
+                            <span class="text-2xl">👩</span>
+                        </div>
+                        <h4 class="font-bold text-gray-800 text-center mb-2">[学员姓名] - 成人</h4>
+                        <p class="text-sm text-gray-600 text-center italic">
+                            "[具体成功故事内容待填写，描述学员的进步和成就]"
+                        </p>
+                        <div class="text-center mt-4">
+                            <span class="bg-orange-200 text-orange-800 px-3 py-1 rounded-full text-xs font-semibold">
+                                学习3个月
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="">
+            <div class="text-center mt-4">
+                <h3 id="modalTitle" class="text-white text-xl font-bold mb-2"></h3>
+                <p id="modalDescription" class="text-gray-300"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <p class="text-gray-400 mb-4">
+                每一幅作品都是孩子成长路上的珍贵足迹
+            </p>
+            <div class="flex justify-center space-x-6 text-sm">
+                <span class="text-orange-400">📞 626-726-7965</span>
+                <span class="text-orange-400">💬 xxxi_zc</span>
+                <span class="text-orange-400">📧 ccartirvine@google.com</span>
+            </div>
+            <p class="text-gray-500 text-sm mt-4">
+                CC Art 版权所有 © 2025
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Gallery data structure - UPDATE THIS SECTION WITH YOUR ACTUAL IMAGES
+        const galleryData = [
+            // Landscape category examples
+            {
+                id: 1,
+                src: 'resources/img/landscape/landscape_001.jpg',
+                thumbnail: 'resources/img/landscape/thumbs/landscape_001_thumb.jpg',
+                title: '春日风景写生',
+                description: '学员小明在公园里创作的美丽春景',
+                category: 'landscape',
+                studentAge: '8岁',
+                date: '2025-03-15'
+            },
+            {
+                id: 2,
+                src: 'resources/img/landscape/landscape_002.jpg',
+                thumbnail: 'resources/img/landscape/thumbs/landscape_002_thumb.jpg',
+                title: '海边日落',
+                description: '小红同学的海边写生作品，色彩运用很棒',
+                category: 'landscape',
+                studentAge: '10岁',
+                date: '2025-03-20'
+            },
+            
+            // Portrait category examples
+            {
+                id: 3,
+                src: 'resources/img/portrait/portrait_001.jpg',
+                thumbnail: 'resources/img/portrait/thumbs/portrait_001_thumb.jpg',
+                title: '自画像练习',
+                description: '学员自画像作品，表现力很强',
+                category: 'portrait',
+                studentAge: '12岁',
+                date: '2025-03-10'
+            },
+            
+            // Still life category examples
+            {
+                id: 4,
+                src: 'resources/img/still-life/still_life_001.jpg',
+                thumbnail: 'resources/img/still-life/thumbs/still_life_001_thumb.jpg',
+                title: '水果静物',
+                description: '色彩丰富的水果静物写生',
+                category: 'still-life',
+                studentAge: '9岁',
+                date: '2025-03-25'
+            },
+            
+            // Activity category examples
+            {
+                id: 5,
+                src: 'resources/img/activity/activity_001.jpg',
+                thumbnail: 'resources/img/activity/thumbs/activity_001_thumb.jpg',
+                title: '户外写生活动',
+                description: '学员们在公园里认真创作的场景',
+                category: 'activity',
+                studentAge: '课堂活动',
+                date: '2025-03-30'
+            },
+            {
+                id: 6,
+                src: 'resources/img/activity/activity_002.jpg',
+                thumbnail: 'resources/img/activity/thumbs/activity_002_thumb.jpg',
+                title: '作品展示会',
+                description: '学员们展示自己作品的快乐时刻',
+                category: 'activity',
+                studentAge: '课堂活动',
+                date: '2025-04-01'
+            }
+            
+            // ADD MORE IMAGES HERE FOLLOWING THE SAME STRUCTURE
+            // Each image should have: id, src, thumbnail, title, description, category, studentAge, date
+        ];
+
+        // Gallery functionality
+        let currentPage = 1;
+        const itemsPerPage = 12;
+        let currentCategory = 'all';
+
+        // Initialize gallery
+        function initGallery() {
+            renderGallery();
+            setupEventListeners();
+        }
+
+        // Render gallery items
+        function renderGallery(reset = false) {
+            if (reset) {
+                currentPage = 1;
+                document.getElementById('gallery-grid').innerHTML = '';
+            }
+
+            const filteredData = currentCategory === 'all' 
+                ? galleryData 
+                : galleryData.filter(item => item.category === currentCategory);
+
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const itemsToShow = filteredData.slice(startIndex, endIndex);
+
+            const galleryGrid = document.getElementById('gallery-grid');
+            
+            itemsToShow.forEach(item => {
+                const galleryItem = createGalleryItem(item);
+                galleryGrid.appendChild(galleryItem);
+            });
+
+            // Hide load more button if no more items
+            const loadMoreBtn = document.getElementById('load-more-btn');
+            if (endIndex >= filteredData.length) {
+                loadMoreBtn.style.display = 'none';
+            } else {
+                loadMoreBtn.style.display = 'block';
+            }
+        }
+
+        // Create gallery item HTML
+        function createGalleryItem(item) {
+            const div = document.createElement('div');
+            div.className = 'gallery-item bg-white rounded-xl shadow-lg overflow-hidden';
+            div.innerHTML = `
+                <div class="aspect-square overflow-hidden">
+                    <img src="${item.thumbnail}" alt="${item.title}" 
+                         class="w-full h-full object-cover lazy-load"
+                         data-full-src="${item.src}"
+                         data-title="${item.title}"
+                         data-description="${item.description} | 学员年龄: ${item.studentAge} | 创作日期: ${item.date}">
+                </div>
+                <div class="p-4">
+                    <h3 class="font-bold text-gray-800 mb-2">${item.title}</h3>
+                    <p class="text-sm text-gray-600 mb-2">${item.description}</p>
+                    <div class="flex justify-between items-center">
+                        <span class="bg-orange-100 text-orange-800 px-2 py-1 rounded-full text-xs font-semibold">
+                            ${item.studentAge}
+                        </span>
+                        <span class="text-xs text-gray-500">${item.date}</span>
+                    </div>
+                </div>
+            `;
+            return div;
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Category filter buttons
+            document.querySelectorAll('.gallery-category').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Update active state
+                    document.querySelectorAll('.gallery-category').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Filter gallery
+                    currentCategory = this.dataset.category;
+                    renderGallery(true);
+                });
+            });
+
+            // Load more button
+            document.getElementById('load-more-btn').addEventListener('click', function() {
+                currentPage++;
+                renderGallery();
+            });
+
+            // Image modal
+            document.addEventListener('click', function(e) {
+                if (e.target.matches('.gallery-item img')) {
+                    openModal(e.target);
+                }
+            });
+
+            // Close modal
+            document.querySelector('.close').addEventListener('click', closeModal);
+            document.getElementById('imageModal').addEventListener('click', function(e) {
+                if (e.target === this) closeModal();
+            });
+
+            // Mobile menu
+            document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+                document.getElementById('mobile-menu').classList.toggle('hidden');
+            });
+        }
+
+        // Modal functions
+        function openModal(img) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDescription = document.getElementById('modalDescription');
+
+            modal.style.display = 'block';
+            modalImg.src = img.dataset.fullSrc;
+            modalTitle.textContent = img.dataset.title;
+            modalDescription.textContent = img.dataset.description;
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+
+        // Lazy loading for images
+        function setupLazyLoading() {
+            const images = document.querySelectorAll('.lazy-load');
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.classList.add('loaded');
+                        observer.unobserve(img);
+                    }
+                });
+            });
+
+            images.forEach(img => imageObserver.observe(img));
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            initGallery();
+            setupLazyLoading();
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
