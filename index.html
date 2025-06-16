@@ -28,9 +28,101 @@
         .shadow-custom {
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
+        .nav-link {
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+        }
+        .nav-link.active {
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+        }
+        .package-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .package-card:hover {
+            transform: translateY(-4px);
+        }
+        .package-card.selected {
+            border-color: #fb923c;
+            box-shadow: 0 0 0 2px rgba(251, 146, 60, 0.2);
+        }
+        .btn-primary {
+            background: linear-gradient(90deg, #fb923c 0%, #fbbf24 100%);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+        .btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .btn-secondary {
+            background-color: #f3f4f6;
+            color: #374151;
+            transition: all 0.3s ease;
+        }
+        .btn-secondary:hover {
+            background-color: #e5e7eb;
+        }
     </style>
 </head>
 <body class="gradient-bg min-h-screen">
+    <!-- Navigation Bar -->
+    <nav class="gradient-orange shadow-lg sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                        <span class="text-orange-500 font-bold text-lg">🎨</span>
+                    </div>
+                    <span class="text-white font-bold text-xl">CC ART</span>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex space-x-1">
+                    <a href="index.html" class="nav-link active px-4 py-2 text-white font-medium" data-page="home">
+                        首页
+                    </a>
+                    <a href="pricing.html" class="nav-link px-4 py-2 text-white font-medium" data-page="pricing">
+                        课价表
+                    </a>
+                    <a href="about.html" class="nav-link px-4 py-2 text-white font-medium" data-page="about">
+                        关于老师
+                    </a>
+                    <a href="policy.html" class="nav-link px-4 py-2 text-white font-medium" data-page="policy">
+                        课程政策
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-white p-2">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="md:hidden hidden pb-4">
+                <a href="index.html" class="block nav-link px-4 py-2 text-white font-medium" data-page="home">首页</a>
+                <a href="pricing.html" class="block nav-link px-4 py-2 text-white font-medium" data-page="pricing">课价表</a>
+                <a href="about.html" class="block nav-link px-4 py-2 text-white font-medium" data-page="about">关于老师</a>
+                <a href="policy.html" class="block nav-link px-4 py-2 text-white font-medium" data-page="policy">课程政策</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
     <div class="min-h-screen p-6 flex items-center justify-center">
         <div class="max-w-4xl w-full bg-white rounded-3xl shadow-custom overflow-hidden">
             <!-- Header Section -->
@@ -62,112 +154,162 @@
                     <p class="text-gray-600">选择最适合你的学习计划</p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <!-- Single Class -->
-                    <div class="relative rounded-2xl p-6 bg-gray-50 border border-gray-200 hover-scale hover:shadow-md transition-all duration-300">
-                        <div class="text-center">
-                            <h3 class="text-lg font-bold text-gray-800 mb-2">单节课</h3>
-                            <p class="text-sm text-gray-600 mb-4">1.5小时</p>
-                            <div class="mb-4">
-                                <div class="text-3xl font-bold text-orange-600 mb-1">
-                                    ¥59
-                                    <span class="text-sm font-normal text-gray-600">/节</span>
+                <!-- Package Selection Form -->
+                <form id="package-form" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+                        <!-- Trial Class -->
+                        <div class="package-card rounded-2xl p-6 bg-blue-50 border-2 border-blue-200 hover:shadow-md transition-all duration-300" 
+                             data-package="trial" data-price="20" data-type="trial">
+                            <div class="text-center">
+                                <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                                    <span class="bg-blue-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
+                                        首次体验
+                                    </span>
                                 </div>
+                                <h3 class="text-lg font-bold text-gray-800 mb-2 mt-4">试课</h3>
+                                <p class="text-sm text-gray-600 mb-4">1.5小时</p>
+                                <div class="mb-4">
+                                    <div class="text-3xl font-bold text-blue-600 mb-1">
+                                        $20
+                                        <span class="text-sm font-normal text-gray-600">/节</span>
+                                    </div>
+                                    <div class="text-xs text-gray-500">
+                                        (材料费)
+                                    </div>
+                                </div>
+                                <p class="text-sm text-gray-600 mb-4">体验课程/材料包含</p>
+                                <input type="radio" name="package" value="trial" id="trial" class="hidden">
+                                <label for="trial" class="block w-full py-2 px-4 rounded-lg font-semibold btn-secondary cursor-pointer text-center">
+                                    选择套餐
+                                </label>
                             </div>
-                            <p class="text-sm text-gray-600 mb-4">首次体验/灵活安排</p>
-                            <button class="w-full py-2 px-4 rounded-lg font-semibold bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors">
-                                选择套餐
-                            </button>
+                        </div>
+
+                        <!-- Single Class -->
+                        <div class="package-card rounded-2xl p-6 bg-gray-50 border-2 border-gray-200 hover:shadow-md transition-all duration-300" 
+                             data-package="single" data-price="59" data-type="regular">
+                            <div class="text-center">
+                                <h3 class="text-lg font-bold text-gray-800 mb-2">单节课</h3>
+                                <p class="text-sm text-gray-600 mb-4">1.5小时</p>
+                                <div class="mb-4">
+                                    <div class="text-3xl font-bold text-orange-600 mb-1">
+                                        $59
+                                        <span class="text-sm font-normal text-gray-600">/节</span>
+                                    </div>
+                                </div>
+                                <p class="text-sm text-gray-600 mb-4">首次体验/灵活安排</p>
+                                <input type="radio" name="package" value="single" id="single" class="hidden">
+                                <label for="single" class="block w-full py-2 px-4 rounded-lg font-semibold btn-secondary cursor-pointer text-center">
+                                    选择套餐
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- 5 Classes Package -->
+                        <div class="package-card rounded-2xl p-6 gradient-card border-2 border-orange-300 shadow-lg hover:shadow-xl transition-all duration-300" 
+                             data-package="package5" data-price="57" data-type="package" data-total="285">
+                            <div class="text-center">
+                                <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                                    <span class="gradient-orange text-white px-4 py-1 rounded-full text-sm font-semibold">
+                                        热门推荐
+                                    </span>
+                                </div>
+                                <h3 class="text-lg font-bold text-gray-800 mb-2 mt-4">5次课包</h3>
+                                <p class="text-sm text-gray-600 mb-4">1.5小时</p>
+                                <div class="mb-4">
+                                    <div class="text-sm text-gray-500 line-through mb-1">
+                                        总价 $295
+                                    </div>
+                                    <div class="text-3xl font-bold text-orange-600 mb-1">
+                                        $57
+                                        <span class="text-sm font-normal text-gray-600">/节</span>
+                                    </div>
+                                    <div class="inline-block bg-red-100 text-red-600 px-2 py-1 rounded-full text-sm font-semibold">
+                                        省$10
+                                    </div>
+                                </div>
+                                <p class="text-sm text-gray-600 mb-4">省时省钱/节假日安排</p>
+                                <input type="radio" name="package" value="package5" id="package5" class="hidden">
+                                <label for="package5" class="block w-full py-2 px-4 rounded-lg font-semibold btn-secondary cursor-pointer text-center">
+                                    选择套餐
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- 10 Classes Package -->
+                        <div class="package-card rounded-2xl p-6 gradient-card border-2 border-orange-300 shadow-lg hover:shadow-xl transition-all duration-300" 
+                             data-package="package10" data-price="55" data-type="package" data-total="550">
+                            <div class="text-center">
+                                <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                                    <span class="gradient-orange text-white px-4 py-1 rounded-full text-sm font-semibold">
+                                        热门推荐
+                                    </span>
+                                </div>
+                                <h3 class="text-lg font-bold text-gray-800 mb-2 mt-4">10次课包</h3>
+                                <p class="text-sm text-gray-600 mb-4">1.5小时</p>
+                                <div class="mb-4">
+                                    <div class="text-sm text-gray-500 line-through mb-1">
+                                        总价 $590
+                                    </div>
+                                    <div class="text-3xl font-bold text-orange-600 mb-1">
+                                        $55
+                                        <span class="text-sm font-normal text-gray-600">/节</span>
+                                    </div>
+                                    <div class="inline-block bg-red-100 text-red-600 px-2 py-1 rounded-full text-sm font-semibold">
+                                        省$40
+                                    </div>
+                                </div>
+                                <p class="text-sm text-gray-600 mb-4">常规每周上课家庭</p>
+                                <input type="radio" name="package" value="package10" id="package10" class="hidden">
+                                <label for="package10" class="block w-full py-2 px-4 rounded-lg font-semibold btn-secondary cursor-pointer text-center">
+                                    选择套餐
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- 20 Classes Package -->
+                        <div class="package-card rounded-2xl p-6 gradient-card border-2 border-orange-300 shadow-lg hover:shadow-xl transition-all duration-300" 
+                             data-package="package20" data-price="53" data-type="package" data-total="1060">
+                            <div class="text-center">
+                                <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                                    <span class="gradient-orange text-white px-4 py-1 rounded-full text-sm font-semibold">
+                                        热门推荐
+                                    </span>
+                                </div>
+                                <h3 class="text-lg font-bold text-gray-800 mb-2 mt-4">20次课包</h3>
+                                <p class="text-sm text-gray-600 mb-4">1.5小时</p>
+                                <div class="mb-4">
+                                    <div class="text-sm text-gray-500 line-through mb-1">
+                                        总价 $1180
+                                    </div>
+                                    <div class="text-3xl font-bold text-orange-600 mb-1">
+                                        $53
+                                        <span class="text-sm font-normal text-gray-600">/节</span>
+                                    </div>
+                                    <div class="inline-block bg-red-100 text-red-600 px-2 py-1 rounded-full text-sm font-semibold">
+                                        省$120
+                                    </div>
+                                </div>
+                                <p class="text-sm text-gray-600 mb-4">长期规划/兄妹合上更优惠</p>
+                                <input type="radio" name="package" value="package20" id="package20" class="hidden">
+                                <label for="package20" class="block w-full py-2 px-4 rounded-lg font-semibold btn-secondary cursor-pointer text-center">
+                                    选择套餐
+                                </label>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- 5 Classes Package -->
-                    <div class="relative rounded-2xl p-6 gradient-card border-2 border-orange-300 shadow-lg hover-scale transition-all duration-300">
-                        <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                            <span class="gradient-orange text-white px-4 py-1 rounded-full text-sm font-semibold">
-                                热门推荐
-                            </span>
+                    <!-- Selected Package Summary -->
+                    <div id="package-summary" class="hidden mt-8 p-6 bg-orange-50 rounded-xl border border-orange-200">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4">选择的套餐</h3>
+                        <div id="summary-content" class="space-y-2 text-sm text-gray-600">
+                            <!-- Summary will be populated by JavaScript -->
                         </div>
-                        <div class="text-center">
-                            <h3 class="text-lg font-bold text-gray-800 mb-2">5次课包</h3>
-                            <p class="text-sm text-gray-600 mb-4">1.5小时</p>
-                            <div class="mb-4">
-                                <div class="text-sm text-gray-500 line-through mb-1">
-                                    总价 ¥285
-                                </div>
-                                <div class="text-3xl font-bold text-orange-600 mb-1">
-                                    ¥57
-                                    <span class="text-sm font-normal text-gray-600">/节</span>
-                                </div>
-                                <div class="inline-block bg-red-100 text-red-600 px-2 py-1 rounded-full text-sm font-semibold">
-                                    省¥10
-                                </div>
-                            </div>
-                            <p class="text-sm text-gray-600 mb-4">省时省钱/节假日安排</p>
-                            <button class="w-full py-2 px-4 rounded-lg font-semibold gradient-orange text-white hover:opacity-90 transition-all">
-                                选择套餐
-                            </button>
-                        </div>
+                        <button type="submit" id="book-button" class="mt-4 w-full py-3 px-6 btn-primary text-white font-semibold rounded-lg" disabled>
+                            预订课程
+                        </button>
                     </div>
-
-                    <!-- 10 Classes Package -->
-                    <div class="relative rounded-2xl p-6 gradient-card border-2 border-orange-300 shadow-lg hover-scale transition-all duration-300">
-                        <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                            <span class="gradient-orange text-white px-4 py-1 rounded-full text-sm font-semibold">
-                                热门推荐
-                            </span>
-                        </div>
-                        <div class="text-center">
-                            <h3 class="text-lg font-bold text-gray-800 mb-2">10次课包</h3>
-                            <p class="text-sm text-gray-600 mb-4">1.5小时</p>
-                            <div class="mb-4">
-                                <div class="text-sm text-gray-500 line-through mb-1">
-                                    总价 ¥550
-                                </div>
-                                <div class="text-3xl font-bold text-orange-600 mb-1">
-                                    ¥55
-                                    <span class="text-sm font-normal text-gray-600">/节</span>
-                                </div>
-                                <div class="inline-block bg-red-100 text-red-600 px-2 py-1 rounded-full text-sm font-semibold">
-                                    省¥40
-                                </div>
-                            </div>
-                            <p class="text-sm text-gray-600 mb-4">常规每周上课家庭</p>
-                            <button class="w-full py-2 px-4 rounded-lg font-semibold gradient-orange text-white hover:opacity-90 transition-all">
-                                选择套餐
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- 20 Classes Package -->
-                    <div class="relative rounded-2xl p-6 gradient-card border-2 border-orange-300 shadow-lg hover-scale transition-all duration-300">
-                        <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                            <span class="gradient-orange text-white px-4 py-1 rounded-full text-sm font-semibold">
-                                热门推荐
-                            </span>
-                        </div>
-                        <div class="text-center">
-                            <h3 class="text-lg font-bold text-gray-800 mb-2">20次课包</h3>
-                            <p class="text-sm text-gray-600 mb-4">1.5小时</p>
-                            <div class="mb-4">
-                                <div class="text-sm text-gray-500 line-through mb-1">
-                                    总价 ¥1050
-                                </div>
-                                <div class="text-3xl font-bold text-orange-600 mb-1">
-                                    ¥53
-                                    <span class="text-sm font-normal text-gray-600">/节</span>
-                                </div>
-                                <div class="inline-block bg-red-100 text-red-600 px-2 py-1 rounded-full text-sm font-semibold">
-                                    省¥120
-                                </div>
-                            </div>
-                            <p class="text-sm text-gray-600 mb-4">长期规划/兄妹合上更优惠</p>
-                            <button class="w-full py-2 px-4 rounded-lg font-semibold gradient-orange text-white hover:opacity-90 transition-all">
-                                选择套餐
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                </form>
 
                 <!-- Features Section -->
                 <div class="mt-12 bg-gradient-to-r from-orange-50 to-amber-50 rounded-2xl p-8">
@@ -203,6 +345,7 @@
                     <div class="flex justify-center items-center space-x-6 text-sm flex-wrap gap-2">
                         <span class="text-orange-600 font-semibold">📞 咨询热线: 400-XXX-XXXX</span>
                         <span class="text-orange-600 font-semibold">💬 微信: CC-ART-2025</span>
+                        <span class="text-orange-600 font-semibold">📧 邮箱: info@ccart.com</span>
                     </div>
                 </div>
             </div>
@@ -215,5 +358,178 @@
             </div>
         </div>
     </div>
+
+    <!-- JavaScript for Package Selection and Navigation -->
+    <script>
+        // Package Selection Logic
+        const packageCards = document.querySelectorAll('.package-card');
+        const packageSummary = document.getElementById('package-summary');
+        const summaryContent = document.getElementById('summary-content');
+        const bookButton = document.getElementById('book-button');
+        const form = document.getElementById('package-form');
+
+        // Package data for backend integration
+        const packageData = {
+            trial: {
+                name: '试课',
+                price: 20,
+                duration: '1.5小时',
+                type: 'trial',
+                description: '体验课程，包含材料费'
+            },
+            single: {
+                name: '单节课',
+                price: 59,
+                duration: '1.5小时',
+                type: 'regular',
+                description: '首次体验/灵活安排'
+            },
+            package5: {
+                name: '5次课包',
+                price: 57,
+                duration: '1.5小时',
+                type: 'package',
+                totalPrice: 285,
+                originalPrice: 295,
+                savings: 10,
+                description: '省时省钱/节假日安排'
+            },
+            package10: {
+                name: '10次课包',
+                price: 55,
+                duration: '1.5小时',
+                type: 'package',
+                totalPrice: 550,
+                originalPrice: 590,
+                savings: 40,
+                description: '常规每周上课家庭'
+            },
+            package20: {
+                name: '20次课包',
+                price: 53,
+                duration: '1.5小时',
+                type: 'package',
+                totalPrice: 1060,
+                originalPrice: 1180,
+                savings: 120,
+                description: '长期规划/兄妹合上更优惠'
+            }
+        };
+
+        // Handle package selection
+        packageCards.forEach(card => {
+            card.addEventListener('click', function() {
+                const packageType = this.dataset.package;
+                const radioInput = document.getElementById(packageType);
+                
+                // Remove previous selections
+                packageCards.forEach(c => c.classList.remove('selected'));
+                document.querySelectorAll('input[name="package"]').forEach(input => {
+                    input.checked = false;
+                });
+                
+                // Select current package
+                this.classList.add('selected');
+                radioInput.checked = true;
+                
+                // Update summary
+                updatePackageSummary(packageType);
+                
+                // Enable book button
+                bookButton.disabled = false;
+            });
+        });
+
+        function updatePackageSummary(packageType) {
+            const data = packageData[packageType];
+            let summaryHTML = `
+                <div class="flex justify-between">
+                    <span>套餐类型:</span>
+                    <span class="font-semibold">${data.name}</span>
+                </div>
+                <div class="flex justify-between">
+                    <span>课程时长:</span>
+                    <span>${data.duration}</span>
+                </div>
+                <div class="flex justify-between">
+                    <span>单节价格:</span>
+                    <span class="font-semibold text-orange-600">$${data.price}</span>
+                </div>
+            `;
+
+            if (data.type === 'package') {
+                summaryHTML += `
+                    <div class="flex justify-between">
+                        <span>总价:</span>
+                        <span class="font-semibold">$${data.totalPrice}</span>
+                    </div>
+                    <div class="flex justify-between text-green-600">
+                        <span>节省:</span>
+                        <span class="font-semibold">$${data.savings}</span>
+                    </div>
+                `;
+            }
+
+            summaryHTML += `
+                <div class="mt-2 pt-2 border-t border-orange-200">
+                    <span class="text-gray-600">${data.description}</span>
+                </div>
+            `;
+
+            summaryContent.innerHTML = summaryHTML;
+            packageSummary.classList.remove('hidden');
+        }
+
+        // Handle form submission
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const selectedPackage = document.querySelector('input[name="package"]:checked');
+            if (!selectedPackage) {
+                alert('请选择一个课程套餐');
+                return;
+            }
+
+            // Prepare data for backend
+            const formData = {
+                package: selectedPackage.value,
+                packageData: packageData[selectedPackage.value],
+                timestamp: new Date().toISOString(),
+                userAgent: navigator.userAgent
+            };
+
+            // TODO: Send to backend
+            console.log('Form Data for Backend:', formData);
+            
+            // Placeholder for backend integration
+            alert(`感谢选择 ${packageData[selectedPackage.value].name}！我们将尽快与您联系。`);
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Navigation active state
+        function setActiveNavigation() {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            setActiveNavigation();
+        });
+    </script>
 </body>
 </html>
