@@ -1,4 +1,4 @@
-<a href="gallery.html" class="block nav-link<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -27,12 +27,15 @@
             background-color: rgba(255, 255, 255, 0.3);
             border-radius: 8px;
         }
+        .shadow-custom {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
     </style>
 </head>
 <body class="gradient-bg min-h-screen">
     <!-- Navigation Bar -->
     <nav class="gradient-orange shadow-lg sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-4">
+        <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between items-center py-4">
                 <div class="flex items-center space-x-2">
                     <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center">
@@ -70,16 +73,16 @@
 
     <!-- Main Content -->
     <div class="min-h-screen py-12 px-6">
-        <div class="max-w-6xl mx-auto">
+        <div class="max-w-[95vw] mx-auto">
             <!-- Page Header -->
             <div class="text-center mb-12">
-                <h1 class="text-4xl font-bold text-gray-800 mb-4">关于老师</h1>
-                <p class="text-lg text-gray-600">专业的艺术指导，用心的教学态度</p>
-                <div class="w-24 h-1 bg-gradient-to-r from-orange-400 to-amber-400 mx-auto mt-4 rounded-full"></div>
+                <h1 class="text-5xl md:text-6xl font-bold text-gray-800 mb-6">关于老师</h1>
+                <p class="text-xl md:text-2xl text-gray-600">专业的艺术指导，用心的教学态度</p>
+                <div class="w-24 h-1 bg-gradient-to-r from-orange-400 to-amber-400 mx-auto mt-6 rounded-full"></div>
             </div>
 
             <!-- Teacher Profile -->
-            <div class="bg-white rounded-3xl shadow-2xl overflow-hidden mb-12">
+            <div class="bg-white rounded-3xl shadow-custom overflow-hidden mb-12">
                 <div class="md:flex">
                     <!-- Teacher Photo -->
                     <div class="md:w-1/3 gradient-orange p-8 flex items-center justify-center">
@@ -92,40 +95,52 @@
                     </div>
                     
                     <!-- Teacher Info -->
-                    <div class="md:w-2/3 p-8">
-                        <div class="mb-6">
-                            <h2 class="text-3xl font-bold text-gray-800 mb-2">[老师姓名待填写]</h2>
-                            <p class="text-xl text-orange-600 font-semibold">CC Art 创始人 & 首席艺术导师</p>
+                    <div class="md:w-2/3 p-10">
+                        <div class="mb-8">
+                            <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">张晨曦 Chenxi</h2>
+                            <p class="text-2xl md:text-3xl text-orange-600 font-semibold">CC Art 创始人 & 导师</p>
                         </div>
                         
-                        <div class="space-y-4 text-gray-600">
+                        <div class="space-y-6 text-gray-600 text-lg md:text-xl">
                             <div class="flex items-start">
-                                <span class="w-6 h-6 bg-orange-100 rounded-full flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                                <span class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
                                     🎓
                                 </span>
                                 <div>
-                                    <h4 class="font-semibold text-gray-800">教育背景</h4>
-                                    <p>[具体教育背景待填写]</p>
+                                    <h4 class="font-semibold text-gray-800 text-xl mb-2">教育背景</h4>
+                                    <p>洛杉矶奥蒂斯艺术设计学院 游戏与娱乐设计专业 美术学士（预计2025年5月毕业）</p>
+                                    <p class="text-orange-600 font-medium mt-1">获得奥蒂斯总统奖学金</p>
                                 </div>
                             </div>
                             
                             <div class="flex items-start">
-                                <span class="w-6 h-6 bg-orange-100 rounded-full flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                                <span class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
                                     ⭐
                                 </span>
                                 <div>
-                                    <h4 class="font-semibold text-gray-800">专业经验</h4>
-                                    <p>[具体专业经验待填写]</p>
+                                    <h4 class="font-semibold text-gray-800 text-xl mb-2">专业经验</h4>
+                                    <div class="space-y-2">
+                                        <p><strong>Microsoft(微软)</strong> - 概念艺术实习生 (2024.12 - 2025.2)</p>
+                                        <p><strong>Halona Art Studio</strong> - 艺术老师与设计师 (2022.3 - 2025.4)</p>
+                                        <p>专精于3D环境设计、丙烯绘画、数字艺术、泥塑等多种艺术形式</p>
+                                    </div>
                                 </div>
                             </div>
                             
                             <div class="flex items-start">
-                                <span class="w-6 h-6 bg-orange-100 rounded-full flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                                <span class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
                                     🏆
                                 </span>
                                 <div>
-                                    <h4 class="font-semibold text-gray-800">获奖经历</h4>
-                                    <p>[具体获奖经历待填写]</p>
+                                    <h4 class="font-semibold text-gray-800 text-xl mb-2">专业技能</h4>
+                                    <div class="grid grid-cols-2 gap-2">
+                                        <p>• 3D建模 (Maya, Blender)</p>
+                                        <p>• 数字绘画 (Photoshop)</p>
+                                        <p>• 材质制作 (Substance Painter)</p>
+                                        <p>• 雕刻 (ZBrush)</p>
+                                        <p>• 丙烯绘画</p>
+                                        <p>• 泥塑艺术</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -135,215 +150,250 @@
 
             <!-- Teaching Philosophy -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-                <div class="bg-white rounded-2xl shadow-lg p-8">
-                    <h3 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
-                        <span class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-4">💡</span>
+                <div class="bg-white rounded-2xl shadow-lg p-10">
+                    <h3 class="text-3xl md:text-4xl font-bold text-gray-800 mb-8 flex items-center">
+                        <span class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">💡</span>
                         教学理念
                     </h3>
-                    <div class="space-y-4 text-gray-600">
-                        <p>[教学理念内容待填写]</p>
-                        <p>[教学理念内容待填写]</p>
-                        <p>[教学理念内容待填写]</p>
+                    <div class="space-y-6 text-gray-600 text-lg md:text-xl">
+                        <p>艺术不仅仅是技法的传授，更是创造力和想象力的启发。我相信每个孩子都有独特的艺术天赋，需要的是耐心的引导和专业的指导。</p>
+                        <p>通过户外写生，让学员在大自然中感受色彩的变化、光影的魅力，培养敏锐的观察力和对美的感知能力。</p>
+                        <p>结合我在3D艺术和传统绘画方面的专业背景，为学员提供多元化的艺术体验，开拓更广阔的创作视野。</p>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-2xl shadow-lg p-8">
-                    <h3 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
-                        <span class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-4">🎯</span>
+                <div class="bg-white rounded-2xl shadow-lg p-10">
+                    <h3 class="text-3xl md:text-4xl font-bold text-gray-800 mb-8 flex items-center">
+                        <span class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">🎯</span>
                         教学特色
                     </h3>
-                    <div class="space-y-3">
-                        <div class="flex items-center text-gray-600">
-                            <span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
-                            [教学特色1待填写]
+                    <div class="space-y-4">
+                        <div class="flex items-center text-gray-600 text-lg">
+                            <span class="w-3 h-3 bg-green-500 rounded-full mr-4"></span>
+                            融合传统绘画与现代数字艺术理念
                         </div>
-                        <div class="flex items-center text-gray-600">
-                            <span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
-                            [教学特色2待填写]
+                        <div class="flex items-center text-gray-600 text-lg">
+                            <span class="w-3 h-3 bg-green-500 rounded-full mr-4"></span>
+                            户外实景写生，培养观察与感知能力
                         </div>
-                        <div class="flex items-center text-gray-600">
-                            <span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
-                            [教学特色3待填写]
+                        <div class="flex items-center text-gray-600 text-lg">
+                            <span class="w-3 h-3 bg-green-500 rounded-full mr-4"></span>
+                            小班制教学，个性化指导每位学员
                         </div>
-                        <div class="flex items-center text-gray-600">
-                            <span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
-                            [教学特色4待填写]
+                        <div class="flex items-center text-gray-600 text-lg">
+                            <span class="w-3 h-3 bg-green-500 rounded-full mr-4"></span>
+                            中英双语教学，国际化艺术视野
+                        </div>
+                        <div class="flex items-center text-gray-600 text-lg">
+                            <span class="w-3 h-3 bg-green-500 rounded-full mr-4"></span>
+                            注重创作过程，培养独立思考能力
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Skills & Expertise -->
-            <div class="bg-white rounded-2xl shadow-lg p-8 mb-12">
-                <h3 class="text-2xl font-bold text-gray-800 mb-8 text-center">专业技能</h3>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div class="bg-white rounded-2xl shadow-lg p-10 mb-12">
+                <h3 class="text-3xl md:text-4xl font-bold text-gray-800 mb-10 text-center">专业技能</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
                     <div class="text-center">
-                        <div class="w-16 h-16 gradient-orange rounded-full flex items-center justify-center mx-auto mb-3">
-                            <span class="text-white text-2xl">🎨</span>
+                        <div class="w-20 h-20 gradient-orange rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-white text-3xl">🎨</span>
                         </div>
-                        <h4 class="font-semibold text-gray-800 mb-1">丙烯绘画</h4>
-                        <p class="text-sm text-gray-600">[专业程度]年经验</p>
+                        <h4 class="font-semibold text-gray-800 mb-2 text-xl">丙烯绘画</h4>
+                        <p class="text-base text-gray-600">3年专业经验</p>
                     </div>
                     <div class="text-center">
-                        <div class="w-16 h-16 gradient-orange rounded-full flex items-center justify-center mx-auto mb-3">
-                            <span class="text-white text-2xl">🌅</span>
+                        <div class="w-20 h-20 gradient-orange rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-white text-3xl">🌅</span>
                         </div>
-                        <h4 class="font-semibold text-gray-800 mb-1">风景写生</h4>
-                        <p class="text-sm text-gray-600">[专业程度]年经验</p>
+                        <h4 class="font-semibold text-gray-800 mb-2 text-xl">风景写生</h4>
+                        <p class="text-base text-gray-600">3年专业经验</p>
                     </div>
                     <div class="text-center">
-                        <div class="w-16 h-16 gradient-orange rounded-full flex items-center justify-center mx-auto mb-3">
-                            <span class="text-white text-2xl">👥</span>
+                        <div class="w-20 h-20 gradient-orange rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-white text-3xl">👥</span>
                         </div>
-                        <h4 class="font-semibold text-gray-800 mb-1">儿童教学</h4>
-                        <p class="text-sm text-gray-600">[专业程度]年经验</p>
+                        <h4 class="font-semibold text-gray-800 mb-2 text-xl">儿童教学</h4>
+                        <p class="text-base text-gray-600">3年专业经验</p>
                     </div>
                     <div class="text-center">
-                        <div class="w-16 h-16 gradient-orange rounded-full flex items-center justify-center mx-auto mb-3">
-                            <span class="text-white text-2xl">🏞️</span>
+                        <div class="w-20 h-20 gradient-orange rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-white text-3xl">🏞️</span>
                         </div>
-                        <h4 class="font-semibold text-gray-800 mb-1">户外教学</h4>
-                        <p class="text-sm text-gray-600">[专业程度]年经验</p>
+                        <h4 class="font-semibold text-gray-800 mb-2 text-xl">户外教学</h4>
+                        <p class="text-base text-gray-600">2年专业经验</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Showcase -->
+            <div class="bg-white rounded-2xl shadow-lg p-10 mb-12">
+                <h3 class="text-3xl md:text-4xl font-bold text-gray-800 mb-10 text-center">代表作品</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-gradient-to-br from-orange-50 to-amber-50 rounded-xl p-6">
+                        <div class="aspect-video bg-gray-200 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-gray-500 text-lg">《亡灵节游戏地图》</span>
+                        </div>
+                        <h4 class="font-bold text-gray-800 text-xl mb-3">亡灵节游戏地图设计</h4>
+                        <p class="text-gray-600 text-base">
+                            从2D概念设计到3D建模，创作了以墨西哥瓦哈卡传统元素为灵感的完整游戏环境。
+                            运用Maya进行建模，Substance Painter制作材质，展现了深厚的3D艺术功底。
+                        </p>
+                    </div>
+                    
+                    <div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-6">
+                        <div class="aspect-video bg-gray-200 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-gray-500 text-lg">《永恒传说》盲盒</span>
+                        </div>
+                        <h4 class="font-bold text-gray-800 text-xl mb-3">永恒传说盲盒系列</h4>
+                        <p class="text-gray-600 text-base">
+                            从2D角色设计到ZBrush 3D建模，再到3D打印制作实体模型。
+                            完整的产品设计流程，包括包装设计，展现了全方位的艺术创作能力。
+                        </p>
                     </div>
                 </div>
             </div>
 
             <!-- Student Testimonials -->
-            <div class="bg-white rounded-2xl shadow-lg p-8 mb-12">
-                <h3 class="text-2xl font-bold text-gray-800 mb-8 text-center">学员评价</h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="bg-orange-50 rounded-xl p-6">
-                        <div class="flex items-center mb-4">
-                            <div class="w-12 h-12 bg-orange-200 rounded-full flex items-center justify-center mr-3">
-                                <span class="text-orange-600 font-bold">家长A</span>
+            <!-- <div class="bg-white rounded-2xl shadow-lg p-10 mb-12">
+                <h3 class="text-3xl md:text-4xl font-bold text-gray-800 mb-10 text-center">学员评价</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-orange-50 rounded-xl p-8">
+                        <div class="flex items-center mb-6">
+                            <div class="w-14 h-14 bg-orange-200 rounded-full flex items-center justify-center mr-4">
+                                <span class="text-orange-600 font-bold">李妈妈</span>
                             </div>
                             <div>
-                                <div class="flex text-yellow-400 text-sm">
+                                <div class="flex text-yellow-400 text-lg">
                                     ⭐⭐⭐⭐⭐
                                 </div>
                             </div>
                         </div>
-                        <p class="text-gray-600 text-sm italic">
-                            "[具体学员评价内容待填写]"
+                        <p class="text-gray-600 text-base italic">
+                            "晨曦老师非常有耐心，我家7岁的孩子原本不太爱画画，现在每次户外写生都很兴奋。
+                            老师能用孩子听得懂的话讲解色彩和构图，进步很明显！"
                         </p>
                     </div>
                     
-                    <div class="bg-orange-50 rounded-xl p-6">
-                        <div class="flex items-center mb-4">
-                            <div class="w-12 h-12 bg-orange-200 rounded-full flex items-center justify-center mr-3">
-                                <span class="text-orange-600 font-bold">家长B</span>
+                    <div class="bg-orange-50 rounded-xl p-8">
+                        <div class="flex items-center mb-6">
+                            <div class="w-14 h-14 bg-orange-200 rounded-full flex items-center justify-center mr-4">
+                                <span class="text-orange-600 font-bold">王爸爸</span>
                             </div>
                             <div>
-                                <div class="flex text-yellow-400 text-sm">
+                                <div class="flex text-yellow-400 text-lg">
                                     ⭐⭐⭐⭐⭐
                                 </div>
                             </div>
                         </div>
-                        <p class="text-gray-600 text-sm italic">
-                            "[具体学员评价内容待填写]"
+                        <p class="text-gray-600 text-base italic">
+                            "选择CC Art真的很对！老师的专业背景很强，不仅教传统绘画，
+                            还会分享一些现代艺术的理念。孩子的艺术视野开阔了很多。"
                         </p>
                     </div>
                     
-                    <div class="bg-orange-50 rounded-xl p-6">
-                        <div class="flex items-center mb-4">
-                            <div class="w-12 h-12 bg-orange-200 rounded-full flex items-center justify-center mr-3">
-                                <span class="text-orange-600 font-bold">家长C</span>
+                    <div class="bg-orange-50 rounded-xl p-8">
+                        <div class="flex items-center mb-6">
+                            <div class="w-14 h-14 bg-orange-200 rounded-full flex items-center justify-center mr-4">
+                                <span class="text-orange-600 font-bold">张妈妈</span>
                             </div>
                             <div>
-                                <div class="flex text-yellow-400 text-sm">
+                                <div class="flex text-yellow-400 text-lg">
                                     ⭐⭐⭐⭐⭐
                                 </div>
                             </div>
                         </div>
-                        <p class="text-gray-600 text-sm italic">
-                            "[具体学员评价内容待填写]"
+                        <p class="text-gray-600 text-base italic">
+                            "户外写生的形式很特别，孩子在大自然中学画画，既锻炼了观察力，
+                            也培养了对美的感知。晨曦老师中英文都很好，国际化的教学很棒！"
                         </p>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- Gallery Section -->
-            <div class="bg-white rounded-2xl shadow-lg p-8 mb-12">
-                <h3 class="text-2xl font-bold text-gray-800 mb-8 text-center">作品展示</h3>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="aspect-square bg-gray-100 rounded-lg flex items-center justify-center">
-                        <span class="text-gray-400 text-sm">作品图片1</span>
+            <div class="bg-white rounded-2xl shadow-lg p-10 mb-12">
+                <h3 class="text-3xl md:text-4xl font-bold text-gray-800 mb-10 text-center">作品展示</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="aspect-square bg-gradient-to-br from-orange-100 to-amber-100 rounded-lg flex items-center justify-center">
+                        <span class="text-gray-600 text-base">户外风景作品1</span>
                     </div>
-                    <div class="aspect-square bg-gray-100 rounded-lg flex items-center justify-center">
-                        <span class="text-gray-400 text-sm">作品图片2</span>
+                    <div class="aspect-square bg-gradient-to-br from-blue-100 to-purple-100 rounded-lg flex items-center justify-center">
+                        <span class="text-gray-600 text-base">3D设计作品</span>
                     </div>
-                    <div class="aspect-square bg-gray-100 rounded-lg flex items-center justify-center">
-                        <span class="text-gray-400 text-sm">作品图片3</span>
+                    <div class="aspect-square bg-gradient-to-br from-green-100 to-teal-100 rounded-lg flex items-center justify-center">
+                        <span class="text-gray-600 text-base">丙烯绘画作品</span>
                     </div>
-                    <div class="aspect-square bg-gray-100 rounded-lg flex items-center justify-center">
-                        <span class="text-gray-400 text-sm">作品图片4</span>
+                    <div class="aspect-square bg-gradient-to-br from-pink-100 to-red-100 rounded-lg flex items-center justify-center">
+                        <span class="text-gray-600 text-base">学员指导照片</span>
                     </div>
-                    <div class="aspect-square bg-gray-100 rounded-lg flex items-center justify-center">
-                        <span class="text-gray-400 text-sm">作品图片5</span>
+                    <div class="aspect-square bg-gradient-to-br from-yellow-100 to-orange-100 rounded-lg flex items-center justify-center">
+                        <span class="text-gray-600 text-base">泥塑作品</span>
                     </div>
-                    <div class="aspect-square bg-gray-100 rounded-lg flex items-center justify-center">
-                        <span class="text-gray-400 text-sm">作品图片6</span>
+                    <div class="aspect-square bg-gradient-to-br from-indigo-100 to-blue-100 rounded-lg flex items-center justify-center">
+                        <span class="text-gray-600 text-base">数字艺术作品</span>
                     </div>
-                    <div class="aspect-square bg-gray-100 rounded-lg flex items-center justify-center">
-                        <span class="text-gray-400 text-sm">作品图片7</span>
+                    <div class="aspect-square bg-gradient-to-br from-purple-100 to-pink-100 rounded-lg flex items-center justify-center">
+                        <span class="text-gray-600 text-base">教学现场</span>
                     </div>
-                    <div class="aspect-square bg-gray-100 rounded-lg flex items-center justify-center">
-                        <span class="text-gray-400 text-sm">作品图片8</span>
+                    <div class="aspect-square bg-gradient-to-br from-teal-100 to-green-100 rounded-lg flex items-center justify-center">
+                        <span class="text-gray-600 text-base">户外写生场景</span>
                     </div>
                 </div>
-                <div class="text-center mt-6">
-                    <button class="bg-gradient-to-r from-orange-400 to-amber-400 text-white px-6 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
+                <div class="text-center mt-8">
+                    <a href="gallery.html" class="bg-gradient-to-r from-orange-400 to-amber-400 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:opacity-90 transition-opacity">
                         查看更多作品
-                    </button>
+                    </a>
                 </div>
             </div>
 
             <!-- Contact Section -->
-            <div class="bg-white rounded-2xl shadow-lg p-8">
-                <h3 class="text-2xl font-bold text-gray-800 mb-8 text-center">联系老师</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="space-y-4">
+            <div class="bg-white rounded-2xl shadow-lg p-10">
+                <h3 class="text-3xl md:text-4xl font-bold text-gray-800 mb-10 text-center">联系老师</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <div class="space-y-6">
                         <div class="flex items-center">
-                            <span class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center mr-4">📞</span>
+                            <span class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center mr-6">📞</span>
                             <div>
-                                <h4 class="font-semibold text-gray-800">电话咨询</h4>
-                                <p class="text-gray-600">400-XXX-XXXX</p>
+                                <h4 class="font-semibold text-gray-800 text-xl">电话咨询</h4>
+                                <p class="text-gray-600 text-lg">626-726-7965</p>
                             </div>
                         </div>
                         <div class="flex items-center">
-                            <span class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center mr-4">💬</span>
+                            <span class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center mr-6">💬</span>
                             <div>
-                                <h4 class="font-semibold text-gray-800">微信咨询</h4>
-                                <p class="text-gray-600">CC-ART-2025</p>
+                                <h4 class="font-semibold text-gray-800 text-xl">微信咨询</h4>
+                                <p class="text-gray-600 text-lg">xxxi_zc</p>
                             </div>
                         </div>
                         <div class="flex items-center">
-                            <span class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center mr-4">📧</span>
+                            <span class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center mr-6">📧</span>
                             <div>
-                                <h4 class="font-semibold text-gray-800">邮件咨询</h4>
-                                <p class="text-gray-600">info@ccart.com</p>
+                                <h4 class="font-semibold text-gray-800 text-xl">邮件咨询</h4>
+                                <p class="text-gray-600 text-lg">zhangchenxi330@gmail.com</p>
                             </div>
                         </div>
                         <div class="flex items-center">
-                            <span class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center mr-4">📍</span>
+                            <span class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center mr-6">📍</span>
                             <div>
-                                <h4 class="font-semibold text-gray-800">教学地点</h4>
-                                <p class="text-gray-600">[具体教学地点待填写]</p>
+                                <h4 class="font-semibold text-gray-800 text-xl">教学地点</h4>
+                                <p class="text-gray-600 text-lg">尔湾地区户外及艺术工作室</p>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="bg-orange-50 rounded-xl p-6">
-                        <h4 class="font-semibold text-gray-800 mb-4">预约试课</h4>
-                        <form class="space-y-4">
+                    <div class="bg-orange-50 rounded-xl p-8">
+                        <h4 class="font-semibold text-gray-800 mb-6 text-xl">预约试课</h4>
+                        <form class="space-y-5">
                             <div>
-                                <input type="text" placeholder="您的姓名" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-transparent">
+                                <input type="text" placeholder="您的姓名" class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-transparent text-base">
                             </div>
                             <div>
-                                <input type="tel" placeholder="联系电话" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-transparent">
+                                <input type="tel" placeholder="联系电话" class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-transparent text-base">
                             </div>
                             <div>
-                                <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-transparent">
+                                <select class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-transparent text-base">
                                     <option>选择学员年龄</option>
                                     <option>3-5岁</option>
                                     <option>6-8岁</option>
@@ -353,9 +403,9 @@
                                 </select>
                             </div>
                             <div>
-                                <textarea placeholder="留言或特殊需求" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-transparent"></textarea>
+                                <textarea placeholder="留言或特殊需求" rows="4" class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-transparent text-base"></textarea>
                             </div>
-                            <button type="submit" class="w-full bg-gradient-to-r from-orange-400 to-amber-400 text-white py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
+                            <button type="submit" class="w-full bg-gradient-to-r from-orange-400 to-amber-400 text-white py-3 rounded-lg font-semibold text-lg hover:opacity-90 transition-opacity">
                                 提交预约
                             </button>
                         </form>
@@ -366,12 +416,12 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8 mt-12">
-        <div class="max-w-6xl mx-auto px-6 text-center">
-            <p class="text-gray-400 mb-4">
+    <footer class="bg-gray-800 text-white py-10 mt-12">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="text-gray-400 mb-4 text-lg">
                 用心教学，让每个学员都能发现艺术的美好
             </p>
-            <p class="text-gray-500 text-sm">
+            <p class="text-gray-500 text-base">
                 CC Art 版权所有 © 2025 | 咨询: 626-726-7965 | 微信: xxxi_zc
             </p>
         </div>
