@@ -97,6 +97,9 @@
                     <a href="about.html" class="nav-link px-4 py-2 text-white font-medium" data-page="about">
                         关于老师
                     </a>
+                    <a href="gallery.html" class="nav-link px-4 py-2 text-white font-medium" data-page="gallery">
+                        学员作品
+                    </a>
                     <a href="policy.html" class="nav-link px-4 py-2 text-white font-medium" data-page="policy">
                         课程政策
                     </a>
@@ -117,6 +120,7 @@
                 <a href="index.html" class="block nav-link px-4 py-2 text-white font-medium" data-page="home">首页</a>
                 <a href="pricing.html" class="block nav-link px-4 py-2 text-white font-medium" data-page="pricing">课价表</a>
                 <a href="about.html" class="block nav-link px-4 py-2 text-white font-medium" data-page="about">关于老师</a>
+                <a href="gallery.html" class="block nav-link px-4 py-2 text-white font-medium" data-page="gallery">学员作品</a>
                 <a href="policy.html" class="block nav-link px-4 py-2 text-white font-medium" data-page="policy">课程政策</a>
             </div>
         </div>
@@ -290,7 +294,7 @@
                                         省$120
                                     </div>
                                 </div>
-                                <p class="text-sm text-gray-600 mb-4">长期规划更优惠</p>
+                                <p class="text-sm text-gray-600 mb-4">长期规划/兄妹合上更优惠</p>
                                 <input type="radio" name="package" value="package20" id="package20" class="hidden">
                                 <label for="package20" class="block w-full py-2 px-4 rounded-lg font-semibold btn-secondary cursor-pointer text-center">
                                     选择套餐
@@ -320,7 +324,7 @@
                                 <span class="text-white text-xl">🎨</span>
                             </div>
                             <h4 class="font-semibold text-gray-800 mb-2">专业指导</h4>
-                            <p class="text-sm text-gray-600">经验丰富的艺术老师小班制与1v1指导</p>
+                            <p class="text-sm text-gray-600">经验丰富的艺术老师一对一指导</p>
                         </div>
                         <div class="text-center">
                             <div class="w-12 h-12 gradient-orange rounded-full flex items-center justify-center mx-auto mb-3">
@@ -343,9 +347,9 @@
                 <div class="mt-8 text-center">
                     <p class="text-gray-600 mb-2">咨询报名请联系</p>
                     <div class="flex justify-center items-center space-x-6 text-sm flex-wrap gap-2">
-                        <span class="text-orange-600 font-semibold">📞 咨询热线: 626-726-7965</span>
-                        <span class="text-orange-600 font-semibold">💬 微信: xxxi_zc</span>
-                        <span class="text-orange-600 font-semibold">📧 邮箱: ccartirvine@google.com</span>
+                        <span class="text-orange-600 font-semibold">📞 咨询热线: 400-XXX-XXXX</span>
+                        <span class="text-orange-600 font-semibold">💬 微信: CC-ART-2025</span>
+                        <span class="text-orange-600 font-semibold">📧 邮箱: info@ccart.com</span>
                     </div>
                 </div>
             </div>
@@ -353,7 +357,7 @@
             <!-- Footer -->
             <div class="bg-gray-100 px-8 py-4 text-center">
                 <p class="text-xs text-gray-500">
-                    * 课程价格如有调整，以本网站公布为准 | CC Art 版权所有
+                    * 课程价格如有调整，以最新公布为准 | CC Art 版权所有
                 </p>
             </div>
         </div>
@@ -412,7 +416,7 @@
                 totalPrice: 1060,
                 originalPrice: 1180,
                 savings: 120,
-                description: '长期规划更优惠'
+                description: '长期规划/兄妹合上更优惠'
             }
         };
 
@@ -502,8 +506,7 @@
             console.log('Form Data for Backend:', formData);
             
             // Placeholder for backend integration
-            // alert(`感谢选择 ${packageData[selectedPackage.value].name}！我们将尽快与您联系。`);
-            alert(`请查阅下方联系方式与cc art联系～`);
+            alert(`感谢选择 ${packageData[selectedPackage.value].name}！我们将尽快与您联系。`);
         });
 
         // Mobile menu toggle
