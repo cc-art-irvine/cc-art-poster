@@ -123,6 +123,7 @@
       },
       {
         name: { zh: '单节课', en: 'Single Class' },
+        tag: { zh: '单次', en: 'One time' },
         duration: { zh: '1.5小时', en: '1.5 hours' },
         price: '$59',
         total: '$59',
@@ -197,7 +198,7 @@
       },
       {
         q: { zh: '兄弟姐妹可以共享课包吗？', en: 'Can siblings share a package?' },
-        a: { zh: '我们相信并尊重每个小朋友都是独立的哦，所以很抱歉课包不可以共享', en: 'We believe every child is unique, so packages cannot be shared between siblings.' }
+        a: { zh: '我们相信每位小朋友都是独一无二的创作者，因此每份课程包仅限一位学员使用，暂不支持共享哦，谢谢理解', en: 'We believe every child is a unique creator. For this reason, each course package is reserved for one individual student and cannot be shared. Thank you for your understanding' }
       }
     ];
     // Language state由data-lang决定
@@ -215,7 +216,7 @@
         <th class='px-6 py-4 text-center text-white font-semibold'>${lang === 'zh' ? '优惠幅度' : 'Discount'}</th>
         <th class='px-6 py-4 text-center text-white font-semibold'>${lang === 'zh' ? '适合人群' : 'Audience'}</th>
       </tr></thead><tbody class='divide-y divide-gray-200'>`;
-      pricingData.forEach((row, idx) => {
+      pricingData.forEach(row => {
         table += `<tr class='${row.tag ? 'bg-orange-50 border-l-4 border-orange-400' : ''}'>`;
         table += `<td class='px-6 py-4'>`;
         if(row.tag) table += `<span class='bg-orange-100 text-orange-800 px-2 py-1 rounded-full text-xs font-semibold mr-2'>${row.tag[lang]}</span>`;
@@ -223,9 +224,7 @@
         table += `<td class='px-6 py-4 text-center text-gray-600'>${row.duration[lang]}</td>`;
         table += `<td class='px-6 py-4 text-center'>`;
         if(row.priceOld) table += `<div class='text-sm text-gray-500 line-through'>${row.priceOld}</div>`;
-        // 只对第一个（最便宜）价格用蓝色
-        const priceColor = idx === 0 ? 'text-blue-600' : 'text-orange-600';
-        table += `<span class='text-2xl font-bold ${priceColor}'>${row.price}</span>`;
+        table += `<span class='text-2xl font-bold text-orange-600'>${row.price}</span>`;
         if(row.material) table += `<div class='text-xs text-gray-500'>(${lang === 'zh' ? '材料费' : 'Materials included'})</div>`;
         table += `</td>`;
         table += `<td class='px-6 py-4 text-center font-semibold text-gray-800'>`;
