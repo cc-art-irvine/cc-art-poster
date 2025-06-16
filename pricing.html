@@ -75,7 +75,7 @@
             <div class="text-center mb-12">
                 <h1 id="pricing-title" class="text-4xl font-bold text-gray-800 mb-4 lang-zh">课程价格表</h1>
                 <h1 id="pricing-title-en" class="text-4xl font-bold text-gray-800 mb-4 lang-en" style="display:none">Pricing Table</h1>
-                <p id="pricing-desc" class="text-lg text-gray-600 lang-zh">无隐藏费用</p>
+                <p id="pricing-desc" class="text-lg text-gray-600 lang-zh">无隐藏费用(包含材料费)</p>
                 <p id="pricing-desc-en" class="text-lg text-gray-600 lang-en" style="display:none">No hidden fees</p>
                 <div class="w-24 h-1 bg-gradient-to-r from-orange-400 to-amber-400 mx-auto mt-4 rounded-full"></div>
             </div>
@@ -177,7 +177,7 @@
     ];
     const packageBenefits = [
       { zh: '课包越大，单节课价格越优惠', en: 'Bigger packages, lower price per class' },
-      { zh: '课包有效期为购买后3个月', en: 'Package valid for 3 months after purchase' },
+      { zh: '课包有效期为购买后12个月', en: 'Package valid for 12 months after purchase' },
       { zh: '可灵活安排上课时间', en: 'Flexible scheduling' },
       { zh: '免费提供所有绘画材料', en: 'All art materials provided for free' }
     ];
@@ -189,7 +189,7 @@
       },
       {
         q: { zh: '课包有效期是多长时间？', en: 'How long is the package valid?' },
-        a: { zh: '所有课包的有效期为购买后3个月，您可以在有效期内灵活安排上课时间。', en: 'All packages are valid for 3 months after purchase. You can schedule classes flexibly within the validity period.' }
+        a: { zh: '所有课包的有效期为购买后12个月，您可以在有效期内灵活安排上课时间。', en: 'All packages are valid for 12 months after purchase. You can schedule classes flexibly within the validity period.' }
       },
       {
         q: { zh: '可以退课吗？', en: 'Can I get a refund for unused classes?' },
@@ -205,7 +205,7 @@
       const lang = document.body.getAttribute('data-lang') || 'zh';
       // Title & desc
       document.getElementById('pricing-title').innerText = lang === 'zh' ? '课程价格表' : 'Pricing Table';
-      document.getElementById('pricing-desc').innerText = lang === 'zh' ? '无隐藏费用' : 'No hidden fees';
+      document.getElementById('pricing-desc').innerText = lang === 'zh' ? '无隐藏费用(包含材料费)' : 'No hidden fees(materials included)';
       // Table
       let table = `<thead class='gradient-orange'><tr>
         <th class='px-6 py-4 text-left text-white font-semibold'>${lang === 'zh' ? '课程类型' : 'Type'}</th>
@@ -215,7 +215,7 @@
         <th class='px-6 py-4 text-center text-white font-semibold'>${lang === 'zh' ? '优惠幅度' : 'Discount'}</th>
         <th class='px-6 py-4 text-center text-white font-semibold'>${lang === 'zh' ? '适合人群' : 'Audience'}</th>
       </tr></thead><tbody class='divide-y divide-gray-200'>`;
-      pricingData.forEach(row => {
+      pricingData.forEach((row, idx) => {
         table += `<tr class='${row.tag ? 'bg-orange-50 border-l-4 border-orange-400' : ''}'>`;
         table += `<td class='px-6 py-4'>`;
         if(row.tag) table += `<span class='bg-orange-100 text-orange-800 px-2 py-1 rounded-full text-xs font-semibold mr-2'>${row.tag[lang]}</span>`;
@@ -223,7 +223,9 @@
         table += `<td class='px-6 py-4 text-center text-gray-600'>${row.duration[lang]}</td>`;
         table += `<td class='px-6 py-4 text-center'>`;
         if(row.priceOld) table += `<div class='text-sm text-gray-500 line-through'>${row.priceOld}</div>`;
-        table += `<span class='text-2xl font-bold text-orange-600'>${row.price}</span>`;
+        // 只对第一个（最便宜）价格用蓝色
+        const priceColor = idx === 0 ? 'text-blue-600' : 'text-orange-600';
+        table += `<span class='text-2xl font-bold ${priceColor}'>${row.price}</span>`;
         if(row.material) table += `<div class='text-xs text-gray-500'>(${lang === 'zh' ? '材料费' : 'Materials included'})</div>`;
         table += `</td>`;
         table += `<td class='px-6 py-4 text-center font-semibold text-gray-800'>`;
