@@ -54,15 +54,15 @@
             width: 100%;
             height: 100%;
             background-color: rgba(0,0,0,0.9);
-            overflow-y: auto; /* 允许垂直滚动 */
-            padding: 20px 0; /* 添加上下padding */
+            overflow-y: auto;
+            padding: 20px 0;
         }
         .modal-content {
-            position: relative; /* 改为relative定位 */
-            margin: 0 auto; /* 水平居中 */
+            position: relative;
+            margin: 0 auto;
             max-width: 90%;
-            max-height: none; /* 移除最大高度限制 */
-            min-height: calc(100vh - 40px); /* 确保有足够高度 */
+            max-height: none;
+            min-height: calc(100vh - 40px);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -70,14 +70,14 @@
         }
         .modal img {
             max-width: 100%;
-            max-height: 80vh; /* 图片最大高度为视窗的80% */
+            max-height: 80vh;
             width: auto;
             height: auto;
             border-radius: 8px;
-            object-fit: contain; /* 确保图片完整显示 */
+            object-fit: contain;
         }
         .close {
-            position: fixed; /* 改为fixed定位，始终在屏幕右上角 */
+            position: fixed;
             top: 15px;
             right: 35px;
             color: #f1f1f1;
@@ -90,16 +90,15 @@
             color: #fb923c;
         }
         .lazy-load {
-            opacity: 1; /* 改为默认显示，避免白板问题 */
+            opacity: 1;
             transition: opacity 0.3s;
         }
         .lazy-load.loaded {
             opacity: 1;
         }
         
-        /* 修复thumbnail长宽比，避免cutoff */
         .gallery-thumbnail {
-            aspect-ratio: 4/5; /* 调整为4:5比例，更适合人像 */
+            aspect-ratio: 4/5;
             overflow: hidden;
         }
         
@@ -107,15 +106,13 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center top; /* 从顶部开始显示，避免cutoff脸部 */
+            object-position: center top;
         }
         
-        /* 防止模态框打开时背景滚动 */
         body.modal-open {
             overflow: hidden;
         }
         
-        /* 模态框信息区域样式 */
         .modal-info {
             background: rgba(0, 0, 0, 0.8);
             color: white;
@@ -126,31 +123,6 @@
             text-align: center;
         }
         
-        /* 语言切换按钮样式 */
-        .language-toggle {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            z-index: 1000;
-            background: rgba(251, 146, 60, 0.9);
-            backdrop-filter: blur(10px);
-            border: none;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        }
-        .language-toggle:hover {
-            background: rgba(251, 146, 60, 1);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-        }
-        
-        /* 响应式调整 */
         @media (max-width: 768px) {
             .modal-content {
                 padding: 10px;
@@ -244,19 +216,19 @@
                         <h3 class="text-xl font-bold text-gray-800 mb-3">🎯 学员成就统计</h3>
                         <div class="grid grid-cols-2 gap-4 text-center">
                             <div class="bg-white rounded-lg p-3">
-                                <div class="text-2xl font-bold text-orange-600" id="total-students">30+</div>
+                                <div class="text-2xl font-bold text-orange-600">30+</div>
                                 <div class="text-sm text-gray-600">满意学员</div>
                             </div>
                             <div class="bg-white rounded-lg p-3">
-                                <div class="text-2xl font-bold text-orange-600" id="total-artworks">100+</div>
+                                <div class="text-2xl font-bold text-orange-600">100+</div>
                                 <div class="text-sm text-gray-600">精美作品</div>
                             </div>
                             <div class="bg-white rounded-lg p-3">
-                                <div class="text-2xl font-bold text-orange-600" id="total-activities">50+</div>
+                                <div class="text-2xl font-bold text-orange-600">50+</div>
                                 <div class="text-sm text-gray-600">户外活动</div>
                             </div>
                             <div class="bg-white rounded-lg p-3">
-                                <div class="text-2xl font-bold text-orange-600" id="satisfaction-rate">98%</div>
+                                <div class="text-2xl font-bold text-orange-600">98%</div>
                                 <div class="text-sm text-gray-600">满意度</div>
                             </div>
                         </div>
@@ -294,58 +266,6 @@
                     加载更多作品
                 </button>
             </div>
-
-            <!-- Success Stories Section -->
-            <!-- <div class="mt-16 bg-white rounded-3xl shadow-2xl p-8">
-                <h2 class="text-2xl font-bold text-gray-800 mb-8 text-center">学员成功故事</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8"> -->
-                    <!-- Story placeholders - to be filled with actual content -->
-                    <!-- <div class="bg-orange-50 rounded-xl p-6">
-                        <div class="w-16 h-16 bg-orange-200 rounded-full mx-auto mb-4 flex items-center justify-center">
-                            <span class="text-2xl">👧</span>
-                        </div>
-                        <h4 class="font-bold text-gray-800 text-center mb-2">[学员姓名] - 8岁</h4>
-                        <p class="text-sm text-gray-600 text-center italic">
-                            "[具体成功故事内容待填写，描述学员的进步和成就]"
-                        </p>
-                        <div class="text-center mt-4">
-                            <span class="bg-orange-200 text-orange-800 px-3 py-1 rounded-full text-xs font-semibold">
-                                学习6个月
-                            </span>
-                        </div>
-                    </div>
-                    
-                    <div class="bg-orange-50 rounded-xl p-6">
-                        <div class="w-16 h-16 bg-orange-200 rounded-full mx-auto mb-4 flex items-center justify-center">
-                            <span class="text-2xl">👦</span>
-                        </div>
-                        <h4 class="font-bold text-gray-800 text-center mb-2">[学员姓名] - 10岁</h4>
-                        <p class="text-sm text-gray-600 text-center italic">
-                            "[具体成功故事内容待填写，描述学员的进步和成就]"
-                        </p>
-                        <div class="text-center mt-4">
-                            <span class="bg-orange-200 text-orange-800 px-3 py-1 rounded-full text-xs font-semibold">
-                                学习1年
-                            </span>
-                        </div>
-                    </div>
-                    
-                    <div class="bg-orange-50 rounded-xl p-6">
-                        <div class="w-16 h-16 bg-orange-200 rounded-full mx-auto mb-4 flex items-center justify-center">
-                            <span class="text-2xl">👩</span>
-                        </div>
-                        <h4 class="font-bold text-gray-800 text-center mb-2">[学员姓名] - 成人</h4>
-                        <p class="text-sm text-gray-600 text-center italic">
-                            "[具体成功故事内容待填写，描述学员的进步和成就]"
-                        </p>
-                        <div class="text-center mt-4">
-                            <span class="bg-orange-200 text-orange-800 px-3 py-1 rounded-full text-xs font-semibold">
-                                学习3个月
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
         </div>
     </div>
 
@@ -379,9 +299,9 @@
     </footer>
 
     <script>
-        // Gallery data structure - UPDATE THIS SECTION WITH YOUR ACTUAL IMAGES
+        // Gallery data structure - UPDATED WITH NEW IMAGES
         const galleryData = [
-            // Landscape category examples
+            // Original first 5 items (id 1-5)
             {
                 id: 1,
                 src: 'resources/img/activity/solo1.jpg',
@@ -402,8 +322,6 @@
                 studentAge: '6岁',
                 date: '2025-03-20'
             },
-            
-            // Portrait category examples
             {
                 id: 3,
                 src: 'resources/img/activity/solo3.jpg',
@@ -414,8 +332,6 @@
                 studentAge: '6岁',
                 date: '2025-06-15'
             },
-            
-            // Still life category examples
             {
                 id: 4,
                 src: 'resources/img/activity/solo4.jpg',
@@ -426,10 +342,132 @@
                 studentAge: '5岁',
                 date: '2025-06-15'
             },
-            
-            // Activity category examples
             {
                 id: 5,
+                src: 'resources/img/activity/solo4.jpg',
+                thumbnail: 'resources/img/activity/solo4.jpg',
+                title: '创意天地',
+                description: '学员独特的艺术创作',
+                category: 'landscape',
+                studentAge: '7岁',
+                date: '2025-06-15'
+            },
+            
+            // NEW INSERTED IMAGES (art19.jpg - art29.jpg) - IDs 6-16
+            {
+                id: 6,
+                src: 'resources/img/activity/art19.jpg',
+                thumbnail: 'resources/img/activity/art19.jpg',
+                title: '户外写生活动',
+                description: '孩子们在户外认真创作的精彩瞬间',
+                category: 'activity',
+                studentAge: '课堂活动',
+                date: '2025-06-15'
+            },
+            {
+                id: 7,
+                src: 'resources/img/activity/art20.jpg',
+                thumbnail: 'resources/img/activity/art20.jpg',
+                title: '户外写生活动',
+                description: '孩子们在户外认真创作的精彩瞬间',
+                category: 'activity',
+                studentAge: '课堂活动',
+                date: '2025-06-15'
+            },
+            {
+                id: 8,
+                src: 'resources/img/activity/art21.jpg',
+                thumbnail: 'resources/img/activity/art21.jpg',
+                title: '户外写生活动',
+                description: '孩子们在户外认真创作的精彩瞬间',
+                category: 'activity',
+                studentAge: '课堂活动',
+                date: '2025-06-15'
+            },
+            {
+                id: 9,
+                src: 'resources/img/activity/art22.jpg',
+                thumbnail: 'resources/img/activity/art22.jpg',
+                title: '户外写生活动',
+                description: '孩子们在户外认真创作的精彩瞬间',
+                category: 'activity',
+                studentAge: '课堂活动',
+                date: '2025-06-15'
+            },
+            {
+                id: 10,
+                src: 'resources/img/activity/art23.jpg',
+                thumbnail: 'resources/img/activity/art23.jpg',
+                title: '户外写生活动',
+                description: '孩子们在户外认真创作的精彩瞬间',
+                category: 'activity',
+                studentAge: '课堂活动',
+                date: '2025-06-15'
+            },
+            {
+                id: 11,
+                src: 'resources/img/activity/art24.jpg',
+                thumbnail: 'resources/img/activity/art24.jpg',
+                title: '户外写生活动',
+                description: '孩子们在户外认真创作的精彩瞬间',
+                category: 'activity',
+                studentAge: '课堂活动',
+                date: '2025-06-15'
+            },
+            {
+                id: 12,
+                src: 'resources/img/activity/art25.jpg',
+                thumbnail: 'resources/img/activity/art25.jpg',
+                title: '户外写生活动',
+                description: '孩子们在户外认真创作的精彩瞬间',
+                category: 'activity',
+                studentAge: '课堂活动',
+                date: '2025-06-15'
+            },
+            {
+                id: 13,
+                src: 'resources/img/activity/art26.jpg',
+                thumbnail: 'resources/img/activity/art26.jpg',
+                title: '户外写生活动',
+                description: '孩子们在户外认真创作的精彩瞬间',
+                category: 'activity',
+                studentAge: '课堂活动',
+                date: '2025-06-15'
+            },
+            {
+                id: 14,
+                src: 'resources/img/activity/art27.jpg',
+                thumbnail: 'resources/img/activity/art27.jpg',
+                title: '户外写生活动',
+                description: '孩子们在户外认真创作的精彩瞬间',
+                category: 'activity',
+                studentAge: '课堂活动',
+                date: '2025-06-15'
+            },
+            {
+                id: 15,
+                src: 'resources/img/activity/art28.jpg',
+                thumbnail: 'resources/img/activity/art28.jpg',
+                title: '户外写生活动',
+                description: '孩子们在户外认真创作的精彩瞬间',
+                category: 'activity',
+                studentAge: '课堂活动',
+                date: '2025-06-15'
+            },
+            {
+                id: 16,
+                src: 'resources/img/activity/art29.jpg',
+                thumbnail: 'resources/img/activity/art29.jpg',
+                title: '户外写生活动',
+                description: '孩子们在户外认真创作的精彩瞬间',
+                category: 'activity',
+                studentAge: '课堂活动',
+                date: '2025-06-15'
+            },
+            
+            // Original remaining items (now shifted to IDs 17+)
+            {
+                id: 17,
                 src: 'resources/img/activity/art14.jpg',
                 thumbnail: 'resources/img/activity/art14.jpg',
                 title: '户外写生活动',
@@ -439,7 +477,7 @@
                 date: '2025-06-15'
             },
             {
-                id: 6,
+                id: 18,
                 src: 'resources/img/activity/art15.jpg',
                 thumbnail: 'resources/img/activity/art15.jpg',
                 title: '户外写生活动',
@@ -449,7 +487,7 @@
                 date: '2025-06-15'
             },
             {
-                id: 7,
+                id: 19,
                 src: 'resources/img/activity/art16.jpg',
                 thumbnail: 'resources/img/activity/art16.jpg',
                 title: '户外写生活动',
@@ -459,7 +497,7 @@
                 date: '2025-06-15'
             },
             {
-                id: 8,
+                id: 20,
                 src: 'resources/img/activity/art17.jpg',
                 thumbnail: 'resources/img/activity/art17.jpg',
                 title: '户外写生活动',
@@ -469,7 +507,7 @@
                 date: '2025-06-15'
             },
             {
-                id: 9,
+                id: 21,
                 src: 'resources/img/activity/art18.jpg',
                 thumbnail: 'resources/img/activity/art18.jpg',
                 title: '户外写生活动',
@@ -479,7 +517,7 @@
                 date: '2025-06-15'
             },
             {
-                id: 10,
+                id: 22,
                 src: 'resources/img/activity/art1.jpg',
                 thumbnail: 'resources/img/activity/art1.jpg',
                 title: '户外写生活动',
@@ -489,7 +527,7 @@
                 date: '2025-06-15'
             },
             {
-                id: 11,
+                id: 23,
                 src: 'resources/img/activity/art2.jpg',
                 thumbnail: 'resources/img/activity/art2.jpg',
                 title: '户外写生活动',
@@ -499,7 +537,7 @@
                 date: '2025-06-15'
             },
             {
-                id: 12,
+                id: 24,
                 src: 'resources/img/activity/art3.jpg',
                 thumbnail: 'resources/img/activity/art3.jpg',
                 title: '户外写生活动',
@@ -509,7 +547,7 @@
                 date: '2025-06-15'
             },
             {
-                id: 13,
+                id: 25,
                 src: 'resources/img/activity/art4.jpg',
                 thumbnail: 'resources/img/activity/art4.jpg',
                 title: '户外写生活动',
@@ -519,7 +557,7 @@
                 date: '2025-06-15'
             },
             {
-                id: 14,
+                id: 26,
                 src: 'resources/img/activity/art5.jpg',
                 thumbnail: 'resources/img/activity/art5.jpg',
                 title: '户外写生活动',
@@ -529,7 +567,7 @@
                 date: '2025-06-15'
             },
             {
-                id: 15,
+                id: 27,
                 src: 'resources/img/activity/art6.jpg',
                 thumbnail: 'resources/img/activity/art6.jpg',
                 title: '户外写生活动',
@@ -539,7 +577,7 @@
                 date: '2025-06-15'
             },
             {
-                id: 16,
+                id: 28,
                 src: 'resources/img/activity/art7.jpg',
                 thumbnail: 'resources/img/activity/art7.jpg',
                 title: '户外写生活动',
@@ -549,7 +587,7 @@
                 date: '2025-06-15'
             },
             {
-                id: 17,
+                id: 29,
                 src: 'resources/img/activity/art8.jpg',
                 thumbnail: 'resources/img/activity/art8.jpg',
                 title: '户外写生活动',
@@ -559,7 +597,7 @@
                 date: '2025-06-15'
             },
             {
-                id: 18,
+                id: 30,
                 src: 'resources/img/activity/art9.jpg',
                 thumbnail: 'resources/img/activity/art9.jpg',
                 title: '户外写生活动',
@@ -569,7 +607,7 @@
                 date: '2025-06-15'
             },
             {
-                id: 19,
+                id: 31,
                 src: 'resources/img/activity/art10.jpg',
                 thumbnail: 'resources/img/activity/art10.jpg',
                 title: '户外写生活动',
@@ -579,7 +617,7 @@
                 date: '2025-06-15'
             },
             {
-                id: 20,
+                id: 32,
                 src: 'resources/img/activity/art11.jpg',
                 thumbnail: 'resources/img/activity/art11.jpg',
                 title: '户外写生活动',
@@ -589,7 +627,7 @@
                 date: '2025-06-15'
             },
             {
-                id: 21,
+                id: 33,
                 src: 'resources/img/activity/art12.jpg',
                 thumbnail: 'resources/img/activity/art12.jpg',
                 title: '户外写生活动',
@@ -599,7 +637,7 @@
                 date: '2025-06-15'
             },
             {
-                id: 22,
+                id: 34,
                 src: 'resources/img/activity/art13.jpg',
                 thumbnail: 'resources/img/activity/art13.jpg',
                 title: '户外写生活动',
@@ -607,9 +645,7 @@
                 category: 'activity',
                 studentAge: '课堂活动',
                 date: '2025-06-15'
-            },
-            // ADD MORE IMAGES HERE FOLLOWING THE SAME STRUCTURE
-            // Each image should have: id, src, thumbnail, title, description, category, studentAge, date
+            }
         ];
 
         // Gallery functionality
@@ -783,7 +819,6 @@
         // Initialize when DOM is loaded
         document.addEventListener('DOMContentLoaded', function() {
             initGallery();
-            // 初始化时不需要调用setupLazyLoading，因为renderGallery会调用
         });
 
         // Keyboard navigation
