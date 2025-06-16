@@ -7,29 +7,32 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-        body { 
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; 
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #fed7aa 0%, #fef3c7 50%, #fef9c3 100%); }
+        .gradient-orange { background: linear-gradient(90deg, #fb923c 0%, #fbbf24 100%); }
+        .nav-link { transition: all 0.3s ease; }
+        .nav-link:hover { background-color: rgba(255, 255, 255, 0.2); border-radius: 8px; }
+        .nav-link.active { background-color: rgba(255, 255, 255, 0.3); border-radius: 8px; }
+        .language-toggle {
+            position: fixed; top: 20px; right: 20px; z-index: 1000;
+            background: rgba(251, 146, 60, 0.9); backdrop-filter: blur(10px);
+            border: none; color: white; padding: 8px 16px; border-radius: 20px;
+            font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
-        .gradient-bg {
-            background: linear-gradient(135deg, #fed7aa 0%, #fef3c7 50%, #fef9c3 100%);
-        }
-        .gradient-orange {
-            background: linear-gradient(90deg, #fb923c 0%, #fbbf24 100%);
-        }
-        .nav-link {
-            transition: all 0.3s ease;
-        }
-        .nav-link:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-        }
-        .nav-link.active {
-            background-color: rgba(255, 255, 255, 0.3);
-            border-radius: 8px;
-        }
+        .language-toggle:hover { background: rgba(251, 146, 60, 1); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2); }
+        .lang-zh { display: block; }
+        .lang-en { display: none; }
+        [data-lang="en"] .lang-zh { display: none; }
+        [data-lang="en"] .lang-en { display: block; }
     </style>
 </head>
-<body class="gradient-bg min-h-screen">
+<body class="gradient-bg min-h-screen" data-lang="zh">
+    <!-- Language Toggle Button -->
+    <button class="language-toggle" onclick="toggleLanguage()">
+        <span class="lang-zh">🌍 EN</span>
+        <span class="lang-en">🌍 中文</span>
+    </button>
     <!-- Navigation Bar -->
     <nav class="gradient-orange shadow-lg sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4">
@@ -40,15 +43,13 @@
                     </div>
                     <span class="text-white font-bold text-xl">CC ART</span>
                 </div>
-                
                 <div class="hidden md:flex space-x-1">
-                    <a href="index.html" class="nav-link px-4 py-2 text-white font-medium">首页</a>
-                    <a href="pricing.html" class="nav-link active px-4 py-2 text-white font-medium">课价表</a>
-                    <a href="about.html" class="nav-link px-4 py-2 text-white font-medium">关于老师</a>
-                    <a href="gallery.html" class="nav-link px-4 py-2 text-white font-medium">学员作品</a>
-                    <a href="policy.html" class="nav-link px-4 py-2 text-white font-medium">课程政策</a>
+                    <a href="index.html" class="nav-link px-4 py-2 text-white font-medium"><span class="lang-zh">首页</span><span class="lang-en">Home</span></a>
+                    <a href="pricing.html" class="nav-link active px-4 py-2 text-white font-medium"><span class="lang-zh">课价表</span><span class="lang-en">Pricing</span></a>
+                    <a href="about.html" class="nav-link px-4 py-2 text-white font-medium"><span class="lang-zh">关于老师</span><span class="lang-en">About Teacher</span></a>
+                    <a href="gallery.html" class="nav-link px-4 py-2 text-white font-medium"><span class="lang-zh">学员作品</span><span class="lang-en">Student Gallery</span></a>
+                    <a href="policy.html" class="nav-link px-4 py-2 text-white font-medium"><span class="lang-zh">课程政策</span><span class="lang-en">Course Policy</span></a>
                 </div>
-
                 <div class="md:hidden">
                     <button id="mobile-menu-btn" class="text-white p-2">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -57,13 +58,12 @@
                     </button>
                 </div>
             </div>
-
             <div id="mobile-menu" class="md:hidden hidden pb-4">
-                <a href="index.html" class="block nav-link px-4 py-2 text-white font-medium">首页</a>
-                <a href="pricing.html" class="block nav-link px-4 py-2 text-white font-medium">课价表</a>
-                <a href="about.html" class="block nav-link px-4 py-2 text-white font-medium">关于老师</a>
-                <a href="gallery.html" class="block nav-link px-4 py-2 text-white font-medium">学员作品</a>
-                <a href="policy.html" class="block nav-link px-4 py-2 text-white font-medium">课程政策</a>
+                <a href="index.html" class="block nav-link px-4 py-2 text-white font-medium"><span class="lang-zh">首页</span><span class="lang-en">Home</span></a>
+                <a href="pricing.html" class="block nav-link px-4 py-2 text-white font-medium"><span class="lang-zh">课价表</span><span class="lang-en">Pricing</span></a>
+                <a href="about.html" class="block nav-link px-4 py-2 text-white font-medium"><span class="lang-zh">关于老师</span><span class="lang-en">About Teacher</span></a>
+                <a href="gallery.html" class="block nav-link px-4 py-2 text-white font-medium"><span class="lang-zh">学员作品</span><span class="lang-en">Student Gallery</span></a>
+                <a href="policy.html" class="block nav-link px-4 py-2 text-white font-medium"><span class="lang-zh">课程政策</span><span class="lang-en">Course Policy</span></a>
             </div>
         </div>
     </nav>
@@ -73,202 +73,25 @@
         <div class="max-w-6xl mx-auto">
             <!-- Page Header -->
             <div class="text-center mb-12">
-                <h1 class="text-4xl font-bold text-gray-800 mb-4">课程价格表</h1>
-                <p class="text-lg text-gray-600">无隐藏费用</p>
+                <h1 id="pricing-title" class="text-4xl font-bold text-gray-800 mb-4 lang-zh">课程价格表</h1>
+                <h1 id="pricing-title-en" class="text-4xl font-bold text-gray-800 mb-4 lang-en" style="display:none">Pricing Table</h1>
+                <p id="pricing-desc" class="text-lg text-gray-600 lang-zh">无隐藏费用</p>
+                <p id="pricing-desc-en" class="text-lg text-gray-600 lang-en" style="display:none">No hidden fees</p>
                 <div class="w-24 h-1 bg-gradient-to-r from-orange-400 to-amber-400 mx-auto mt-4 rounded-full"></div>
             </div>
-
             <!-- Pricing Table -->
             <div class="bg-white rounded-3xl shadow-2xl overflow-hidden mb-12">
                 <div class="overflow-x-auto">
-                    <table class="w-full">
-                        <thead class="gradient-orange">
-                            <tr>
-                                <th class="px-6 py-4 text-left text-white font-semibold">课程类型</th>
-                                <th class="px-6 py-4 text-center text-white font-semibold">课程时长</th>
-                                <th class="px-6 py-4 text-center text-white font-semibold">单节价格</th>
-                                <th class="px-6 py-4 text-center text-white font-semibold">总价</th>
-                                <th class="px-6 py-4 text-center text-white font-semibold">优惠幅度</th>
-                                <th class="px-6 py-4 text-center text-white font-semibold">适合人群</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-gray-200">
-                            <tr class="bg-blue-50 border-l-4 border-blue-400">
-                                <td class="px-6 py-4">
-                                    <div class="flex items-center">
-                                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-semibold mr-2">首次体验</span>
-                                        <span class="font-semibold text-gray-800">试课</span>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 text-center text-gray-600">1.5小时</td>
-                                <td class="px-6 py-4 text-center">
-                                    <span class="text-2xl font-bold text-blue-600">$25</span>
-                                    <div class="text-xs text-gray-500">(材料费)</div>
-                                </td>
-                                <td class="px-6 py-4 text-center font-semibold text-gray-800"> $25</td>
-                                <td class="px-6 py-4 text-center">
-                                    <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-semibold">体验价</span>
-                                </td>
-                                <td class="px-6 py-4 text-center text-gray-600">首次体验/试课学员</td>
-                            </tr>
-                            <tr class="hover:bg-gray-50">
-                                <td class="px-6 py-4 font-semibold text-gray-800">单节课</td>
-                                <td class="px-6 py-4 text-center text-gray-600">1.5小时</td>
-                                <td class="px-6 py-4 text-center">
-                                    <span class="text-2xl font-bold text-orange-600">$59</span>
-                                </td>
-                                <td class="px-6 py-4 text-center font-semibold text-gray-800">$59</td>
-                                <td class="px-6 py-4 text-center text-gray-500">无</td>
-                                <td class="px-6 py-4 text-center text-gray-600">首次体验/灵活安排</td>
-                            </tr>
-                            <tr class="bg-orange-50 border-l-4 border-orange-400">
-                                <td class="px-6 py-4">
-                                    <div class="flex items-center">
-                                        <span class="bg-orange-100 text-orange-800 px-2 py-1 rounded-full text-xs font-semibold mr-2">热门</span>
-                                        <span class="font-semibold text-gray-800">5次课包</span>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 text-center text-gray-600">1.5小时</td>
-                                <td class="px-6 py-4 text-center">
-                                    <div class="text-sm text-gray-500 line-through">$59</div>
-                                    <span class="text-2xl font-bold text-orange-600">$57</span>
-                                </td>
-                                <td class="px-6 py-4 text-center">
-                                    <div class="text-sm text-gray-500 line-through">$295</div>
-                                    <div class="font-semibold text-gray-800">$285</div>
-                                </td>
-                                <td class="px-6 py-4 text-center">
-                                    <span class="bg-red-100 text-red-600 px-2 py-1 rounded-full text-xs font-semibold">省$10</span>
-                                </td>
-                                <td class="px-6 py-4 text-center text-gray-600">省时省钱/节假日安排</td>
-                            </tr>
-                            <tr class="bg-orange-50 border-l-4 border-orange-400">
-                                <td class="px-6 py-4">
-                                    <div class="flex items-center">
-                                        <span class="bg-orange-100 text-orange-800 px-2 py-1 rounded-full text-xs font-semibold mr-2">热门</span>
-                                        <span class="font-semibold text-gray-800">10次课包</span>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 text-center text-gray-600">1.5小时</td>
-                                <td class="px-6 py-4 text-center">
-                                    <div class="text-sm text-gray-500 line-through">$59</div>
-                                    <span class="text-2xl font-bold text-orange-600">$55</span>
-                                </td>
-                                <td class="px-6 py-4 text-center">
-                                    <div class="text-sm text-gray-500 line-through">$590</div>
-                                    <div class="font-semibold text-gray-800">$550</div>
-                                </td>
-                                <td class="px-6 py-4 text-center">
-                                    <span class="bg-red-100 text-red-600 px-2 py-1 rounded-full text-xs font-semibold">省$40</span>
-                                </td>
-                                <td class="px-6 py-4 text-center text-gray-600">常规每周上课家庭</td>
-                            </tr>
-                            <tr class="bg-orange-50 border-l-4 border-orange-400">
-                                <td class="px-6 py-4">
-                                    <div class="flex items-center">
-                                        <span class="bg-orange-100 text-orange-800 px-2 py-1 rounded-full text-xs font-semibold mr-2">热门</span>
-                                        <span class="font-semibold text-gray-800">20次课包</span>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 text-center text-gray-600">1.5小时</td>
-                                <td class="px-6 py-4 text-center">
-                                    <div class="text-sm text-gray-500 line-through">$59</div>
-                                    <span class="text-2xl font-bold text-orange-600">$53</span>
-                                </td>
-                                <td class="px-6 py-4 text-center">
-                                    <div class="text-sm text-gray-500 line-through">$1180</div>
-                                    <div class="font-semibold text-gray-800">$1060</div>
-                                </td>
-                                <td class="px-6 py-4 text-center">
-                                    <span class="bg-red-100 text-red-600 px-2 py-1 rounded-full text-xs font-semibold">省$120</span>
-                                </td>
-                                <td class="px-6 py-4 text-center text-gray-600">长期规划/进阶学习</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <table class="w-full" id="pricing-table"></table>
                 </div>
             </div>
-
             <!-- Additional Information -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Payment Methods -->
-                <div class="bg-white rounded-2xl shadow-lg p-8">
-                    <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
-                        <span class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-3">💳</span>
-                        支付方式
-                    </h3>
-                    <div class="space-y-3">
-                        <div class="flex items-center text-gray-600">
-                            <span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
-                            Zelle
-                        </div>
-                        <div class="flex items-center text-gray-600">
-                            <span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
-                            PayPal
-                        </div>
-                        <div class="flex items-center text-gray-600">
-                            <span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
-                            Venmo
-                        </div>
-                        <div class="flex items-center text-gray-600">
-                            <span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
-                            银行转账
-                        </div>
-                        <div class="flex items-center text-gray-600">
-                            <span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
-                            现金支付
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Package Benefits -->
-                <div class="bg-white rounded-2xl shadow-lg p-8">
-                    <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
-                        <span class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3">🎁</span>
-                        套餐优势
-                    </h3>
-                    <div class="space-y-3">
-                        <div class="flex items-center text-gray-600">
-                            <span class="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
-                            课包越大，单节课价格越优惠
-                        </div>
-                        <div class="flex items-center text-gray-600">
-                            <span class="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
-                            课包有效期为购买后3个月
-                        </div>
-                        <div class="flex items-center text-gray-600">
-                            <span class="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
-                            可灵活安排上课时间
-                        </div>
-                        <div class="flex items-center text-gray-600">
-                            <span class="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
-                            免费提供所有绘画材料
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="additional-info"></div>
             <!-- FAQ Section -->
             <div class="mt-12 bg-white rounded-2xl shadow-lg p-8">
-                <h3 class="text-2xl font-bold text-gray-800 mb-8 text-center">常见问题</h3>
-                <div class="space-y-6">
-                    <div class="border-l-4 border-orange-400 pl-6">
-                        <h4 class="font-semibold text-gray-800 mb-2">Q: 试课 $25包含什么？</h4>
-                        <p class="text-gray-600">试课包含1.5小时的专业指导、所有绘画材料（画布、丙烯颜料、画笔等）以及户外写生场地费用。</p>
-                    </div>
-                    <div class="border-l-4 border-orange-400 pl-6">
-                        <h4 class="font-semibold text-gray-800 mb-2">Q: 课包有效期是多长时间？</h4>
-                        <p class="text-gray-600">所有课包的有效期为购买后3个月，您可以在有效期内灵活安排上课时间。</p>
-                    </div>
-                    <div class="border-l-4 border-orange-400 pl-6">
-                        <h4 class="font-semibold text-gray-800 mb-2">Q: 可以退课吗？</h4>
-                        <p class="text-gray-600">未使用的课时可以在购买后14天内申请退款，已使用的课时不可退费。具体退款政策请查看课程政策页面。</p>
-                    </div>
-                    <div class="border-l-4 border-orange-400 pl-6">
-                        <h4 class="font-semibold text-gray-800 mb-2">Q: 兄弟姐妹可以共享课包吗？</h4>
-                        <p class="text-gray-600">我们相信并尊重每个小朋友都是独立的哦，所以很抱歉课包不可以共享</p>
-                    </div>
-                </div>
+                <h3 id="faq-title" class="text-2xl font-bold text-gray-800 mb-8 text-center lang-zh">常见问题</h3>
+                <h3 id="faq-title-en" class="text-2xl font-bold text-gray-800 mb-8 text-center lang-en" style="display:none">FAQ</h3>
+                <div id="faq-list" class="space-y-6"></div>
             </div>
         </div>
     </div>
@@ -286,13 +109,185 @@
     </footer>
 
     <script>
-        // Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        mobileMenuBtn.addEventListener('click', function() {
-            mobileMenu.classList.toggle('hidden');
-        });
+    // Pricing data with zh/en
+    const pricingData = [
+      {
+        name: { zh: '试课', en: 'Trial Class' },
+        tag: { zh: '首次体验', en: 'First Time' },
+        duration: { zh: '1.5小时', en: '1.5 hours' },
+        price: '$25',
+        total: '$25',
+        discount: { zh: '体验价', en: 'Trial Price' },
+        audience: { zh: '首次体验/试课学员', en: 'First-timers/Trial students' },
+        material: true
+      },
+      {
+        name: { zh: '单节课', en: 'Single Class' },
+        duration: { zh: '1.5小时', en: '1.5 hours' },
+        price: '$59',
+        total: '$59',
+        discount: { zh: '无', en: 'None' },
+        audience: { zh: '首次体验/灵活安排', en: 'First experience/Flexible schedule' },
+        material: false
+      },
+      {
+        name: { zh: '5次课包', en: '5-Class Package' },
+        tag: { zh: '热门', en: 'Popular' },
+        duration: { zh: '1.5小时', en: '1.5 hours' },
+        price: '$57',
+        priceOld: '$59',
+        total: '$285',
+        totalOld: '$295',
+        discount: { zh: '省$10', en: 'Save $10' },
+        audience: { zh: '省时省钱/节假日安排', en: 'Save time & money/Holiday schedule' },
+        material: false
+      },
+      {
+        name: { zh: '10次课包', en: '10-Class Package' },
+        tag: { zh: '热门', en: 'Popular' },
+        duration: { zh: '1.5小时', en: '1.5 hours' },
+        price: '$55',
+        priceOld: '$59',
+        total: '$550',
+        totalOld: '$590',
+        discount: { zh: '省$40', en: 'Save $40' },
+        audience: { zh: '常规每周上课家庭', en: 'Regular weekly class families' },
+        material: false
+      },
+      {
+        name: { zh: '20次课包', en: '20-Class Package' },
+        tag: { zh: '热门', en: 'Popular' },
+        duration: { zh: '1.5小时', en: '1.5 hours' },
+        price: '$53',
+        priceOld: '$59',
+        total: '$1060',
+        totalOld: '$1180',
+        discount: { zh: '省$120', en: 'Save $120' },
+        audience: { zh: '长期规划/进阶学习', en: 'Long-term plan/Advanced learning' },
+        material: false
+      }
+    ];
+    // Additional info
+    const paymentMethods = [
+      { zh: 'Zelle', en: 'Zelle' },
+      { zh: 'PayPal', en: 'PayPal' },
+      { zh: 'Venmo', en: 'Venmo' },
+      { zh: '银行转账', en: 'Bank Transfer' },
+      { zh: '现金支付', en: 'Cash' }
+    ];
+    const packageBenefits = [
+      { zh: '课包越大，单节课价格越优惠', en: 'Bigger packages, lower price per class' },
+      { zh: '课包有效期为购买后3个月', en: 'Package valid for 3 months after purchase' },
+      { zh: '可灵活安排上课时间', en: 'Flexible scheduling' },
+      { zh: '免费提供所有绘画材料', en: 'All art materials provided for free' }
+    ];
+    // FAQ
+    const faqData = [
+      {
+        q: { zh: '试课 $25包含什么？', en: 'What does the $25 trial class include?' },
+        a: { zh: '试课包含1.5小时的专业指导、所有绘画材料（画布、丙烯颜料、画笔等）以及户外写生场地费用。', en: 'The trial class includes 1.5 hours of professional instruction, all painting materials (canvas, acrylic paint, brushes, etc.), and outdoor sketching venue fees.' }
+      },
+      {
+        q: { zh: '课包有效期是多长时间？', en: 'How long is the package valid?' },
+        a: { zh: '所有课包的有效期为购买后3个月，您可以在有效期内灵活安排上课时间。', en: 'All packages are valid for 3 months after purchase. You can schedule classes flexibly within the validity period.' }
+      },
+      {
+        q: { zh: '可以退课吗？', en: 'Can I get a refund for unused classes?' },
+        a: { zh: '未使用的课时可以在购买后14天内申请退款，已使用的课时不可退费。具体退款政策请查看课程政策页面。', en: 'Unused classes can be refunded within 14 days of purchase. Used classes are non-refundable. See the policy page for details.' }
+      },
+      {
+        q: { zh: '兄弟姐妹可以共享课包吗？', en: 'Can siblings share a package?' },
+        a: { zh: '我们相信并尊重每个小朋友都是独立的哦，所以很抱歉课包不可以共享', en: 'We believe every child is unique, so packages cannot be shared between siblings.' }
+      }
+    ];
+    // Language state由data-lang决定
+    function renderPricing() {
+      const lang = document.body.getAttribute('data-lang') || 'zh';
+      // Title & desc
+      document.getElementById('pricing-title').innerText = lang === 'zh' ? '课程价格表' : 'Pricing Table';
+      document.getElementById('pricing-desc').innerText = lang === 'zh' ? '无隐藏费用' : 'No hidden fees';
+      // Table
+      let table = `<thead class='gradient-orange'><tr>
+        <th class='px-6 py-4 text-left text-white font-semibold'>${lang === 'zh' ? '课程类型' : 'Type'}</th>
+        <th class='px-6 py-4 text-center text-white font-semibold'>${lang === 'zh' ? '课程时长' : 'Duration'}</th>
+        <th class='px-6 py-4 text-center text-white font-semibold'>${lang === 'zh' ? '单节价格' : 'Price'}</th>
+        <th class='px-6 py-4 text-center text-white font-semibold'>${lang === 'zh' ? '总价' : 'Total'}</th>
+        <th class='px-6 py-4 text-center text-white font-semibold'>${lang === 'zh' ? '优惠幅度' : 'Discount'}</th>
+        <th class='px-6 py-4 text-center text-white font-semibold'>${lang === 'zh' ? '适合人群' : 'Audience'}</th>
+      </tr></thead><tbody class='divide-y divide-gray-200'>`;
+      pricingData.forEach(row => {
+        table += `<tr class='${row.tag ? 'bg-orange-50 border-l-4 border-orange-400' : ''}'>`;
+        table += `<td class='px-6 py-4'>`;
+        if(row.tag) table += `<span class='bg-orange-100 text-orange-800 px-2 py-1 rounded-full text-xs font-semibold mr-2'>${row.tag[lang]}</span>`;
+        table += `<span class='font-semibold text-gray-800'>${row.name[lang]}</span></td>`;
+        table += `<td class='px-6 py-4 text-center text-gray-600'>${row.duration[lang]}</td>`;
+        table += `<td class='px-6 py-4 text-center'>`;
+        if(row.priceOld) table += `<div class='text-sm text-gray-500 line-through'>${row.priceOld}</div>`;
+        table += `<span class='text-2xl font-bold text-orange-600'>${row.price}</span>`;
+        if(row.material) table += `<div class='text-xs text-gray-500'>(${lang === 'zh' ? '材料费' : 'Materials included'})</div>`;
+        table += `</td>`;
+        table += `<td class='px-6 py-4 text-center font-semibold text-gray-800'>`;
+        if(row.totalOld) table += `<div class='text-sm text-gray-500 line-through'>${row.totalOld}</div>`;
+        table += `<div>${row.total}</div></td>`;
+        table += `<td class='px-6 py-4 text-center'>`;
+        table += `<span class='bg-red-100 text-red-600 px-2 py-1 rounded-full text-xs font-semibold'>${row.discount[lang]}</span></td>`;
+        table += `<td class='px-6 py-4 text-center text-gray-600'>${row.audience[lang]}</td>`;
+        table += `</tr>`;
+      });
+      table += '</tbody>';
+      document.getElementById('pricing-table').innerHTML = table;
+      // Additional info
+      document.getElementById('additional-info').innerHTML = `
+        <div class='bg-white rounded-2xl shadow-lg p-8'>
+          <h3 class='text-xl font-bold text-gray-800 mb-6 flex items-center'>
+            <span class='w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-3'>💳</span>${lang === 'zh' ? '支付方式' : 'Payment Methods'}</h3>
+          <div class='space-y-3'>${paymentMethods.map(m => `<div class='flex items-center text-gray-600'><span class='w-2 h-2 bg-green-500 rounded-full mr-3'></span>${m[lang]}</div>`).join('')}</div>
+        </div>
+        <div class='bg-white rounded-2xl shadow-lg p-8'>
+          <h3 class='text-xl font-bold text-gray-800 mb-6 flex items-center'>
+            <span class='w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3'>🎁</span>${lang === 'zh' ? '套餐优势' : 'Package Benefits'}</h3>
+          <div class='space-y-3'>${packageBenefits.map(b => `<div class='flex items-center text-gray-600'><span class='w-2 h-2 bg-blue-500 rounded-full mr-3'></span>${b[lang]}</div>`).join('')}</div>
+        </div>`;
+      // FAQ
+      document.getElementById('faq-title').innerText = lang === 'zh' ? '常见问题' : 'FAQ';
+      document.getElementById('faq-list').innerHTML = faqData.map(f => `
+        <div class='border-l-4 border-orange-400 pl-6'>
+          <h4 class='font-semibold text-gray-800 mb-2'>Q: ${f.q[lang]}</h4>
+          <p class='text-gray-600'>${f.a[lang]}</p>
+        </div>`).join('');
+    }
+    // Language Toggle Functionality (与index.html一致)
+    function toggleLanguage() {
+        const body = document.body;
+        const currentLang = body.getAttribute('data-lang');
+        const newLang = currentLang === 'zh' ? 'en' : 'zh';
+        body.setAttribute('data-lang', newLang);
+        try { localStorage.setItem('ccart-language', newLang); } catch (e) {}
+        if (newLang === 'en') {
+            document.title = 'CC Art Pricing';
+            document.documentElement.lang = 'en';
+        } else {
+            document.title = '课价表 - CC Art 户外丙烯写生课';
+            document.documentElement.lang = 'zh-CN';
+        }
+        renderPricing();
+    }
+    function loadLanguagePreference() {
+        try {
+            const savedLang = localStorage.getItem('ccart-language');
+            if (savedLang && savedLang !== 'zh') {
+                document.body.setAttribute('data-lang', savedLang);
+                if (savedLang === 'en') {
+                    document.title = 'CC Art Pricing';
+                    document.documentElement.lang = 'en';
+                }
+            }
+        } catch (e) {}
+        renderPricing();
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        loadLanguagePreference();
+    });
     </script>
 </body>
 </html>

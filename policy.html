@@ -7,29 +7,32 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-        body { 
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; 
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #fed7aa 0%, #fef3c7 50%, #fef9c3 100%); }
+        .gradient-orange { background: linear-gradient(90deg, #fb923c 0%, #fbbf24 100%); }
+        .nav-link { transition: all 0.3s ease; }
+        .nav-link:hover { background-color: rgba(255, 255, 255, 0.2); border-radius: 8px; }
+        .nav-link.active { background-color: rgba(255, 255, 255, 0.3); border-radius: 8px; }
+        .language-toggle {
+            position: fixed; top: 20px; right: 20px; z-index: 1000;
+            background: rgba(251, 146, 60, 0.9); backdrop-filter: blur(10px);
+            border: none; color: white; padding: 8px 16px; border-radius: 20px;
+            font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
-        .gradient-bg {
-            background: linear-gradient(135deg, #fed7aa 0%, #fef3c7 50%, #fef9c3 100%);
-        }
-        .gradient-orange {
-            background: linear-gradient(90deg, #fb923c 0%, #fbbf24 100%);
-        }
-        .nav-link {
-            transition: all 0.3s ease;
-        }
-        .nav-link:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-        }
-        .nav-link.active {
-            background-color: rgba(255, 255, 255, 0.3);
-            border-radius: 8px;
-        }
+        .language-toggle:hover { background: rgba(251, 146, 60, 1); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2); }
+        .lang-zh { display: block; }
+        .lang-en { display: none; }
+        [data-lang="en"] .lang-zh { display: none; }
+        [data-lang="en"] .lang-en { display: block; }
     </style>
 </head>
-<body class="gradient-bg min-h-screen">
+<body class="gradient-bg min-h-screen" data-lang="zh">
+    <!-- Language Toggle Button -->
+    <button class="language-toggle" onclick="toggleLanguage()">
+        <span class="lang-zh">🌍 EN</span>
+        <span class="lang-en">🌍 中文</span>
+    </button>
     <!-- Navigation Bar -->
     <nav class="gradient-orange shadow-lg sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4">
@@ -40,15 +43,13 @@
                     </div>
                     <span class="text-white font-bold text-xl">CC ART</span>
                 </div>
-                
                 <div class="hidden md:flex space-x-1">
-                    <a href="index.html" class="nav-link px-4 py-2 text-white font-medium">首页</a>
-                    <a href="pricing.html" class="nav-link px-4 py-2 text-white font-medium">课价表</a>
-                    <a href="about.html" class="nav-link px-4 py-2 text-white font-medium">关于老师</a>
-                    <a href="gallery.html" class="nav-link px-4 py-2 text-white font-medium">学员作品</a>
-                    <a href="policy.html" class="nav-link active px-4 py-2 text-white font-medium">课程政策</a>
+                    <a href="index.html" class="nav-link px-4 py-2 text-white font-medium"><span class="lang-zh">首页</span><span class="lang-en">Home</span></a>
+                    <a href="pricing.html" class="nav-link px-4 py-2 text-white font-medium"><span class="lang-zh">课价表</span><span class="lang-en">Pricing</span></a>
+                    <a href="about.html" class="nav-link px-4 py-2 text-white font-medium"><span class="lang-zh">关于老师</span><span class="lang-en">About Teacher</span></a>
+                    <a href="gallery.html" class="nav-link px-4 py-2 text-white font-medium"><span class="lang-zh">学员作品</span><span class="lang-en">Student Gallery</span></a>
+                    <a href="policy.html" class="nav-link active px-4 py-2 text-white font-medium"><span class="lang-zh">课程政策</span><span class="lang-en">Course Policy</span></a>
                 </div>
-
                 <div class="md:hidden">
                     <button id="mobile-menu-btn" class="text-white p-2">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -57,13 +58,12 @@
                     </button>
                 </div>
             </div>
-
             <div id="mobile-menu" class="md:hidden hidden pb-4">
-                <a href="index.html" class="block nav-link px-4 py-2 text-white font-medium">首页</a>
-                <a href="pricing.html" class="block nav-link px-4 py-2 text-white font-medium">课价表</a>
-                <a href="about.html" class="block nav-link px-4 py-2 text-white font-medium">关于老师</a>
-                <a href="gallery.html" class="block nav-link px-4 py-2 text-white font-medium">学员作品</a>
-                <a href="policy.html" class="block nav-link px-4 py-2 text-white font-medium">课程政策</a>
+                <a href="index.html" class="block nav-link px-4 py-2 text-white font-medium"><span class="lang-zh">首页</span><span class="lang-en">Home</span></a>
+                <a href="pricing.html" class="block nav-link px-4 py-2 text-white font-medium"><span class="lang-zh">课价表</span><span class="lang-en">Pricing</span></a>
+                <a href="about.html" class="block nav-link px-4 py-2 text-white font-medium"><span class="lang-zh">关于老师</span><span class="lang-en">About Teacher</span></a>
+                <a href="gallery.html" class="block nav-link px-4 py-2 text-white font-medium"><span class="lang-zh">学员作品</span><span class="lang-en">Student Gallery</span></a>
+                <a href="policy.html" class="block nav-link px-4 py-2 text-white font-medium"><span class="lang-zh">课程政策</span><span class="lang-en">Course Policy</span></a>
             </div>
         </div>
     </nav>
@@ -73,8 +73,14 @@
         <div class="max-w-4xl mx-auto">
             <!-- Page Header -->
             <div class="text-center mb-12">
-                <h1 class="text-4xl font-bold text-gray-800 mb-4">课程政策</h1>
-                <p class="text-lg text-gray-600">请仔细阅读以下政策条款</p>
+                <h1 class="text-4xl font-bold text-gray-800 mb-4">
+                  <span class="lang-zh">课程政策</span>
+                  <span class="lang-en">Course Policy</span>
+                </h1>
+                <p class="text-lg text-gray-600">
+                  <span class="lang-zh">请仔细阅读以下政策条款</span>
+                  <span class="lang-en">Please read the following policy terms carefully</span>
+                </p>
                 <div class="w-24 h-1 bg-gradient-to-r from-orange-400 to-amber-400 mx-auto mt-4 rounded-full"></div>
             </div>
 
@@ -84,36 +90,44 @@
                 <div class="bg-white rounded-2xl shadow-lg p-8">
                     <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
                         <span class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3">📝</span>
-                        报名政策
+                        <span class="lang-zh">报名政策</span>
+                        <span class="lang-en">Registration Policy</span>
                     </h2>
                     <div class="space-y-4 text-gray-600">
                         <div class="border-l-4 border-blue-400 pl-6">
-                            <h4 class="font-semibold text-gray-800 mb-2">试课安排</h4>
+                            <h4 class="font-semibold text-gray-800 mb-2">
+                              <span class="lang-zh">试课安排</span>
+                              <span class="lang-en">Trial Class Arrangement</span>
+                            </h4>
                             <ul class="space-y-2">
-                                <li>• 首次学员可参加 $25试课，体验课程内容和教学方式</li>
-                                <li>• 试课包含所有材料费用，无额外收费</li>
-                                <li>• 试课后可决定是否购买正式课程套餐</li>
-                                <li>• 试课费用不可抵扣正式课程费用</li>
+                                <li><span class="lang-zh">• 首次学员可参加 $25试课，体验课程内容和教学方式</span><span class="lang-en">• New students may attend a $25 trial class to experience the course content and teaching style</span></li>
+                                <li><span class="lang-zh">• 试课包含所有材料费用，无额外收费</span><span class="lang-en">• The trial class includes all material fees, no extra charges</span></li>
+                                <li><span class="lang-zh">• 试课后可决定是否购买正式课程套餐</span><span class="lang-en">• After the trial, you may decide whether to purchase a regular course package</span></li>
+                                <li><span class="lang-zh">• 试课费用不可抵扣正式课程费用</span><span class="lang-en">• The trial class fee cannot be deducted from regular course fees</span></li>
                             </ul>
                         </div>
-                        
                         <div class="border-l-4 border-blue-400 pl-6">
-                            <h4 class="font-semibold text-gray-800 mb-2">年龄要求</h4>
+                            <h4 class="font-semibold text-gray-800 mb-2">
+                              <span class="lang-zh">年龄要求</span>
+                              <span class="lang-en">Age Requirements</span>
+                            </h4>
                             <ul class="space-y-2">
-                                <li>• 建议年龄：3岁及以上</li>
-                                <li>• 3-5岁儿童需家长陪同</li>
-                                <li>• 成人课程欢迎零基础学员</li>
-                                <li>• 特殊需求学员请提前沟通</li>
+                                <li><span class="lang-zh">• 建议年龄：3岁及以上</span><span class="lang-en">• Recommended age: 3 years and above</span></li>
+                                <li><span class="lang-zh">• 3-5岁儿童需家长陪同</span><span class="lang-en">• Children aged 3-5 must be accompanied by a parent</span></li>
+                                <li><span class="lang-zh">• 成人课程欢迎零基础学员</span><span class="lang-en">• Adult classes welcome beginners</span></li>
+                                <li><span class="lang-zh">• 特殊需求学员请提前沟通</span><span class="lang-en">• Please communicate any special needs in advance</span></li>
                             </ul>
                         </div>
-                        
                         <div class="border-l-4 border-blue-400 pl-6">
-                            <h4 class="font-semibold text-gray-800 mb-2">课包规则</h4>
+                            <h4 class="font-semibold text-gray-800 mb-2">
+                              <span class="lang-zh">课包规则</span>
+                              <span class="lang-en">Package Rules</span>
+                            </h4>
                             <ul class="space-y-2">
-                                <li>• 课包购买后有效期为3个月</li>
-                                <li>• 课包不可转让给他人</li>
-                                <li>• 课包余额不可提现</li>
-                                <li>• 过期课包恕不延期</li>
+                                <li><span class="lang-zh">• 课包购买后有效期为3个月</span><span class="lang-en">• Packages are valid for 3 months after purchase</span></li>
+                                <li><span class="lang-zh">• 课包不可转让给他人</span><span class="lang-en">• Packages are non-transferable</span></li>
+                                <li><span class="lang-zh">• 课包余额不可提现</span><span class="lang-en">• Remaining package balance is non-refundable as cash</span></li>
+                                <li><span class="lang-zh">• 过期课包恕不延期</span><span class="lang-en">• Expired packages cannot be extended</span></li>
                             </ul>
                         </div>
                     </div>
@@ -123,36 +137,44 @@
                 <div class="bg-white rounded-2xl shadow-lg p-8">
                     <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
                         <span class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center mr-3">📅</span>
-                        预约与取消政策
+                        <span class="lang-zh">预约与取消政策</span>
+                        <span class="lang-en">Booking & Cancellation Policy</span>
                     </h2>
                     <div class="space-y-4 text-gray-600">
                         <div class="border-l-4 border-orange-400 pl-6">
-                            <h4 class="font-semibold text-gray-800 mb-2">课程预约</h4>
+                            <h4 class="font-semibold text-gray-800 mb-2">
+                              <span class="lang-zh">课程预约</span>
+                              <span class="lang-en">Class Booking</span>
+                            </h4>
                             <ul class="space-y-2">
-                                <li>• 需至少提前24小时预约课程</li>
-                                <li>• 可通过微信、电话或网站预约</li>
-                                <li>• 预约成功后会收到确认信息</li>
-                                <li>• 建议定期预约以确保上课连续性</li>
+                                <li><span class="lang-zh">• 需至少提前24小时预约课程</span><span class="lang-en">• Classes must be booked at least 24 hours in advance</span></li>
+                                <li><span class="lang-zh">• 可通过微信、电话或网站预约</span><span class="lang-en">• Booking available via WeChat, phone, or website</span></li>
+                                <li><span class="lang-zh">• 预约成功后会收到确认信息</span><span class="lang-en">• Confirmation will be sent after successful booking</span></li>
+                                <li><span class="lang-zh">• 建议定期预约以确保上课连续性</span><span class="lang-en">• Regular booking is recommended for continuous learning</span></li>
                             </ul>
                         </div>
-                        
                         <div class="border-l-4 border-orange-400 pl-6">
-                            <h4 class="font-semibold text-gray-800 mb-2">取消课程</h4>
+                            <h4 class="font-semibold text-gray-800 mb-2">
+                              <span class="lang-zh">取消课程</span>
+                              <span class="lang-en">Class Cancellation</span>
+                            </h4>
                             <ul class="space-y-2">
-                                <li>• 需至少提前24小时取消课程</li>
-                                <li>• 24小时内取消将扣除一次课时</li>
-                                <li>• 无故缺席将扣除一次课时</li>
-                                <li>• 紧急情况可特殊处理</li>
+                                <li><span class="lang-zh">• 需至少提前24小时取消课程</span><span class="lang-en">• Cancellations must be made at least 24 hours in advance</span></li>
+                                <li><span class="lang-zh">• 24小时内取消将扣除一次课时</span><span class="lang-en">• Cancellations within 24 hours will result in one class being deducted</span></li>
+                                <li><span class="lang-zh">• 无故缺席将扣除一次课时</span><span class="lang-en">• No-shows will result in one class being deducted</span></li>
+                                <li><span class="lang-zh">• 紧急情况可特殊处理</span><span class="lang-en">• Emergencies may be handled on a case-by-case basis</span></li>
                             </ul>
                         </div>
-                        
                         <div class="border-l-4 border-orange-400 pl-6">
-                            <h4 class="font-semibold text-gray-800 mb-2">改期规则</h4>
+                            <h4 class="font-semibold text-gray-800 mb-2">
+                              <span class="lang-zh">改期规则</span>
+                              <span class="lang-en">Rescheduling Policy</span>
+                            </h4>
                             <ul class="space-y-2">
-                                <li>• 可免费改期一次（需提前24小时）</li>
-                                <li>• 同一课程多次改期需支付$10手续费</li>
-                                <li>• 改期课程需在原课程时间后30天内完成</li>
-                                <li>• 特殊情况下可协商处理</li>
+                                <li><span class="lang-zh">• 可免费改期一次（需提前24小时）</span><span class="lang-en">• One free reschedule allowed (must be requested 24 hours in advance)</span></li>
+                                <li><span class="lang-zh">• 同一课程多次改期需支付$10手续费</span><span class="lang-en">• Multiple reschedules for the same class incur a $10 fee each</span></li>
+                                <li><span class="lang-zh">• 改期课程需在原课程时间后30天内完成</span><span class="lang-en">• Rescheduled classes must be completed within 30 days of the original date</span></li>
+                                <li><span class="lang-zh">• 特殊情况下可协商处理</span><span class="lang-en">• Special cases may be negotiated</span></li>
                             </ul>
                         </div>
                     </div>
@@ -162,26 +184,32 @@
                 <div class="bg-white rounded-2xl shadow-lg p-8">
                     <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
                         <span class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-3">🌤️</span>
-                        天气政策
+                        <span class="lang-zh">天气政策</span>
+                        <span class="lang-en">Weather Policy</span>
                     </h2>
                     <div class="space-y-4 text-gray-600">
                         <div class="border-l-4 border-green-400 pl-6">
-                            <h4 class="font-semibold text-gray-800 mb-2">恶劣天气</h4>
+                            <h4 class="font-semibold text-gray-800 mb-2">
+                              <span class="lang-zh">恶劣天气</span>
+                              <span class="lang-en">Severe Weather</span>
+                            </h4>
                             <ul class="space-y-2">
-                                <li>• 雨天、雪天或极端天气将自动改期</li>
-                                <li>• 老师会提前2-4小时通知学员</li>
-                                <li>• 可免费改期至合适时间</li>
-                                <li>• 如学员坚持上课，将安排室内替代课程</li>
+                                <li><span class="lang-zh">• 雨天、雪天或极端天气将自动改期</span><span class="lang-en">• Classes will be rescheduled in case of rain, snow, or extreme weather</span></li>
+                                <li><span class="lang-zh">• 老师会提前2-4小时通知学员</span><span class="lang-en">• Notification will be sent 2-4 hours in advance</span></li>
+                                <li><span class="lang-zh">• 可免费改期至合适时间</span><span class="lang-en">• Free rescheduling to a suitable time</span></li>
+                                <li><span class="lang-zh">• 如学员坚持上课，将安排室内替代课程</span><span class="lang-en">• If students wish to continue, an indoor alternative will be arranged</span></li>
                             </ul>
                         </div>
-                        
                         <div class="border-l-4 border-green-400 pl-6">
-                            <h4 class="font-semibold text-gray-800 mb-2">微雨天气</h4>
+                            <h4 class="font-semibold text-gray-800 mb-2">
+                              <span class="lang-zh">微雨天气</span>
+                              <span class="lang-en">Light Rain</span>
+                            </h4>
                             <ul class="space-y-2">
-                                <li>• 小雨天气下可选择继续上课（有遮蔽处）</li>
-                                <li>• 学员可选择改期，不收取任何费用</li>
-                                <li>• 课程会根据天气调整内容</li>
-                                <li>• 安全第一，最终决定权在老师</li>
+                                <li><span class="lang-zh">• 小雨天气下可选择继续上课（有遮蔽处）</span><span class="lang-en">• In light rain, classes may continue in sheltered areas</span></li>
+                                <li><span class="lang-zh">• 学员可选择改期，不收取任何费用</span><span class="lang-en">• Students may choose to reschedule at no extra cost</span></li>
+                                <li><span class="lang-zh">• 课程会根据天气调整内容</span><span class="lang-en">• Class content may be adjusted according to weather</span></li>
+                                <li><span class="lang-zh">• 安全第一，最终决定权在老师</span><span class="lang-en">• Safety first; the teacher has final authority</span></li>
                             </ul>
                         </div>
                     </div>
@@ -191,35 +219,43 @@
                 <div class="bg-white rounded-2xl shadow-lg p-8">
                     <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
                         <span class="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center mr-3">🛡️</span>
-                        安全政策
+                        <span class="lang-zh">安全政策</span>
+                        <span class="lang-en">Safety Policy</span>
                     </h2>
                     <div class="space-y-4 text-gray-600">
                         <div class="border-l-4 border-red-400 pl-6">
-                            <h4 class="font-semibold text-gray-800 mb-2">学员安全</h4>
+                            <h4 class="font-semibold text-gray-800 mb-2">
+                              <span class="lang-zh">学员安全</span>
+                              <span class="lang-en">Student Safety</span>
+                            </h4>
                             <ul class="space-y-2">
-                                <li>• 户外课程选址确保安全性</li>
-                                <li>• 课程区域禁止无关人员进入</li>
-                                <li>• 建议购买个人意外保险</li>
+                                <li><span class="lang-zh">• 户外课程选址确保安全性</span><span class="lang-en">• Outdoor class locations are selected for safety</span></li>
+                                <li><span class="lang-zh">• 课程区域禁止无关人员进入</span><span class="lang-en">• Unrelated persons are not allowed in the class area</span></li>
+                                <li><span class="lang-zh">• 建议购买个人意外保险</span><span class="lang-en">• Personal accident insurance is recommended</span></li>
                             </ul>
                         </div>
-                        
                         <div class="border-l-4 border-red-400 pl-6">
-                            <h4 class="font-semibold text-gray-800 mb-2">健康要求</h4>
+                            <h4 class="font-semibold text-gray-800 mb-2">
+                              <span class="lang-zh">健康要求</span>
+                              <span class="lang-en">Health Requirements</span>
+                            </h4>
                             <ul class="space-y-2">
-                                <li>• 学员身体不适时请勿上课</li>
-                                <li>• 有传染性疾病时需居家休息</li>
-                                <li>• 特殊病史需提前告知老师</li>
-                                <li>• 过敏体质请提前说明</li>
+                                <li><span class="lang-zh">• 学员身体不适时请勿上课</span><span class="lang-en">• Do not attend class if feeling unwell</span></li>
+                                <li><span class="lang-zh">• 有传染性疾病时需居家休息</span><span class="lang-en">• Stay home if you have a contagious illness</span></li>
+                                <li><span class="lang-zh">• 特殊病史需提前告知老师</span><span class="lang-en">• Inform the teacher in advance of any special medical history</span></li>
+                                <li><span class="lang-zh">• 过敏体质请提前说明</span><span class="lang-en">• Please inform in advance if you have allergies</span></li>
                             </ul>
                         </div>
-                        
                         <div class="border-l-4 border-red-400 pl-6">
-                            <h4 class="font-semibold text-gray-800 mb-2">材料安全</h4>
+                            <h4 class="font-semibold text-gray-800 mb-2">
+                              <span class="lang-zh">材料安全</span>
+                              <span class="lang-en">Material Safety</span>
+                            </h4>
                             <ul class="space-y-2">
-                                <li>• 使用无毒环保颜料</li>
-                                <li>• 画笔等工具定期消毒</li>
-                                <li>• 禁止将材料放入口中</li>
-                                <li>• 课后需清洁双手</li>
+                                <li><span class="lang-zh">• 使用无毒环保颜料</span><span class="lang-en">• Only non-toxic, eco-friendly paints are used</span></li>
+                                <li><span class="lang-zh">• 画笔等工具定期消毒</span><span class="lang-en">• Brushes and tools are regularly sanitized</span></li>
+                                <li><span class="lang-zh">• 禁止将材料放入口中</span><span class="lang-en">• Do not put materials in your mouth</span></li>
+                                <li><span class="lang-zh">• 课后需清洁双手</span><span class="lang-en">• Wash hands after class</span></li>
                             </ul>
                         </div>
                     </div>
@@ -229,37 +265,45 @@
                 <div class="bg-white rounded-2xl shadow-lg p-8">
                     <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
                         <span class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center mr-3">💰</span>
-                        退费政策
+                        <span class="lang-zh">退费政策</span>
+                        <span class="lang-en">Refund Policy</span>
                     </h2>
                     <div class="space-y-4 text-gray-600">
                         <div class="border-l-4 border-purple-400 pl-6">
-                            <h4 class="font-semibold text-gray-800 mb-2">试课退费</h4>
+                            <h4 class="font-semibold text-gray-800 mb-2">
+                              <span class="lang-zh">试课退费</span>
+                              <span class="lang-en">Trial Class Refund</span>
+                            </h4>
                             <ul class="space-y-2">
-                                <li>• 试课费用概不退还</li>
-                                <li>• 如因老师原因无法上课，可全额退款</li>
-                                <li>• 如因天气原因，可免费改期或退款</li>
+                                <li><span class="lang-zh">• 试课费用概不退还</span><span class="lang-en">• Trial class fees are non-refundable</span></li>
+                                <li><span class="lang-zh">• 如因老师原因无法上课，可全额退款</span><span class="lang-en">• Full refund if the class is cancelled by the teacher</span></li>
+                                <li><span class="lang-zh">• 如因天气原因，可免费改期或退款</span><span class="lang-en">• Free reschedule or refund in case of weather cancellation</span></li>
                             </ul>
                         </div>
-                        
                         <div class="border-l-4 border-purple-400 pl-6">
-                            <h4 class="font-semibold text-gray-800 mb-2">课包退费</h4>
+                            <h4 class="font-semibold text-gray-800 mb-2">
+                              <span class="lang-zh">课包退费</span>
+                              <span class="lang-en">Package Refund</span>
+                            </h4>
                             <ul class="space-y-2">
-                                <li>• 购买后48小时内，未使用课时可申请退款 80%</li>
-                                <li>• 购买后48小时后，未使用课时可申请退款 20%</li>
-                                <li>• 购买后14天后，不与退款</li>
-                                <li>• 已使用课时按单节课价格计算</li>
-                                <li>• 课程一旦开始使用（无论剩余课时多少）不可转课退款。</li>
-                                <li>• 退款金额 = 课包总价 - 已使用课时×单节价</li>
-                                <li>• 退款将在7-14个工作日内处理</li>
+                                <li><span class="lang-zh">• 购买后48小时内，未使用课时可申请退款 80%</span><span class="lang-en">• Within 48 hours of purchase, 80% refund for unused classes</span></li>
+                                <li><span class="lang-zh">• 购买后48小时后，未使用课时可申请退款 20%</span><span class="lang-en">• After 48 hours, 20% refund for unused classes</span></li>
+                                <li><span class="lang-zh">• 购买后14天后，不与退款</span><span class="lang-en">• No refunds after 14 days of purchase</span></li>
+                                <li><span class="lang-zh">• 已使用课时按单节课价格计算</span><span class="lang-en">• Used classes are charged at the single class rate</span></li>
+                                <li><span class="lang-zh">• 课程一旦开始使用（无论剩余课时多少）不可转课退款。</span><span class="lang-en">• Once a package is started (regardless of remaining classes), no transfer or refund is allowed</span></li>
+                                <li><span class="lang-zh">• 退款金额 = 课包总价 - 已使用课时×单节价</span><span class="lang-en">• Refund amount = package price - (used classes × single class price)</span></li>
+                                <li><span class="lang-zh">• 退款将在7-14个工作日内处理</span><span class="lang-en">• Refunds will be processed within 7-14 business days</span></li>
                             </ul>
                         </div>
-                        
                         <div class="border-l-4 border-purple-400 pl-6">
-                            <h4 class="font-semibold text-gray-800 mb-2">特殊情况</h4>
+                            <h4 class="font-semibold text-gray-800 mb-2">
+                              <span class="lang-zh">特殊情况</span>
+                              <span class="lang-en">Special Circumstances</span>
+                            </h4>
                             <ul class="space-y-2">
-                                <li>• 搬家或长期出差可协商处理</li>
-                                <li>• 重大疾病或意外可特殊考虑</li>
-                                <li>• 最终解释权归CC Art所有</li>
+                                <li><span class="lang-zh">• 搬家或长期出差可协商处理</span><span class="lang-en">• Moving or long-term business trips may be negotiated</span></li>
+                                <li><span class="lang-zh">• 重大疾病或意外可特殊考虑</span><span class="lang-en">• Major illness or accident may be specially considered</span></li>
+                                <li><span class="lang-zh">• 最终解释权归CC Art所有</span><span class="lang-en">• Final interpretation right belongs to CC Art</span></li>
                             </ul>
                         </div>
                     </div>
@@ -269,35 +313,88 @@
                 <div class="bg-white rounded-2xl shadow-lg p-8">
                     <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
                         <span class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center mr-3">📋</span>
-                        其他条款
+                        <span class="lang-zh">其他条款</span>
+                        <span class="lang-en">Other Terms</span>
                     </h2>
                     <div class="space-y-4 text-gray-600">
                         <div class="border-l-4 border-gray-400 pl-6">
-                            <h4 class="font-semibold text-gray-800 mb-2">照片使用权</h4>
+                            <h4 class="font-semibold text-gray-800 mb-2">
+                              <span class="lang-zh">照片使用权</span>
+                              <span class="lang-en">Photo Usage Rights</span>
+                            </h4>
                             <ul class="space-y-2">
-                                <li>• 课程期间可能拍摄照片用于教学记录</li>
-                                <li>• 照片可能用于宣传推广（可联系选择退出）</li>
-                                <li>• 学生作品照片归CC Art所有</li>
-                                <li>• 如不同意拍摄请提前告知</li>
+                                <li><span class="lang-zh">• 课程期间可能拍摄照片用于教学记录</span><span class="lang-en">• Photos may be taken during class for teaching records</span></li>
+                                <li><span class="lang-zh">• 照片可能用于宣传推广（可联系选择退出）</span><span class="lang-en">• Photos may be used for promotional purposes (contact us to opt out)</span></li>
+                                <li><span class="lang-zh">• 学生作品照片归CC Art所有</span><span class="lang-en">• Student work photos belong to CC Art</span></li>
+                                <li><span class="lang-zh">• 如不同意拍摄请提前告知</span><span class="lang-en">• Please inform us in advance if you do not agree to be photographed</span></li>
                             </ul>
                         </div>
-                        
                         <div class="border-l-4 border-gray-400 pl-6">
-                            <h4 class="font-semibold text-gray-800 mb-2">责任限制</h4>
+                            <h4 class="font-semibold text-gray-800 mb-2">
+                              <span class="lang-zh">责任限制</span>
+                              <span class="lang-en">Limitation of Liability</span>
+                            </h4>
                             <ul class="space-y-2">
-                                <li>• CC Art承担教学期间的基本安全责任</li>
-                                <li>• 学员个人物品遗失不承担责任</li>
-                                <li>• 因学员个人原因造成的意外不承担责任</li>
-                                <li>• 建议购买个人意外保险</li>
+                                <li><span class="lang-zh">• CC Art承担教学期间的基本安全责任</span><span class="lang-en">• CC Art is responsible for basic safety during class</span></li>
+                                <li><span class="lang-zh">• 学员个人物品遗失不承担责任</span><span class="lang-en">• Not responsible for loss of personal belongings</span></li>
+                                <li><span class="lang-zh">• 因学员个人原因造成的意外不承担责任</span><span class="lang-en">• Not responsible for accidents caused by students' own actions</span></li>
+                                <li><span class="lang-zh">• 建议购买个人意外保险</span><span class="lang-en">• Personal accident insurance is recommended</span></li>
                             </ul>
                         </div>
+                    </div>
+                </div>
 
-                            <!-- 顶部横幅提示 -->
-                        <div class="bg-red-100 border border-red-200 text-red-400 px-4 py-2 text-center text-sm">
-                            本课程由 CC Art 团队/个人独立运营，具备完整教学流程与服务规范。品牌注册正在进行中，所有课程条款在未来将自动升级为正式协议
-                        </div>
-                        
-                        <footer class="text-sm text-gray-500 text-center mt-20 mb-10">
-                            <p>所有政策内容最终解释权将以合理协商方式处理。如涉及重大变动，将提前告知并在本页更新。</p>
-                            <p>© 2025 CC Art Studio. 本页面内容仅作为临时协议使用，待注册机构后将依法修订。</p>
-                        </footer>
+                <!-- 顶部横幅提示 -->
+                <div class="bg-red-100 border border-red-200 text-red-400 px-4 py-2 text-center text-sm">
+                    <span class="lang-zh">本课程由 CC Art 团队/个人独立运营，具备完整教学流程与服务规范。品牌注册正在进行中，所有课程条款在未来将自动升级为正式协议</span>
+                    <span class="lang-en">This course is independently operated by the CC Art team/individual, with a complete teaching process and service standards. Brand registration is in progress; all course terms will be upgraded to formal agreements in the future.</span>
+                </div>
+                
+                <footer class="text-sm text-gray-500 text-center mt-20 mb-10">
+                    <p>
+                      <span class="lang-zh">所有政策内容最终解释权将以合理协商方式处理。如涉及重大变动，将提前告知并在本页更新。</span>
+                      <span class="lang-en">All policy content is subject to reasonable negotiation for final interpretation. Major changes will be announced in advance and updated on this page.</span>
+                    </p>
+                    <p>
+                      <span class="lang-zh">© 2025 CC Art Studio. 本页面内容仅作为临时协议使用，待注册机构后将依法修订。</span>
+                      <span class="lang-en">© 2025 CC Art Studio. This page serves as a temporary agreement and will be revised in accordance with the law after official registration.</span>
+                    </p>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // Language Toggle Functionality (与about/pricing一致)
+    function toggleLanguage() {
+        const body = document.body;
+        const currentLang = body.getAttribute('data-lang');
+        const newLang = currentLang === 'zh' ? 'en' : 'zh';
+        body.setAttribute('data-lang', newLang);
+        try { localStorage.setItem('ccart-language', newLang); } catch (e) {}
+        if (newLang === 'en') {
+            document.title = 'Course Policy - CC Art Outdoor Acrylic Sketching Course';
+            document.documentElement.lang = 'en';
+        } else {
+            document.title = '课程政策 - CC Art 户外丙烯写生课';
+            document.documentElement.lang = 'zh-CN';
+        }
+    }
+    function loadLanguagePreference() {
+        try {
+            const savedLang = localStorage.getItem('ccart-language');
+            if (savedLang && savedLang !== 'zh') {
+                document.body.setAttribute('data-lang', savedLang);
+                if (savedLang === 'en') {
+                    document.title = 'Course Policy - CC Art Outdoor Acrylic Sketching Course';
+                    document.documentElement.lang = 'en';
+                }
+            }
+        } catch (e) {}
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        loadLanguagePreference();
+    });
+    </script>
+</body>
+</html>

@@ -30,9 +30,27 @@
         .shadow-custom {
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
+        .language-toggle {
+            position: fixed; top: 20px; right: 20px; z-index: 1000;
+            background: rgba(251, 146, 60, 0.9); backdrop-filter: blur(10px);
+            border: none; color: white; padding: 8px 16px; border-radius: 20px;
+            font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        .language-toggle:hover { background: rgba(251, 146, 60, 1); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2); }
+        .lang-zh { display: block; }
+        .lang-en { display: none; }
+        [data-lang="en"] .lang-zh { display: none; }
+        [data-lang="en"] .lang-en { display: block; }
     </style>
 </head>
-<body class="gradient-bg min-h-screen">
+<body class="gradient-bg min-h-screen" data-lang="zh">
+    <!-- Language Toggle Button -->
+    <button class="language-toggle" onclick="toggleLanguage()">
+        <span class="lang-zh">🌍 EN</span>
+        <span class="lang-en">🌍 中文</span>
+    </button>
+
     <!-- Navigation Bar -->
     <nav class="gradient-orange shadow-lg sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4">
@@ -45,11 +63,11 @@
                 </div>
                 
                 <div class="hidden md:flex space-x-1">
-                    <a href="index.html" class="nav-link px-4 py-2 text-white font-medium">首页</a>
-                    <a href="pricing.html" class="nav-link px-4 py-2 text-white font-medium">课价表</a>
-                    <a href="about.html" class="nav-link active px-4 py-2 text-white font-medium">关于老师</a>
-                    <a href="gallery.html" class="nav-link px-4 py-2 text-white font-medium">学员作品</a>
-                    <a href="policy.html" class="nav-link px-4 py-2 text-white font-medium">课程政策</a>
+                    <a href="index.html" class="nav-link px-4 py-2 text-white font-medium"><span class="lang-zh">首页</span><span class="lang-en">Home</span></a>
+                    <a href="pricing.html" class="nav-link px-4 py-2 text-white font-medium"><span class="lang-zh">课价表</span><span class="lang-en">Pricing</span></a>
+                    <a href="about.html" class="nav-link active px-4 py-2 text-white font-medium"><span class="lang-zh">关于老师</span><span class="lang-en">About Teacher</span></a>
+                    <a href="gallery.html" class="nav-link px-4 py-2 text-white font-medium"><span class="lang-zh">学员作品</span><span class="lang-en">Student Gallery</span></a>
+                    <a href="policy.html" class="nav-link px-4 py-2 text-white font-medium"><span class="lang-zh">课程政策</span><span class="lang-en">Course Policy</span></a>
                 </div>
 
                 <div class="md:hidden">
@@ -62,11 +80,11 @@
             </div>
 
             <div id="mobile-menu" class="md:hidden hidden pb-4">
-                <a href="index.html" class="block nav-link px-4 py-2 text-white font-medium">首页</a>
-                <a href="pricing.html" class="block nav-link px-4 py-2 text-white font-medium">课价表</a>
-                <a href="about.html" class="block nav-link px-4 py-2 text-white font-medium">关于老师</a>
-                <a href="gallery.html" class="block nav-link px-4 py-2 text-white font-medium">学员作品</a>
-                <a href="policy.html" class="block nav-link px-4 py-2 text-white font-medium">课程政策</a>
+                <a href="index.html" class="block nav-link px-4 py-2 text-white font-medium"><span class="lang-zh">首页</span><span class="lang-en">Home</span></a>
+                <a href="pricing.html" class="block nav-link px-4 py-2 text-white font-medium"><span class="lang-zh">课价表</span><span class="lang-en">Pricing</span></a>
+                <a href="about.html" class="block nav-link px-4 py-2 text-white font-medium"><span class="lang-zh">关于老师</span><span class="lang-en">About Teacher</span></a>
+                <a href="gallery.html" class="block nav-link px-4 py-2 text-white font-medium"><span class="lang-zh">学员作品</span><span class="lang-en">Student Gallery</span></a>
+                <a href="policy.html" class="block nav-link px-4 py-2 text-white font-medium"><span class="lang-zh">课程政策</span><span class="lang-en">Course Policy</span></a>
             </div>
         </div>
     </nav>
@@ -76,8 +94,14 @@
         <div class="max-w-[95vw] mx-auto">
             <!-- Page Header -->
             <div class="text-center mb-12">
-                <h1 class="text-5xl md:text-6xl font-bold text-gray-800 mb-6">关于老师</h1>
-                <p class="text-xl md:text-2xl text-gray-600">专业的艺术指导，用心的教学态度</p>
+                <h1 class="text-5xl md:text-6xl font-bold text-gray-800 mb-6">
+                  <span class="lang-zh">关于老师</span>
+                  <span class="lang-en">About the Teacher</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-600">
+                  <span class="lang-zh">专业的艺术指导，用心的教学态度</span>
+                  <span class="lang-en">Professional Art Guidance, Dedicated Teaching Attitude</span>
+                </p>
                 <div class="w-24 h-1 bg-gradient-to-r from-orange-400 to-amber-400 mx-auto mt-6 rounded-full"></div>
             </div>
 
@@ -99,53 +123,76 @@
                     <div class="md:w-2/3 p-10">
                         <div class="mb-8">
                             <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Chenxi Zhang</h2>
-                            <p class="text-2xl md:text-3xl text-orange-600 font-semibold">CC Art 创始人 & 导师</p>
+                            <p class="text-2xl md:text-3xl text-orange-600 font-semibold">
+                              <span class="lang-zh">CC Art 创始人 & 导师</span>
+                              <span class="lang-en">Founder & Instructor of CC Art</span>
+                            </p>
                         </div>
-                        
                         <div class="space-y-6 text-gray-600 text-lg md:text-xl">
                             <div class="flex items-start">
-                                <span class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
-                                    🎓
-                                </span>
+                                <span class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">🎓</span>
                                 <div>
-                                    <h4 class="font-semibold text-gray-800 text-xl mb-2">教育背景</h4>
-                                    <p>洛杉矶奥蒂斯艺术设计学院(otis)</p>
-                                    <p class="text-gray-500">• 游戏与娱乐设计专业 美术学士学位</p>
-                                    <p class="text-orange-600 font-medium mt-1">• 四年全年奥蒂斯总统奖学金</p>
+                                    <h4 class="font-semibold text-gray-800 text-xl mb-2">
+                                      <span class="lang-zh">教育背景</span>
+                                      <span class="lang-en">Education</span>
+                                    </h4>
+                                    <p>
+                                      <span class="lang-zh">洛杉矶奥蒂斯艺术设计学院(otis)</span>
+                                      <span class="lang-en">Otis College of Art and Design, Los Angeles</span>
+                                    </p>
+                                    <p class="text-gray-500">
+                                      <span class="lang-zh">• 游戏与娱乐设计专业 美术学士学位</span>
+                                      <span class="lang-en">• BFA in Game & Entertainment Design</span>
+                                    </p>
+                                    <p class="text-orange-600 font-medium mt-1">
+                                      <span class="lang-zh">• 四年全年奥蒂斯总统奖学金</span>
+                                      <span class="lang-en">• 4-year Otis Presidential Scholarship</span>
+                                    </p>
                                 </div>
                             </div>
-                            
                             <div class="flex items-start">
-                                <span class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
-                                    ⭐
-                                </span>
+                                <span class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">⭐</span>
                                 <div>
-                                    <h4 class="font-semibold text-gray-800 text-xl mb-2">专业经验</h4>
+                                    <h4 class="font-semibold text-gray-800 text-xl mb-2">
+                                      <span class="lang-zh">专业经验</span>
+                                      <span class="lang-en">Professional Experience</span>
+                                    </h4>
                                     <div class="space-y-2">
-                                        <p><strong>Art Studio</strong> - 艺术老师与设计师 (2022.3 - 2025.4)</p>
-                                        <p><strong>Microsoft(微软)</strong> - 概念艺术实习生 (2024.12 - 2025.2)</p>
-                                        <p>专精于3D环境设计、丙烯绘画、数字艺术、泥塑等多种艺术形式</p>
+                                        <p>
+                                          <span class="lang-zh"><strong>Art Studio</strong> - 艺术老师与设计师 (2022.3 - 2025.4)</span>
+                                          <span class="lang-en"><strong>Art Studio</strong> - Art Teacher & Designer (2022.3 - 2025.4)</span>
+                                        </p>
+                                        <p>
+                                          <span class="lang-zh"><strong>Microsoft(微软)</strong> - 概念艺术实习生 (2024.12 - 2025.2)</span>
+                                          <span class="lang-en"><strong>Microsoft</strong> - Concept Art Intern (2024.12 - 2025.2)</span>
+                                        </p>
+                                        <p>
+                                          <span class="lang-zh">专精于3D环境设计、丙烯绘画、数字艺术、泥塑等多种艺术形式</span>
+                                          <span class="lang-en">Specialized in 3D environment design, acrylic painting, digital art, sculpture, and more</span>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
-                            
                             <div class="flex items-start">
-                                <span class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
-                                    🏆
-                                </span>
+                                <span class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">🏆</span>
                                 <div>
-                                    <h4 class="font-semibold text-gray-800 text-xl mb-2">专业技能与作品</h4>
+                                    <h4 class="font-semibold text-gray-800 text-xl mb-2">
+                                      <span class="lang-zh">专业技能与作品</span>
+                                      <span class="lang-en">Skills & Portfolio</span>
+                                    </h4>
                                     <div class="grid grid-cols-2 gap-2 mb-3">
-                                        <p>• 3D建模 (Maya, Blender)</p>
-                                        <p>• 数字绘画 (Photoshop)</p>
-                                        <p>• 材质制作 (Substance Painter)</p>
-                                        <p>• 雕刻 (ZBrush)</p>
-                                        <p>• 丙烯绘画</p>
-                                        <p>• 泥塑艺术</p>
+                                        <p><span class="lang-zh">• 3D建模 (Maya, Blender)</span><span class="lang-en">• 3D Modeling (Maya, Blender)</span></p>
+                                        <p><span class="lang-zh">• 数字绘画 (Photoshop)</span><span class="lang-en">• Digital Painting (Photoshop)</span></p>
+                                        <p><span class="lang-zh">• 材质制作 (Substance Painter)</span><span class="lang-en">• Texture Creation (Substance Painter)</span></p>
+                                        <p><span class="lang-zh">• 雕刻 (ZBrush)</span><span class="lang-en">• Sculpting (ZBrush)</span></p>
+                                        <p><span class="lang-zh">• 丙烯绘画</span><span class="lang-en">• Acrylic Painting</span></p>
+                                        <p><span class="lang-zh">• 泥塑艺术</span><span class="lang-en">• Clay Sculpture</span></p>
                                     </div>
                                     <p class="text-orange-600 font-medium">
-                                        🌐 <a href="https://chenxiz.carbonmade.com/" target="_blank" class="hover:underline">
-                                            查看更多专业作品集
+                                        🌐
+                                        <a href="https://chenxiz.carbonmade.com/" target="_blank" class="hover:underline inline-block min-w-[120px]">
+                                            <span class="lang-zh">查看更多专业作品集</span>
+                                            <span class="lang-en">View More Portfolio</span>
                                         </a>
                                     </p>
                                 </div>
@@ -160,40 +207,47 @@
                 <div class="bg-white rounded-2xl shadow-lg p-10">
                     <h3 class="text-3xl md:text-4xl font-bold text-gray-800 mb-8 flex items-center">
                         <span class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">💡</span>
-                        教学理念
+                        <span class="lang-zh">教学理念</span>
+                        <span class="lang-en">Teaching Philosophy</span>
                     </h3>
                     <div class="space-y-6 text-gray-600 text-lg md:text-xl">
-                        <p>艺术不仅仅是技法的传授，更是创造力和想象力的启发。我相信每个孩子都有独特的艺术天赋，需要的是耐心的引导和专业的指导。</p>
-                        <p>通过户外写生，让学员在大自然中感受色彩的变化、光影的魅力，培养敏锐的观察力和对美的感知能力。</p>
-                        <p>结合我在3D艺术和传统绘画方面的专业背景，为学员提供多元化的艺术体验，开拓更广阔的创作视野。</p>
+                        <p><span class="lang-zh">艺术不仅仅是技法的传授，更是创造力和想象力的启发。我相信每个孩子都有独特的艺术天赋，需要的是耐心的引导和专业的指导。</span><span class="lang-en">Art is not just about technique, but about inspiring creativity and imagination. I believe every child has unique artistic talent that needs patient guidance and professional instruction.</span></p>
+                        <p><span class="lang-zh">通过户外写生，让学员在大自然中感受色彩的变化、光影的魅力，培养敏锐的观察力和对美的感知能力。</span><span class="lang-en">Through outdoor sketching, students experience the changes of color and the charm of light and shadow in nature, cultivating keen observation and a sense of beauty.</span></p>
+                        <p><span class="lang-zh">结合我在3D艺术和传统绘画方面的专业背景，为学员提供多元化的艺术体验，开拓更广阔的创作视野。</span><span class="lang-en">Combining my background in 3D art and traditional painting, I offer students a diverse artistic experience and a broader creative vision.</span></p>
                     </div>
                 </div>
 
                 <div class="bg-white rounded-2xl shadow-lg p-10">
                     <h3 class="text-3xl md:text-4xl font-bold text-gray-800 mb-8 flex items-center">
                         <span class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">🎯</span>
-                        教学特色
+                        <span class="lang-zh">教学特色</span>
+                        <span class="lang-en">Teaching Features</span>
                     </h3>
                     <div class="space-y-4">
                         <div class="flex items-center text-gray-600 text-lg">
                             <span class="w-3 h-3 bg-green-500 rounded-full mr-4"></span>
-                            融合传统绘画与现代数字艺术理念
+                            <span class="lang-zh">融合传统绘画与现代数字艺术理念</span>
+                            <span class="lang-en">Integrating traditional painting and modern digital art concepts</span>
                         </div>
                         <div class="flex items-center text-gray-600 text-lg">
                             <span class="w-3 h-3 bg-green-500 rounded-full mr-4"></span>
-                            户外实景写生，培养观察与感知能力
+                            <span class="lang-zh">户外实景写生，培养观察与感知能力</span>
+                            <span class="lang-en">Outdoor sketching to cultivate observation and perception</span>
                         </div>
                         <div class="flex items-center text-gray-600 text-lg">
                             <span class="w-3 h-3 bg-green-500 rounded-full mr-4"></span>
-                            小班制教学，个性化指导每位学员
+                            <span class="lang-zh">小班制教学，个性化指导每位学员</span>
+                            <span class="lang-en">Small class teaching, personalized guidance for each student</span>
                         </div>
                         <div class="flex items-center text-gray-600 text-lg">
                             <span class="w-3 h-3 bg-green-500 rounded-full mr-4"></span>
-                            中英双语教学，国际化艺术视野
+                            <span class="lang-zh">中英双语教学，国际化艺术视野</span>
+                            <span class="lang-en">Bilingual teaching, international artistic vision</span>
                         </div>
                         <div class="flex items-center text-gray-600 text-lg">
                             <span class="w-3 h-3 bg-green-500 rounded-full mr-4"></span>
-                            注重创作过程，培养独立思考能力
+                            <span class="lang-zh">注重创作过程，培养独立思考能力</span>
+                            <span class="lang-en">Focus on the creative process, cultivate independent thinking</span>
                         </div>
                     </div>
                 </div>
@@ -201,62 +255,103 @@
 
             <!-- Skills & Expertise -->
             <div class="bg-white rounded-2xl shadow-lg p-10 mb-12">
-                <h3 class="text-3xl md:text-4xl font-bold text-gray-800 mb-10 text-center">专业技能</h3>
+                <h3 class="text-3xl md:text-4xl font-bold text-gray-800 mb-10 text-center">
+                  <span class="lang-zh">专业技能</span>
+                  <span class="lang-en">Skills & Expertise</span>
+                </h3>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
                     <div class="text-center">
                         <div class="w-20 h-20 gradient-orange rounded-full flex items-center justify-center mx-auto mb-4">
                             <span class="text-white text-3xl">🎨</span>
                         </div>
-                        <h4 class="font-semibold text-gray-800 mb-2 text-xl">丙烯绘画</h4>
-                        <p class="text-base text-gray-600">3年专业经验</p>
+                        <h4 class="font-semibold text-gray-800 mb-2 text-xl">
+                          <span class="lang-zh">丙烯绘画</span>
+                          <span class="lang-en">Acrylic Painting</span>
+                        </h4>
+                        <p class="text-base text-gray-600">
+                          <span class="lang-zh">3年专业经验</span>
+                          <span class="lang-en">3 years of experience</span>
+                        </p>
                     </div>
                     <div class="text-center">
                         <div class="w-20 h-20 gradient-orange rounded-full flex items-center justify-center mx-auto mb-4">
                             <span class="text-white text-3xl">🌅</span>
                         </div>
-                        <h4 class="font-semibold text-gray-800 mb-2 text-xl">风景写生</h4>
-                        <p class="text-base text-gray-600">3年专业经验</p>
+                        <h4 class="font-semibold text-gray-800 mb-2 text-xl">
+                          <span class="lang-zh">风景写生</span>
+                          <span class="lang-en">Landscape Sketching</span>
+                        </h4>
+                        <p class="text-base text-gray-600">
+                          <span class="lang-zh">3年专业经验</span>
+                          <span class="lang-en">3 years of experience</span>
+                        </p>
                     </div>
                     <div class="text-center">
                         <div class="w-20 h-20 gradient-orange rounded-full flex items-center justify-center mx-auto mb-4">
                             <span class="text-white text-3xl">👥</span>
                         </div>
-                        <h4 class="font-semibold text-gray-800 mb-2 text-xl">儿童教学</h4>
-                        <p class="text-base text-gray-600">3年专业经验</p>
+                        <h4 class="font-semibold text-gray-800 mb-2 text-xl">
+                          <span class="lang-zh">儿童教学</span>
+                          <span class="lang-en">Children's Art Teaching</span>
+                        </h4>
+                        <p class="text-base text-gray-600">
+                          <span class="lang-zh">3年专业经验</span>
+                          <span class="lang-en">3 years of experience</span>
+                        </p>
                     </div>
                     <div class="text-center">
                         <div class="w-20 h-20 gradient-orange rounded-full flex items-center justify-center mx-auto mb-4">
                             <span class="text-white text-3xl">🏞️</span>
                         </div>
-                        <h4 class="font-semibold text-gray-800 mb-2 text-xl">户外教学</h4>
-                        <p class="text-base text-gray-600">2年专业经验</p>
+                        <h4 class="font-semibold text-gray-800 mb-2 text-xl">
+                          <span class="lang-zh">户外教学</span>
+                          <span class="lang-en">Outdoor Teaching</span>
+                        </h4>
+                        <p class="text-base text-gray-600">
+                          <span class="lang-zh">2年专业经验</span>
+                          <span class="lang-en">2 years of experience</span>
+                        </p>
                     </div>
                 </div>
             </div>
 
             <!-- Project Showcase -->
             <div class="bg-white rounded-2xl shadow-lg p-10 mb-12">
-                <h3 class="text-3xl md:text-4xl font-bold text-gray-800 mb-10 text-center">代表作品</h3>
+                <h3 class="text-3xl md:text-4xl font-bold text-gray-800 mb-10 text-center">
+                  <span class="lang-zh">代表作品</span>
+                  <span class="lang-en">Project Showcase</span>
+                </h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div class="bg-gradient-to-br from-orange-50 to-amber-50 rounded-xl p-6">
                         <div class="aspect-video bg-gray-200 rounded-lg flex items-center justify-center mb-4">
-                            <span class="text-gray-500 text-lg">《亡灵节游戏地图》</span>
+                            <span class="text-gray-500 text-lg">
+                              <span class="lang-zh">《亡灵节游戏地图》</span>
+                              <span class="lang-en">"Day of the Dead" Game Map</span>
+                            </span>
                         </div>
-                        <h4 class="font-bold text-gray-800 text-xl mb-3">亡灵节游戏地图设计</h4>
+                        <h4 class="font-bold text-gray-800 text-xl mb-3">
+                          <span class="lang-zh">亡灵节游戏地图设计</span>
+                          <span class="lang-en">Day of the Dead Game Map Design</span>
+                        </h4>
                         <p class="text-gray-600 text-base">
-                            从2D概念设计到3D建模，创作了以墨西哥瓦哈卡传统元素为灵感的完整游戏环境。
-                            运用Maya进行建模，Substance Painter制作材质，展现了深厚的3D艺术功底。
+                          <span class="lang-zh">从2D概念设计到3D建模，创作了以墨西哥瓦哈卡传统元素为灵感的完整游戏环境。运用Maya进行建模，Substance Painter制作材质，展现了深厚的3D艺术功底。</span>
+                          <span class="lang-en">From 2D concept to 3D modeling, created a full game environment inspired by traditional elements of Oaxaca, Mexico. Used Maya for modeling and Substance Painter for texturing, demonstrating strong 3D art skills.</span>
                         </p>
                     </div>
-                    
                     <div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-6">
                         <div class="aspect-video bg-gray-200 rounded-lg flex items-center justify-center mb-4">
-                            <span class="text-gray-500 text-lg">《永恒传说》盲盒</span>
+                            <span class="text-gray-500 text-lg">
+                              <span class="lang-zh">《永恒传说》盲盒</span>
+                              <span class="lang-en">"Eternal Legend" Blind Box</span>
+                            </span>
                         </div>
-                        <h4 class="font-bold text-gray-800 text-xl mb-3">永恒传说盲盒系列</h4>
+                        <h4 class="font-bold text-gray-800 text-xl mb-3">
+                          <span class="lang-zh">永恒传说盲盒系列</span>
+                          <span class="lang-en">Eternal Legend Blind Box Series</span>
+                        </h4>
                         <p class="text-gray-600 text-base">
-                            从2D角色设计到ZBrush 3D建模，再到3D打印制作实体模型。
-                            完整的产品设计流程，包括包装设计，展现了全方位的艺术创作能力。
+                          <span class="lang-zh">从2D角色设计到ZBrush 3D建模，再到3D打印制作实体模型。完整的产品设计流程，包括包装设计，展现了全方位的艺术创作能力。</span>
+                          <span class="lang-en">From 2D character design to ZBrush 3D modeling and 3D printing of physical models. Complete product design process including packaging, showcasing comprehensive artistic skills.</span>
                         </p>
                     </div>
                 </div>
@@ -321,70 +416,113 @@
 
             <!-- Gallery Section -->
             <div class="bg-white rounded-2xl shadow-lg p-10 mb-12">
-                <h3 class="text-3xl md:text-4xl font-bold text-gray-800 mb-10 text-center">作品展示</h3>
+                <h3 class="text-3xl md:text-4xl font-bold text-gray-800 mb-10 text-center">
+                  <span class="lang-zh">作品展示</span>
+                  <span class="lang-en">Gallery</span>
+                </h3>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
                     <div class="aspect-square bg-gradient-to-br from-orange-100 to-amber-100 rounded-lg flex items-center justify-center">
-                        <span class="text-gray-600 text-base">户外风景作品1</span>
+                        <span class="text-gray-600 text-base">
+                          <span class="lang-zh">户外风景作品1</span>
+                          <span class="lang-en">Outdoor Landscape 1</span>
+                        </span>
                     </div>
                     <div class="aspect-square bg-gradient-to-br from-blue-100 to-purple-100 rounded-lg flex items-center justify-center">
-                        <span class="text-gray-600 text-base">3D设计作品</span>
+                        <span class="text-gray-600 text-base">
+                          <span class="lang-zh">3D设计作品</span>
+                          <span class="lang-en">3D Design</span>
+                        </span>
                     </div>
                     <div class="aspect-square bg-gradient-to-br from-green-100 to-teal-100 rounded-lg flex items-center justify-center">
-                        <span class="text-gray-600 text-base">丙烯绘画作品</span>
+                        <span class="text-gray-600 text-base">
+                          <span class="lang-zh">丙烯绘画作品</span>
+                          <span class="lang-en">Acrylic Painting</span>
+                        </span>
                     </div>
                     <div class="aspect-square bg-gradient-to-br from-pink-100 to-red-100 rounded-lg flex items-center justify-center">
-                        <span class="text-gray-600 text-base">学员指导照片</span>
+                        <span class="text-gray-600 text-base">
+                          <span class="lang-zh">学员指导照片</span>
+                          <span class="lang-en">Student Instruction Photo</span>
+                        </span>
                     </div>
                     <div class="aspect-square bg-gradient-to-br from-yellow-100 to-orange-100 rounded-lg flex items-center justify-center">
-                        <span class="text-gray-600 text-base">泥塑作品</span>
+                        <span class="text-gray-600 text-base">
+                          <span class="lang-zh">泥塑作品</span>
+                          <span class="lang-en">Clay Sculpture</span>
+                        </span>
                     </div>
                     <div class="aspect-square bg-gradient-to-br from-indigo-100 to-blue-100 rounded-lg flex items-center justify-center">
-                        <span class="text-gray-600 text-base">数字艺术作品</span>
+                        <span class="text-gray-600 text-base">
+                          <span class="lang-zh">数字艺术作品</span>
+                          <span class="lang-en">Digital Art</span>
+                        </span>
                     </div>
                     <div class="aspect-square bg-gradient-to-br from-purple-100 to-pink-100 rounded-lg flex items-center justify-center">
-                        <span class="text-gray-600 text-base">教学现场</span>
+                        <span class="text-gray-600 text-base">
+                          <span class="lang-zh">教学现场</span>
+                          <span class="lang-en">Teaching Scene</span>
+                        </span>
                     </div>
                     <div class="aspect-square bg-gradient-to-br from-teal-100 to-green-100 rounded-lg flex items-center justify-center">
-                        <span class="text-gray-600 text-base">户外写生场景</span>
+                        <span class="text-gray-600 text-base">
+                          <span class="lang-zh">户外写生场景</span>
+                          <span class="lang-en">Outdoor Sketching Scene</span>
+                        </span>
                     </div>
                 </div>
-                <div class="text-center mt-8">
+                <!-- <div class="text-center mt-8">
                     <a href="gallery.html" class="bg-gradient-to-r from-orange-400 to-amber-400 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:opacity-90 transition-opacity">
-                        查看更多作品
+                        <span class="lang-zh">查看更多作品</span>
+                        <span class="lang-en">View More Works</span>
                     </a>
-                </div>
+                </div> -->
             </div>
 
             <!-- Contact Section -->
             <div class="bg-white rounded-2xl shadow-lg p-10">
-                <h3 class="text-3xl md:text-4xl font-bold text-gray-800 mb-10 text-center">联系老师</h3>
+                <h3 class="text-3xl md:text-4xl font-bold text-gray-800 mb-10 text-center">
+                  <span class="lang-zh">联系老师</span>
+                  <span class="lang-en">Contact</span>
+                </h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div class="space-y-6">
                         <div class="flex items-center">
                             <span class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center mr-6">📞</span>
                             <div>
-                                <h4 class="font-semibold text-gray-800 text-xl">电话咨询</h4>
+                                <h4 class="font-semibold text-gray-800 text-xl">
+                                  <span class="lang-zh">电话咨询</span>
+                                  <span class="lang-en">Phone</span>
+                                </h4>
                                 <p class="text-gray-600 text-lg">626-726-7965</p>
                             </div>
                         </div>
                         <div class="flex items-center">
                             <span class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center mr-6">💬</span>
                             <div>
-                                <h4 class="font-semibold text-gray-800 text-xl">微信咨询</h4>
+                                <h4 class="font-semibold text-gray-800 text-xl">
+                                  <span class="lang-zh">微信咨询</span>
+                                  <span class="lang-en">WeChat</span>
+                                </h4>
                                 <p class="text-gray-600 text-lg">xxxi_zc</p>
                             </div>
                         </div>
                         <div class="flex items-center">
                             <span class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center mr-6">📧</span>
                             <div>
-                                <h4 class="font-semibold text-gray-800 text-xl">邮件咨询</h4>
+                                <h4 class="font-semibold text-gray-800 text-xl">
+                                  <span class="lang-zh">邮件咨询</span>
+                                  <span class="lang-en">Email</span>
+                                </h4>
                                 <p class="text-gray-600 text-lg">zhangchenxi330@gmail.com</p>
                             </div>
                         </div>
                         <div class="flex items-center">
                             <span class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center mr-6">🌐</span>
                             <div>
-                                <h4 class="font-semibold text-gray-800 text-xl">作品网站</h4>
+                                <h4 class="font-semibold text-gray-800 text-xl">
+                                  <span class="lang-zh">作品网站</span>
+                                  <span class="lang-en">Portfolio Website</span>
+                                </h4>
                                 <a href="https://chenxiz.carbonmade.com/" target="_blank" class="text-orange-600 text-lg hover:underline">
                                     chenxiz.carbonmade.com
                                 </a>
@@ -393,55 +531,64 @@
                         <div class="flex items-center">
                             <span class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center mr-6">📍</span>
                             <div>
-                                <h4 class="font-semibold text-gray-800 text-xl">教学地点</h4>
-                                <p class="text-gray-600 text-lg">洛杉矶地区户外公园及艺术工作室</p>
+                                <h4 class="font-semibold text-gray-800 text-xl">
+                                  <span class="lang-zh">教学地点</span>
+                                  <span class="lang-en">Teaching Location</span>
+                                </h4>
+                                <p class="text-gray-600 text-lg">
+                                  <span class="lang-zh">尔湾地区户外公园及艺术工作室</span>
+                                  <span class="lang-en">Outdoor parks and art studios in Irvine area</span>
+                                </p>
                             </div>
                         </div>
                     </div>
-                    
                     <div class="bg-orange-50 rounded-xl p-8">
-                        <h4 class="font-semibold text-gray-800 mb-6 text-xl">预约试课</h4>
+                        <h4 class="font-semibold text-gray-800 mb-6 text-xl">
+                          <span class="lang-zh">预约试课</span>
+                          <span class="lang-en">Book a Trial Class</span>
+                        </h4>
                         <form class="space-y-5">
                             <div>
-                                <input type="text" placeholder="您的姓名" class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-transparent text-base">
+                                <input type="text" placeholder="您的姓名 / Your Name" class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-transparent text-base">
                             </div>
                             <div>
-                                <input type="tel" placeholder="联系电话" class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-transparent text-base">
+                                <input type="tel" placeholder="联系电话 / Phone" class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-transparent text-base">
                             </div>
                             <div>
                                 <select class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-transparent text-base">
-                                    <option>选择学员年龄</option>
-                                    <option>3-5岁</option>
-                                    <option>6-8岁</option>
-                                    <option>9-12岁</option>
-                                    <option>13岁以上</option>
-                                    <option>成人</option>
+                                    <option><span class="lang-zh">选择学员年龄</span><span class="lang-en">Select Age</span></option>
+                                    <option>3-5岁 / 3-5 yrs</option>
+                                    <option>6-8岁 / 6-8 yrs</option>
+                                    <option>9-12岁 / 9-12 yrs</option>
+                                    <option>13岁以上 / 13+ yrs</option>
+                                    <option>成人 / Adult</option>
                                 </select>
                             </div>
                             <div>
-                                <textarea placeholder="留言或特殊需求" rows="4" class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-transparent text-base"></textarea>
+                                <textarea placeholder="留言或特殊需求 / Message or Special Request" rows="4" class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-transparent text-base"></textarea>
                             </div>
                             <button type="submit" class="w-full bg-gradient-to-r from-orange-400 to-amber-400 text-white py-3 rounded-lg font-semibold text-lg hover:opacity-90 transition-opacity">
-                                提交预约(请通过左侧联系方式联系老师，功能正在开发中 :) ！
+                                <span class="lang-zh">提交预约(请通过左侧联系方式联系老师，功能正在开发中 :) ！</span>
+                                <span class="lang-en">Submit (Please contact the teacher via the info on the left. Online booking coming soon!)</span>
                             </button>
                         </form>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-10 mt-12">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <p class="text-gray-400 mb-4 text-lg">
-                用心教学，让每个学员都能发现艺术的美好
-            </p>
-            <p class="text-gray-500 text-base">
-                CC Art 版权所有 © 2025 | 咨询: 626-726-7965 | 微信: xxxi_zc
-            </p>
-        </div>
-    </footer>
+            <!-- Footer -->
+            <footer class="bg-gray-800 text-white py-10 mt-12">
+                <div class="max-w-7xl mx-auto px-6 text-center">
+                    <p class="text-gray-400 mb-4 text-lg">
+                      <span class="lang-zh">用心教学，让每个学员都能发现艺术的美好</span>
+                      <span class="lang-en">Dedicated teaching, helping every student discover the beauty of art</span>
+                    </p>
+                    <p class="text-gray-500 text-base">
+                      <span class="lang-zh">CC Art 版权所有 © 2025 | 咨询: 626-726-7965 | 微信: xxxi_zc</span>
+                      <span class="lang-en">CC Art All Rights Reserved © 2025 | Contact: 626-726-7965 | WeChat: xxxi_zc</span>
+                    </p>
+                </div>
+            </footer>
 
     <script>
         // Mobile menu toggle
@@ -450,6 +597,37 @@
 
         mobileMenuBtn.addEventListener('click', function() {
             mobileMenu.classList.toggle('hidden');
+        });
+
+        // Language Toggle Functionality (与pricing.html一致)
+        function toggleLanguage() {
+            const body = document.body;
+            const currentLang = body.getAttribute('data-lang');
+            const newLang = currentLang === 'zh' ? 'en' : 'zh';
+            body.setAttribute('data-lang', newLang);
+            try { localStorage.setItem('ccart-language', newLang); } catch (e) {}
+            if (newLang === 'en') {
+                document.title = 'About Teacher - CC Art Outdoor Acrylic Sketching Course';
+                document.documentElement.lang = 'en';
+            } else {
+                document.title = '关于老师 - CC Art 户外丙烯写生课';
+                document.documentElement.lang = 'zh-CN';
+            }
+        }
+        function loadLanguagePreference() {
+            try {
+                const savedLang = localStorage.getItem('ccart-language');
+                if (savedLang && savedLang !== 'zh') {
+                    document.body.setAttribute('data-lang', savedLang);
+                    if (savedLang === 'en') {
+                        document.title = 'About Teacher - CC Art Outdoor Acrylic Sketching Course';
+                        document.documentElement.lang = 'en';
+                    }
+                }
+            } catch (e) {}
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            loadLanguagePreference();
         });
     </script>
 </body>
