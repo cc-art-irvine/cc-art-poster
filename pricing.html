@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>课价表 - CC Art 户外丙烯写生课</title>
+    <title>课价表 - CC Art Studio 户外丙烯写生课</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
@@ -55,7 +55,7 @@
                     <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center">
                         <span class="text-orange-500 font-bold text-lg">🎨</span>
                     </div>
-                    <span class="text-white font-bold text-xl">CC ART</span>
+                    <span class="text-white font-bold text-xl">CC Art Studio</span>
                 </div>
                 <div class="hidden md:flex space-x-1">
                     <a href="index.html" class="nav-link px-4 py-2 text-white font-medium"><span class="lang-zh">首页</span><span class="lang-en">Home</span></a>
@@ -117,7 +117,7 @@
                 * 所有价格均为美元 | 课程价格如有调整，以最新公布为准
             </p>
             <p class="text-gray-500 text-sm">
-                CC Art 版权所有 © 2025 | 咨询: 626-726-7965 | 微信: xxxi_zc 或 a747594101
+                CC Art Studio 版权所有 © 2025 | 咨询: 626-726-7965 | 微信: xxxi_zc 或 a747594101
             </p>
         </div>
     </footer>
@@ -279,10 +279,10 @@
         body.setAttribute('data-lang', newLang);
         try { localStorage.setItem('ccart-language', newLang); } catch (e) {}
         if (newLang === 'en') {
-            document.title = 'CC Art Pricing';
+            document.title = 'CC Art Studio Pricing';
             document.documentElement.lang = 'en';
         } else {
-            document.title = '课价表 - CC Art 户外丙烯写生课';
+            document.title = '课价表 - CC Art Studio 户外丙烯写生课';
             document.documentElement.lang = 'zh-CN';
         }
         renderPricing();
@@ -293,7 +293,7 @@
             if (savedLang && savedLang !== 'zh') {
                 document.body.setAttribute('data-lang', savedLang);
                 if (savedLang === 'en') {
-                    document.title = 'CC Art Pricing';
+                    document.title = 'CC Art Studio Pricing';
                     document.documentElement.lang = 'en';
                 }
             }
